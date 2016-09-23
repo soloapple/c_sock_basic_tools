@@ -1,0 +1,9 @@
+style A:
+key=value
+key=value
+
+
+style B:
+key=value1,value2,value3
+
+
