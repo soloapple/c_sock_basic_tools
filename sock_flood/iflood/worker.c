@@ -14,31 +14,6 @@
 #include "worker.h"
 #include "socket.h"
 
-static int n_child = 1;
-extern int lenbuf;
-
-	void *
-foo(void*)
-{
-	printf ( "*** running thread child:%d ***\n", n_child);
-	n_child++;
-	return NULL;
-}
-
-	void
-max_thread()
-{
-	pthread_t thread;
-	int i = 0;
-
-	while (1) {
-		if (pthread_create(&thread, NULL, foo, NULL) != 0)
-			return;
-		i++;
-		printf("i = %d\n", i);
-	}
-}
-
 int 
 c_wait_childs(int *status)
 {
@@ -51,67 +26,66 @@ c_wait_childs(int *status)
 int 
 w_read_file_to_buf(char *file, char *t_buf)
 {
+	int n_read = 0;
+
 	FILE *f = fopen(file, "r+");
 	if(f == NULL)
 	{
-		perror(file);
-		return EXIT_FAILURE;
+		LOGE("%s IS NOT EXIST", file);
+		goto end;
 	}
 
-	int n_read = fread(t_buf, 1, BUFSIZ, f);
+	n_read = fread(t_buf, 1, BUFSIZ, f);
 	if (n_read <= 0) 
 	{
-		perror("fread()");
-		fclose(f);
-		return EXIT_FAILURE;	
+		LOGE("READ %s FAILED", file);
+		goto end;	
 	}
+
+end:
+	if ( f != NULL )
+		fclose(f);
 
 	return n_read;
 }
 
-/* ----- init socket , read file, and send, recv ----- */
-	int 
+void
 w_mission_start(char *ip, char *port, char *t_buf, int n_read)
 {
 	int s_sock = 0;
 	char s_buf[BUFSIZ] = {0};
 	char r_buf[BUFSIZ] = {0};
 	struct sockaddr_in s_net_addr;
-	
-	s_sock = s_net_init(&s_net_addr, ip, port);
-	int res = s_net_connect(s_sock, &s_net_addr);
-	if (res < 0)
-		return EXIT_FAILURE;
+
+	int res;
 
 	int send_len = 0;
 	int recv_len = 0;
+	
+	s_sock = s_net_init(&s_net_addr, ip, port);
+	res = s_net_connect(s_sock, &s_net_addr);
+	if ( res < 0 )
+		goto EXIT_LONG;
 
-#ifndef M_SHORT
+
 	for (;;)
-#endif
 	{
 		send_len = s_net_send_by_len(s_sock, s_buf, n_read);
 		if(send_len <= 0)
-		{
-			perror("send()");
-			goto EXIT;
-		}
+			goto EXIT_LONG;
 
 		recv_len = s_net_recv_by_len(s_sock, r_buf);
 		if(recv_len <= 0)
-		{
-			perror("recv()");
-			goto EXIT;
-		}
+			goto EXIT_LONG;
 	}
 
-EXIT:
+EXIT_LONG:
 	close(s_sock);
 
-	return 0;
+	return;
 }
 
-	int
+void 
 w_short_mission_start(char *ip, char *port, char *t_buf, int n_read)
 {
 	int s_sock = 0;
@@ -119,41 +93,32 @@ w_short_mission_start(char *ip, char *port, char *t_buf, int n_read)
 	char r_buf[BUFSIZ] = {0};
 	struct sockaddr_in s_net_addr;
 
-	s_sock = s_net_init(&s_net_addr, ip, port);
-	int res = s_net_connect(s_sock, &s_net_addr);
-	if (res < 0)
-		return EXIT_FAILURE;
-
 	int send_len = 0;
 	int recv_len = 0;
 
-	{
-		send_len = s_net_send_by_len(s_sock, s_buf, n_read);
-		if(send_len <= 0)
-		{
-			perror("send()");
-			goto EXIT;
-		}
+	s_sock = s_net_init(&s_net_addr, ip, port);
+	int res = s_net_connect(s_sock, &s_net_addr);
+	if (res < 0)
+		goto EXIT_SHORT;
 
-		recv_len = s_net_recv_by_len(s_sock, r_buf);
-		if(recv_len <= 0)
-		{
-			perror("recv()");
-			goto EXIT;
-		}
-	}
+	send_len = s_net_send_by_len(s_sock, s_buf, n_read);
+	if(send_len <= 0)
+		goto EXIT_SHORT;
 
-EXIT:
+	recv_len = s_net_recv_by_len(s_sock, r_buf);
+	if(recv_len <= 0)
+		goto EXIT_SHORT;
+
+EXIT_SHORT:
+	LOGDP("CHILD PROCEDURE QUIT!\n");
 	close(s_sock);
 
-	return 0;
+	return;
 }
 
-	void 
+void 
 c_process(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)
 {
-  	assert(file);
-
 	int status = 0;
 	char t_buf[BUFSIZ] = {0};
 	int n_read = w_read_file_to_buf(file, t_buf);
@@ -166,39 +131,41 @@ resend:
     for (i = 0; i < link_num; i++)
     {
         status = fork();
-        if (status == 0)
+        if ( status == 0 )
         {
-			if(link_mode) 
+			if( link_mode == LONG_MODE ) 
 			{
-				printf("process start %d\n", getpid());
+				LOGD("Long Mode process[%d] start!\n", getpid());
 				w_mission_start(ip, port, t_buf, n_read);
 			}
 			else
 			{
-				printf("process start %d\n", getpid());
+				LOGD("Short Mode process[%d] start!\n", getpid());
 				w_short_mission_start(ip, port, t_buf, n_read);
 			}
 
             return;
         }
 		else if (status < 0)
+		{
+			LOGEP("Fork failed!");
             return;
+		}
     }	
 
-	if (!link_mode)
+	if ( link_mode == SHORT_MODE )
 	{
-		while (times-- != 0)
+		while ( times-- != 1 )
 		{
 			while (c_wait_childs(NULL) > 0);
-			usleep(interval);
-			printf("resend\n");
+				usleep(interval);
 			goto resend;
 		}
 	}
 } 
 
 	void
-s_child_server(int c_fd)
+s_child_server(int c_fd, struct sockaddr_in *paddr)
 {
 	int n_recv = 0;
 	int n_send = 0;
@@ -214,26 +181,40 @@ s_child_server(int c_fd)
 			n_send = s_net_send_by_len(c_fd, buf, n_recv);
 			if (n_send < 0)
 			{
-				perror("send()");										
-				goto EXIT;
+				char addr_p[16];
+				inet_ntop(AF_INET, &(paddr->sin_addr),
+					addr_p, (socklen_t)sizeof(addr_p));
+				LOGWP("Send data to ip:%s Port:%d error\n", 
+					addr_p, paddr->sin_port );
+
+				break;
 			}
 		}
 		
 		if (n_recv == 0 )
 		{
-			perror("0 recv()");
-			goto EXIT;
+			char addr_p[16];
+			inet_ntop(AF_INET, &(paddr->sin_addr),
+				addr_p, (socklen_t)sizeof(addr_p));
+			LOGDP( "Closed Client ip:%s Port:%d\n", 
+				addr_p, paddr->sin_port );
+
+			break;
 		}
 
 		if (n_recv < 0)
 		{
-			perror("-1 recv()");
-			goto EXIT;
+			char addr_p[16];
+			inet_ntop(AF_INET, &(paddr->sin_addr),
+				addr_p, (socklen_t)sizeof(addr_p));
+			LOGWP( "abnormal close Client ip:%s Port:%d\n", 
+				addr_p, paddr->sin_port );
+
+			break;
 		}
 	}
 
-EXIT:
-	puts("EXIT!");
+EXIT_CHLD:
 	close(c_fd);
 	exit(0);
 }
@@ -245,35 +226,40 @@ s_process(char *ip, char *port)
 	int c_fd;	
 	int status;
 	struct sockaddr_in s_net_addr;
+	struct sockaddr_in c_net_addr;
+
+	int n = 0;
+
 	int s_len = sizeof(struct sockaddr_in);
 
 	s_sock = s_net_init(&s_net_addr, ip, port);
 	
-	if (s_net_bind(s_sock, &s_net_addr) < 0)
+	if ( s_net_bind(s_sock, &s_net_addr) < 0 )
 		return ;
 
-	if (s_net_listen(s_sock) < 0)
+	if ( s_net_listen(s_sock) < 0 )
 		return;
 
 	for (;;) {
-		c_fd = noblock_accept(s_sock, (struct sockaddr*)&s_net_addr, s_len, 10);
-		if (c_fd < 0) {
+		c_fd = noblock_accept(s_sock, &c_net_addr, s_len, 10);
+		if ( c_fd < 0 ) {
 			if(errno == EAGAIN||errno == EWOULDBLOCK||errno == EINTR)
 				continue;
 			else
 				break;
 		}
 
-		if (c_fd == 0)
+		if ( c_fd == 0 )
 			continue;		
 
 		status = fork();
-		if (status == 0) {
-			printf ( "[%s %d]:accept fd:%d\n", __FILE__, __LINE__, c_fd );
+		if ( status == 0 ) {
 			close(s_sock);
-			s_child_server(c_fd);
+			s_child_server(c_fd, &c_net_addr);
 		}
 
+		n++;
+		LOGDP("[%d] Process\n", n);
 		close(c_fd);
 	}	
 }

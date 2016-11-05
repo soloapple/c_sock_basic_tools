@@ -74,7 +74,7 @@ s_net_init(struct sockaddr_in *s_net_addr, char *s_ip, char *s_port)
     s_sock = socket(PF_INET, SOCK_STREAM, 0);
     if (s_sock < 0)
     {
-		printf ( "socket\n" );
+		LOGE ( "Create Socket failed!\n" );
         return false;
     }
 
@@ -108,26 +108,17 @@ s_net_connect(int s_sock, struct sockaddr_in *s_net_addr)
     socklen_t s_net_len = sizeof(struct sockaddr_in);
 	if ((connect(s_sock, (struct sockaddr*)s_net_addr, s_net_len)) < 0)
 	{
-		perror("connect");
+		char addr_p[16];
+		inet_ntop(AF_INET, &(s_net_addr->sin_addr),
+				addr_p, (socklen_t)sizeof(addr_p));
+		LOGE("Connect ip:%s Port:%d failed!\n", 
+				addr_p, htons(s_net_addr->sin_port) );
+
 		return false;
 	}
 
 	return true;
 }
-
-
-/* ----- accept  ----- */
-int
-s_net_accept(int l_sock, struct sockaddr_in *c_addr)
-{
-	socklen_t s_len = sizeof(struct sockaddr_in);
-	int c_sock = accept(l_sock, (struct sockaddr*)c_addr, &s_len);
-	if (c_sock < 0)
-		perror("accept()");
-	
-	return c_sock;
-}
-
 
 int 
 s_net_recv_by_len(int s_sock, char *r_buf)
@@ -135,26 +126,18 @@ s_net_recv_by_len(int s_sock, char *r_buf)
 	unsigned int n_total = 0;
 	unsigned int n_read = 0;
 
-	if ( (n_read = recv(s_sock, r_buf, 4, 0)) <= 0)
-    {
-		perror("irecv()");
-		return false;
-    }
+	if ( (n_read = recv(s_sock, r_buf, 4, 0)) <= 0 )
+		goto end;
 
 	memcpy(&n_total, r_buf, 4);
-	//printf("[%s %d]: recv total %d\n", __FILE__, __LINE__, n_total);
 		
 	if ( (n_read = s_net_recv(s_sock, r_buf, n_total)) <= 0)
-    {
-		perror("irecv()");
-		return false;
-    }
-	
-	//printf("[%s %d]: recv nread %d\n", __FILE__, __LINE__, n_read);
+		goto end;
 
-	return n_read+4;	
+	n_read = n_read + 4;
+end:
+	return n_read;	
 }
-
 
 /* ----- recv ----- */
 int
@@ -166,22 +149,20 @@ s_net_recv(int s_sock, char *r_buf, int len)
 
     while (nleft > 0)
     {
-        if ( (nread = recv(s_sock, ptr, nleft, 0)) <= 0)
-        {
-			perror("irecv()");
-            return false;
-        }
+        if ( (nread = recv(s_sock, ptr, nleft, 0)) <= 0 )
+		{
+            if (errno != EPIPE)
+                LOGE("Recv() error: [%d] %s", errno, strerror(errno));
+
+            return nread;
+		}
 
         nleft -= nread;
         ptr += nread;
-
-	//	printf("[%s %d]: s_net_recv %d\n", __FILE__, __LINE__, nread);
     }
 
-	//printf("[%s %d]: final in net recv %d\n", __FILE__, __LINE__, len-nleft);
     return len - nleft;
 }
-
 
 int 
 s_net_send_by_len(int s_sock, char *t_buf, int len)
@@ -191,8 +172,6 @@ s_net_send_by_len(int s_sock, char *t_buf, int len)
 	int n_read = (len < BUFSIZ-4 ? len : BUFSIZ-4);
 	memcpy(s_buf, &n_read, 4);
 	memcpy(s_buf + 4, t_buf, n_read);
-
-	//printf("[%s %d]: send nread %d\n", __FILE__, __LINE__, n_read);
 
 	return s_net_send(s_sock, s_buf, n_read + 4);
 }
@@ -209,7 +188,7 @@ s_net_send(int s_sock, char *s_buf, int len)
     while (len > 0) {
         if ((ret = send(s_sock, (void*)((unsigned long)s_buf + nsend), total - nsend, 0)) < 0) {
             if (errno != EPIPE)
-                printf("Send() error: [%d] %s", errno, strerror(errno));
+                LOGE("Send() error: [%d] %s", errno, strerror(errno));
             return -1;
         }
         nsend += ret;
@@ -226,14 +205,14 @@ s_set_nonblock(int s_sock)
     int opts = fcntl(s_sock, F_GETFL);
     if(opts < 0)
     {
-        perror("fcntl(sock,GETFL)");
+        LOGE ("Get Socket Fcntl Failed");
         return false;
     }
 
     opts = opts | O_NONBLOCK;
     if(fcntl(s_sock, F_SETFL, opts) < 0)
     {
-        perror("fcntl(sock,SETFL,opts)");
+        LOGE ("Set Socket Fcntl Failed");
         return false;
     }
 
@@ -245,7 +224,11 @@ s_net_bind(int s_sock, struct sockaddr_in *s_net_addr)
 {
 	if (bind(s_sock, (struct sockaddr*)s_net_addr, sizeof(struct sockaddr_in)) < 0)
 	{
-		perror("bind()");
+		char addr_p[16];
+		inet_ntop(AF_INET, &(s_net_addr->sin_addr),
+				addr_p, (socklen_t)sizeof(addr_p));
+		LOGE("Bind ip:%s Port:%d failed!\n", 
+				addr_p, s_net_addr->sin_port );
 		return false;
 	}
 
@@ -259,16 +242,10 @@ s_net_listen(int s_sock)
 	return ret;
 }
 
-int 
-s_net_accept(int s_sock, struct sockaddr* s)
-{
-	socklen_t s_len = sizeof(struct sockaddr_in);
-	int ret = accept( s_sock, s, &s_len);
-	return ret;
-}
+
 
 int 
-noblock_accept(int fd, struct sockaddr* paddr, int addrlen, const int time_out)
+noblock_accept(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out)
 {
     int    ret;
     int    newfd;
@@ -289,7 +266,12 @@ noblock_accept(int fd, struct sockaddr* paddr, int addrlen, const int time_out)
         return ret;
 
     if (FD_ISSET(fd, &rfds)) {
-        newfd = accept(fd, paddr, (unsigned int*)&addrlen);
+        newfd = accept(fd, (struct sockaddr*)paddr, (unsigned int*)&addrlen);
+		char addr_p[16];
+		inet_ntop(AF_INET, &(paddr->sin_addr),
+				addr_p, (socklen_t)sizeof(addr_p));
+		LOGDP("Accept Client ip:%s Port:%d\n", 
+					addr_p, paddr->sin_port );
         return newfd;
     }
 

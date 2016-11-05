@@ -16,6 +16,7 @@
 #define  socket_INCLUDE
 
 #include "system.h"
+#include "color_print.h"
 
 
 char *s_net_ntoa(char *buf, size_t bufsize, struct in_addr a);
@@ -34,7 +35,7 @@ int s_net_recv_by_len(int s_sock, char *r_buf);
 
 char *inet_ultoa(unsigned int u, char * s);
 int inet_atoul(const char * s);
-int noblock_accept(int fd, struct sockaddr* paddr, int addrlen, const int time_out);
+int noblock_accept(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out);
 
 #endif   /* ----- #ifndef socket_INC  ----- */
 

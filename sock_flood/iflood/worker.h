@@ -12,12 +12,17 @@
  ***************************************************************************************/
 
 #include "system.h"
+#include "color_print.h"
 
 #include <pthread.h>
 
-void *foo(void*);
-void max_thread();
+typedef enum 
+{
+	SHORT_MODE = 0,
+	LONG_MODE = 1
+}e_link_mode;
+
 void c_process(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times);
 void s_process(char *ip, char *port);
-int w_mission_start(char *ip, char *port, char *file);
-int w_short_mission_start(char *ip, char *port, char *t_buf, int n_read);
+void w_mission_start(char *ip, char *port, char *file);
+void w_short_mission_start(char *ip, char *port, char *t_buf, int n_read);

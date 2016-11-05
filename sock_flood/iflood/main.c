@@ -27,7 +27,7 @@ int mode = 1;
 int nums = 1;
 
 int interval = 100000;
-int times = 3;
+int times = 1;
 int lenbuf = BUFSIZ;
 
 struct option long_options[] =
@@ -60,7 +60,7 @@ void usage(int argc, char *argv[])
 			" f, --file	file to send, largest size if 8k. only use by client\n"
 			" n, --nums	the num of client process that connect to server. default nums is 1\n"
 			" i, --interval	in short mode, the interval time between two send times. unit is um. default is 100000 \n"
-			" t, --times	in short mode, the times connect and send data to server. default is 3\n"
+			" t, --times	in short mode, the times that connect and send data to server. default is 1\n"
 			" l, --len	set send and recv buf size, default is 8k.\n"
 			" m, --mode	arg can be 1 or 0, represent long link or short link. default mode is long.\n"
 			"\n\n"
@@ -141,6 +141,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
+		LOGDP("SERVER START!\n");
 		s_process(ip, port);
 	}
 		
