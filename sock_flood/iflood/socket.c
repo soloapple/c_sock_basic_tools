@@ -176,7 +176,6 @@ s_net_send_by_len(int s_sock, char *t_buf, int len)
 	return s_net_send(s_sock, s_buf, n_read + 4);
 }
 
-
 /* ----- send  ----- */
 int
 s_net_send(int s_sock, char *s_buf, int len)

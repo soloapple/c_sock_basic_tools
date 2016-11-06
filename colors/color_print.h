@@ -20,9 +20,11 @@
 #define COL_WHITE   "\033[40;37m"
 #define COL_BULE    "\033[40;36m"
 #define COL_PURPLE  "\033[40;35m"
+#define COL_BLUE	"\033[40;34m"
+#define COL_YELLOW  "\033[40;33m"
 #define COL_GREEN   "\033[40;32m"
 #define COL_RED     "\033[40;31m"
-#define COL_END     "\033[1m"
+#define COL_END     "\033[0m"
 
 #define	 MLEVEL 10
 
@@ -63,13 +65,13 @@
 #ifdef MLOG_DEBUG
 #define LOGD(fmt, args...)                                           \
 	do {                                                             \
-		printf(COL_PURPLE "[DEBUG][%-20s:%-4d] " COL_END fmt,        \
+		printf(COL_GREEN "[DEBUG][%-20s:%-4d] " COL_END fmt,        \
 				__FILE__, __LINE__, ##args);                         \
 	} while (0);
 
 #define LOGDP(fmt, args...)                                          \
 	do {                                                             \
-		printf(COL_PURPLE "[DEBUG][%-20s:%-4d] [%d] " COL_END fmt,   \
+		printf(COL_GREEN "[DEBUG][%-20s:%-4d] [%d] " COL_END fmt,   \
 				__FILE__, __LINE__, getpid(), ##args);               \
 	} while (0);
 #else
@@ -80,7 +82,7 @@
 #ifdef MLOG_WARNING
 #define LOGW(fmt, args...)                                           \
 	do {                                                             \
-		printf(COL_GREEN"[WARNN][%-20s:%-4d] "COL_END"%s: " fmt,     \
+		printf(COL_YELLOW "[WARNN][%-20s:%-4d] "COL_END"%s: " fmt,     \
 				__FILE__, __LINE__, __FUNCTION__, ##args);           \
 	} while (0);
 #else
