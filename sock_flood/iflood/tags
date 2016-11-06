@@ -1,0 +1,51 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert (Pathed by Dmitry Frank, dimon.frank@gmail.com)	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8.1	//
+PTHREAD_THREADS_MAX	main.c	19;"	d	file:
+c_process	worker.c	/^c_process(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)$/;"	f
+c_wait_childs	worker.c	/^c_wait_childs(int *status)$/;"	f
+cs_mode	main.c	/^int cs_mode;$/;"	v
+false	system.h	48;"	d
+foo	worker.c	/^foo(void*)$/;"	f
+inet_atoul	socket.c	/^inet_atoul(const char * s)$/;"	f
+inet_ultoa	socket.c	/^inet_ultoa(unsigned int u, char * s)$/;"	f
+interval	main.c	/^int interval = 100000;$/;"	v
+l_opt_arg	main.c	/^char *l_opt_arg;$/;"	v
+lenbuf	main.c	/^int lenbuf = BUFSIZ;$/;"	v
+long_options	main.c	/^struct option long_options[] =$/;"	v	typeref:struct:option
+main	main.c	/^int main(int argc, char *argv[])      $/;"	f
+max_thread	worker.c	/^max_thread()$/;"	f
+mode	main.c	/^int mode = 1;$/;"	v
+n_child	worker.c	/^static int n_child = 1;$/;"	v	file:
+noblock_accept	socket.c	/^noblock_accept(int fd, struct sockaddr* paddr, int addrlen, const int time_out)$/;"	f
+nums	main.c	/^int nums = 1;$/;"	v
+s_child_server	worker.c	/^s_child_server(int c_fd)$/;"	f
+s_inet_aton	socket.c	/^s_inet_aton(char *buf, struct in_addr *a)$/;"	f
+s_net_accept	socket.c	/^s_net_accept(int l_sock, struct sockaddr_in *c_addr)$/;"	f
+s_net_accept	socket.c	/^s_net_accept(int s_sock, struct sockaddr* s)$/;"	f
+s_net_bind	socket.c	/^s_net_bind(int s_sock, struct sockaddr_in *s_net_addr) $/;"	f
+s_net_connect	socket.c	/^s_net_connect(int s_sock, struct sockaddr_in *s_net_addr)$/;"	f
+s_net_init	socket.c	/^s_net_init(struct sockaddr_in *s_net_addr, char *s_ip, char *s_port)$/;"	f
+s_net_listen	socket.c	/^s_net_listen(int s_sock)$/;"	f
+s_net_ntoa	socket.c	/^s_net_ntoa(char *buf, size_t bufsize, struct in_addr a)$/;"	f
+s_net_recv	socket.c	/^s_net_recv(int s_sock, char *r_buf, int len)$/;"	f
+s_net_recv_by_len	socket.c	/^s_net_recv_by_len(int s_sock, char *r_buf)$/;"	f
+s_net_send	socket.c	/^s_net_send(int s_sock, char *s_buf, int len)$/;"	f
+s_net_send_by_len	socket.c	/^s_net_send_by_len(int s_sock, char *t_buf, int len)$/;"	f
+s_net_set_tout	socket.c	/^s_net_set_tout(int s_sock)$/;"	f
+s_process	worker.c	/^s_process(char *ip, char *port)$/;"	f
+s_set_nonblock	socket.c	/^s_set_nonblock(int s_sock)$/;"	f
+short_options	main.c	/^char *const short_options = "p:i:f:c:s:hm:t:n:l:";$/;"	v
+socket_INCLUDE	socket.h	16;"	d
+src	Makefile	/^src:=epoll.c socket.c worker.c$/;"	m
+system_INCLUDE	system.h	15;"	d
+target	Makefile	/^target:=iflood$/;"	m
+times	main.c	/^int times = 3;$/;"	v
+true	system.h	47;"	d
+usage	main.c	/^void usage(int argc, char *argv[])$/;"	f
+w_mission_start	worker.c	/^w_mission_start(char *ip, char *port, char *t_buf, int n_read)$/;"	f
+w_read_file_to_buf	worker.c	/^w_read_file_to_buf(char *file, char *t_buf)$/;"	f
+w_short_mission_start	worker.c	/^w_short_mission_start(char *ip, char *port, char *t_buf, int n_read)$/;"	f
