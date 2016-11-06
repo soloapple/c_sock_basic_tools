@@ -1,0 +1,1 @@
+/revive/open_source_code/libtool-2.4.6/gnulib/m4/00gnulib.m4
