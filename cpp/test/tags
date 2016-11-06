@@ -1,0 +1,243 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert (Pathed by Dmitry Frank, dimon.frank@gmail.com)	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8.1	//
+AddEntry	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::AddEntry($/;"	f	class:CSimpleIniTempl
+Boolean	ConvertUTF.h	/^typedef unsigned char	Boolean; \/* 0 or 1 *\/$/;"	t
+CSimpleIni	SimpleIni.h	3423;"	d
+CSimpleIni	SimpleIni.h	3427;"	d
+CSimpleIniA	SimpleIni.h	/^    SI_NoCase<char>,SI_ConvertA<char> >                 CSimpleIniA;$/;"	t
+CSimpleIniCase	SimpleIni.h	3424;"	d
+CSimpleIniCase	SimpleIni.h	3428;"	d
+CSimpleIniCaseA	SimpleIni.h	/^    SI_Case<char>,SI_ConvertA<char> >                   CSimpleIniCaseA;$/;"	t
+CSimpleIniCaseW	SimpleIni.h	/^    SI_Case<UChar>,SI_ConvertW<UChar> >                 CSimpleIniCaseW;$/;"	t
+CSimpleIniCaseW	SimpleIni.h	/^    SI_Case<wchar_t>,SI_ConvertW<wchar_t> >             CSimpleIniCaseW;$/;"	t
+CSimpleIniTempl	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::CSimpleIniTempl($/;"	f	class:CSimpleIniTempl
+CSimpleIniTempl	SimpleIni.h	/^class CSimpleIniTempl$/;"	c
+CSimpleIniW	SimpleIni.h	/^    SI_NoCase<UChar>,SI_ConvertW<UChar> >               CSimpleIniW;$/;"	t
+CSimpleIniW	SimpleIni.h	/^    SI_NoCase<wchar_t>,SI_ConvertW<wchar_t> >           CSimpleIniW;$/;"	t
+ConfigName	main.cc	/^const static char ConfigName[] = ".\/config\/sql.cnf";$/;"	v	file:
+ConversionFlags	ConvertUTF.h	/^} ConversionFlags;$/;"	t	typeref:enum:__anon_ConvertUTF_h_109
+ConversionResult	ConvertUTF.h	/^} ConversionResult;$/;"	t	typeref:enum:__anon_ConvertUTF_h_102
+ConvertFromStore	SimpleIni.h	/^    bool ConvertFromStore($/;"	f	class:SI_ConvertA
+ConvertFromStore	SimpleIni.h	/^    bool ConvertFromStore($/;"	f	class:SI_ConvertW
+ConvertToStore	SimpleIni.h	/^        bool ConvertToStore(const SI_CHAR * a_pszString) {$/;"	f	class:CSimpleIniTempl::Converter
+ConvertToStore	SimpleIni.h	/^    bool ConvertToStore($/;"	f	class:SI_ConvertA
+ConvertToStore	SimpleIni.h	/^    bool ConvertToStore($/;"	f	class:SI_ConvertW
+ConvertUTF16toUTF32	ConvertUTF.c	/^ConversionResult ConvertUTF16toUTF32 ($/;"	f
+ConvertUTF16toUTF8	ConvertUTF.c	/^ConversionResult ConvertUTF16toUTF8 ($/;"	f
+ConvertUTF32toUTF16	ConvertUTF.c	/^ConversionResult ConvertUTF32toUTF16 ($/;"	f
+ConvertUTF32toUTF8	ConvertUTF.c	/^ConversionResult ConvertUTF32toUTF8 ($/;"	f
+ConvertUTF8toUTF16	ConvertUTF.c	/^ConversionResult ConvertUTF8toUTF16 ($/;"	f
+ConvertUTF8toUTF32	ConvertUTF.c	/^ConversionResult ConvertUTF8toUTF32 ($/;"	f
+Converter	SimpleIni.h	/^        Converter(bool a_bStoreIsUtf8) : SI_CONVERTER(a_bStoreIsUtf8) {$/;"	f	class:CSimpleIniTempl::Converter
+Converter	SimpleIni.h	/^        Converter(const Converter & rhs) { operator=(rhs); }$/;"	f	class:CSimpleIniTempl::Converter
+Converter	SimpleIni.h	/^    class Converter : private SI_CONVERTER {$/;"	c	class:CSimpleIniTempl
+CopyString	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::CopyString($/;"	f	class:CSimpleIniTempl
+CutString	main.cc	/^CutString()$/;"	f
+Data	SimpleIni.h	/^        const char * Data() { return m_scratch.data(); }$/;"	f	class:CSimpleIniTempl::Converter
+Delete	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::Delete($/;"	f	class:CSimpleIniTempl
+DeleteString	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::DeleteString($/;"	f	class:CSimpleIniTempl
+DeleteValue	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::DeleteValue($/;"	f	class:CSimpleIniTempl
+Entry	SimpleIni.h	/^        Entry(const Entry & rhs) { operator=(rhs); }$/;"	f	struct:CSimpleIniTempl::Entry
+Entry	SimpleIni.h	/^        Entry(const SI_CHAR * a_pszItem = NULL, int a_nOrder = 0)$/;"	f	struct:CSimpleIniTempl::Entry
+Entry	SimpleIni.h	/^        Entry(const SI_CHAR * a_pszItem, const SI_CHAR * a_pszComment, int a_nOrder)$/;"	f	struct:CSimpleIniTempl::Entry
+Entry	SimpleIni.h	/^    struct Entry {$/;"	s	class:CSimpleIniTempl
+FileWriter	SimpleIni.h	/^        FileWriter(FILE * a_file) : m_file(a_file) { }$/;"	f	class:CSimpleIniTempl::FileWriter
+FileWriter	SimpleIni.h	/^    class FileWriter : public OutputWriter {$/;"	c	class:CSimpleIniTempl
+FindEntry	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::FindEntry($/;"	f	class:CSimpleIniTempl
+FindFileComment	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::FindFileComment($/;"	f	class:CSimpleIniTempl
+GetAllKeys	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllKeys($/;"	f	class:CSimpleIniTempl
+GetAllSections	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllSections($/;"	f	class:CSimpleIniTempl
+GetAllValues	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetAllValues($/;"	f	class:CSimpleIniTempl
+GetBoolValue	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetBoolValue($/;"	f	class:CSimpleIniTempl
+GetConverter	SimpleIni.h	/^    Converter GetConverter() const {$/;"	f	class:CSimpleIniTempl
+GetDoubleValue	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetDoubleValue($/;"	f	class:CSimpleIniTempl
+GetLongValue	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetLongValue($/;"	f	class:CSimpleIniTempl
+GetSection	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetSection($/;"	f	class:CSimpleIniTempl
+GetSectionSize	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetSectionSize($/;"	f	class:CSimpleIniTempl
+GetValue	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::GetValue($/;"	f	class:CSimpleIniTempl
+INCLUDED_SimpleIni_h	SimpleIni.h	196;"	d
+IsComment	SimpleIni.h	/^    inline bool IsComment(SI_CHAR ch) const {$/;"	f	class:CSimpleIniTempl
+IsEmpty	SimpleIni.h	/^    bool IsEmpty() const { return m_data.empty(); }$/;"	f	class:CSimpleIniTempl
+IsLess	SimpleIni.h	/^    bool IsLess(const SI_CHAR * a_pLeft, const SI_CHAR * a_pRight) const {$/;"	f	class:CSimpleIniTempl
+IsMultiKey	SimpleIni.h	/^    bool IsMultiKey() const { return m_bAllowMultiKey; }$/;"	f	class:CSimpleIniTempl
+IsMultiLine	SimpleIni.h	/^    bool IsMultiLine() const { return m_bAllowMultiLine; }$/;"	f	class:CSimpleIniTempl
+IsMultiLineData	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::IsMultiLineData($/;"	f	class:CSimpleIniTempl
+IsMultiLineTag	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::IsMultiLineTag($/;"	f	class:CSimpleIniTempl
+IsNewLineChar	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::IsNewLineChar($/;"	f	class:CSimpleIniTempl
+IsSpace	SimpleIni.h	/^    inline bool IsSpace(SI_CHAR ch) const {$/;"	f	class:CSimpleIniTempl
+IsUnicode	SimpleIni.h	/^    bool IsUnicode() const { return m_bStoreIsUtf8; }$/;"	f	class:CSimpleIniTempl
+KeyOrder	SimpleIni.h	/^        struct KeyOrder : std::binary_function<Entry, Entry, bool> {$/;"	s	struct:CSimpleIniTempl::Entry
+LoadData	SimpleIni.h	/^    SI_Error LoadData(const std::string & a_strData) {$/;"	f	class:CSimpleIniTempl
+LoadData	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::LoadData($/;"	f	class:CSimpleIniTempl
+LoadFile	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::LoadFile($/;"	f	class:CSimpleIniTempl
+LoadFile	main.cc	/^LoadFile()$/;"	f
+LoadMultiLineText	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::LoadMultiLineText($/;"	f	class:CSimpleIniTempl
+LoadOrder	SimpleIni.h	/^        struct LoadOrder : std::binary_function<Entry, Entry, bool> {$/;"	s	struct:CSimpleIniTempl::Entry
+OutputMultiLineText	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::OutputMultiLineText($/;"	f	class:CSimpleIniTempl
+OutputWriter	SimpleIni.h	/^        OutputWriter() { }$/;"	f	class:CSimpleIniTempl::OutputWriter
+OutputWriter	SimpleIni.h	/^    class OutputWriter {$/;"	c	class:CSimpleIniTempl
+ReadRobot	readRobot.cc	/^class ReadRobot$/;"	c	file:
+Reset	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::Reset()$/;"	f	class:CSimpleIniTempl
+SI_ASSERT	SimpleIni.h	232;"	d
+SI_ASSERT	SimpleIni.h	234;"	d
+SI_CHAR_T	SimpleIni.h	/^    typedef SI_CHAR SI_CHAR_T;$/;"	t	class:CSimpleIniTempl
+SI_CONVERT_GENERIC	SimpleIni.h	2675;"	d
+SI_CONVERT_WIN32	SimpleIni.h	2673;"	d
+SI_Case	SimpleIni.h	2843;"	d
+SI_Case	SimpleIni.h	3051;"	d
+SI_Case	SimpleIni.h	3239;"	d
+SI_ConvertA	SimpleIni.h	/^    SI_ConvertA() { }$/;"	f	class:SI_ConvertA
+SI_ConvertA	SimpleIni.h	/^    SI_ConvertA(bool a_bStoreIsUtf8) : m_bStoreIsUtf8(a_bStoreIsUtf8) { }$/;"	f	class:SI_ConvertA
+SI_ConvertA	SimpleIni.h	/^    SI_ConvertA(const SI_ConvertA & rhs) { operator=(rhs); }$/;"	f	class:SI_ConvertA
+SI_ConvertA	SimpleIni.h	/^class SI_ConvertA {$/;"	c
+SI_ConvertW	SimpleIni.h	/^    SI_ConvertW() : m_pEncoding(NULL), m_pConverter(NULL) { }$/;"	f	class:SI_ConvertW
+SI_ConvertW	SimpleIni.h	/^    SI_ConvertW() { }$/;"	f	class:SI_ConvertW
+SI_ConvertW	SimpleIni.h	/^    SI_ConvertW(bool a_bStoreIsUtf8) : m_bStoreIsUtf8(a_bStoreIsUtf8) { }$/;"	f	class:SI_ConvertW
+SI_ConvertW	SimpleIni.h	/^    SI_ConvertW(bool a_bStoreIsUtf8) : m_pConverter(NULL) {$/;"	f	class:SI_ConvertW
+SI_ConvertW	SimpleIni.h	/^    SI_ConvertW(bool a_bStoreIsUtf8) {$/;"	f	class:SI_ConvertW
+SI_ConvertW	SimpleIni.h	/^    SI_ConvertW(const SI_ConvertW & rhs) { operator=(rhs); }$/;"	f	class:SI_ConvertW
+SI_ConvertW	SimpleIni.h	/^class SI_ConvertW {$/;"	c
+SI_Error	SimpleIni.h	/^enum SI_Error {$/;"	g
+SI_FAIL	SimpleIni.h	/^    SI_FAIL     = -1,   \/\/!< Generic failure$/;"	e	enum:SI_Error
+SI_FILE	SimpleIni.h	/^    SI_FILE     = -3    \/\/!< File error (see errno for detail error)$/;"	e	enum:SI_Error
+SI_GenericCase	SimpleIni.h	/^struct SI_GenericCase {$/;"	s
+SI_GenericNoCase	SimpleIni.h	/^struct SI_GenericNoCase {$/;"	s
+SI_HAS_WIDE_FILE	SimpleIni.h	263;"	d
+SI_HAS_WIDE_FILE	SimpleIni.h	266;"	d
+SI_INSERTED	SimpleIni.h	/^    SI_INSERTED =  2,   \/\/!< A new value was inserted$/;"	e	enum:SI_Error
+SI_NEWLINE	SimpleIni.h	3425;"	d
+SI_NEWLINE	SimpleIni.h	3429;"	d
+SI_NEWLINE_A	SimpleIni.h	251;"	d
+SI_NEWLINE_A	SimpleIni.h	254;"	d
+SI_NEWLINE_W	SimpleIni.h	252;"	d
+SI_NEWLINE_W	SimpleIni.h	255;"	d
+SI_NOMEM	SimpleIni.h	/^    SI_NOMEM    = -2,   \/\/!< Out of memory error$/;"	e	enum:SI_Error
+SI_NO_MBCS	SimpleIni.h	3244;"	d
+SI_NoCase	SimpleIni.h	/^struct SI_NoCase {$/;"	s
+SI_NoCase	SimpleIni.h	2844;"	d
+SI_NoCase	SimpleIni.h	3052;"	d
+SI_NoCase	SimpleIni.h	3250;"	d
+SI_OK	SimpleIni.h	/^    SI_OK       =  0,   \/\/!< No error$/;"	e	enum:SI_Error
+SI_UPDATED	SimpleIni.h	/^    SI_UPDATED  =  1,   \/\/!< An existing value was updated$/;"	e	enum:SI_Error
+SI_UTF8_SIGNATURE	SimpleIni.h	248;"	d
+SI_WCHAR_T	SimpleIni.h	264;"	d
+SI_WCHAR_T	SimpleIni.h	267;"	d
+Save	SimpleIni.h	/^    SI_Error Save($/;"	f	class:CSimpleIniTempl
+Save	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::Save($/;"	f	class:CSimpleIniTempl
+SaveFile	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SaveFile($/;"	f	class:CSimpleIniTempl
+SetBoolValue	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SetBoolValue($/;"	f	class:CSimpleIniTempl
+SetDoubleValue	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SetDoubleValue($/;"	f	class:CSimpleIniTempl
+SetLongValue	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::SetLongValue($/;"	f	class:CSimpleIniTempl
+SetMultiKey	SimpleIni.h	/^    void SetMultiKey(bool a_bAllowMultiKey = true) {$/;"	f	class:CSimpleIniTempl
+SetMultiLine	SimpleIni.h	/^    void SetMultiLine(bool a_bAllowMultiLine = true) {$/;"	f	class:CSimpleIniTempl
+SetSpaces	SimpleIni.h	/^    void SetSpaces(bool a_bSpaces = true) {$/;"	f	class:CSimpleIniTempl
+SetUnicode	SimpleIni.h	/^    void SetUnicode(bool a_bIsUtf8 = true) {$/;"	f	class:CSimpleIniTempl
+SetValue	SimpleIni.h	/^    SI_Error SetValue($/;"	f	class:CSimpleIniTempl
+SimpleList	main.cc	/^SimpleList()$/;"	f
+SizeFromStore	SimpleIni.h	/^    size_t SizeFromStore($/;"	f	class:SI_ConvertA
+SizeFromStore	SimpleIni.h	/^    size_t SizeFromStore($/;"	f	class:SI_ConvertW
+SizeToStore	SimpleIni.h	/^    size_t SizeToStore($/;"	f	class:SI_ConvertA
+SizeToStore	SimpleIni.h	/^    size_t SizeToStore($/;"	f	class:SI_ConvertW
+SkipNewLine	SimpleIni.h	/^    inline void SkipNewLine(SI_CHAR *& a_pData) const {$/;"	f	class:CSimpleIniTempl
+StreamWriter	SimpleIni.h	/^        StreamWriter(std::ostream & a_ostream) : m_ostream(a_ostream) { }$/;"	f	class:CSimpleIniTempl::StreamWriter
+StreamWriter	SimpleIni.h	/^    class StreamWriter : public OutputWriter {$/;"	c	class:CSimpleIniTempl
+StringWriter	SimpleIni.h	/^        StringWriter(std::string & a_string) : m_string(a_string) { }$/;"	f	class:CSimpleIniTempl::StringWriter
+StringWriter	SimpleIni.h	/^    class StringWriter : public OutputWriter {$/;"	c	class:CSimpleIniTempl
+TKeyVal	SimpleIni.h	/^    typedef std::multimap<Entry,const SI_CHAR *,typename Entry::KeyOrder> TKeyVal;$/;"	t	class:CSimpleIniTempl
+TNamesDepend	SimpleIni.h	/^    typedef std::list<Entry> TNamesDepend;$/;"	t	class:CSimpleIniTempl
+TSection	SimpleIni.h	/^    typedef std::map<Entry,TKeyVal,typename Entry::KeyOrder> TSection;$/;"	t	class:CSimpleIniTempl
+Test	test.cc	/^Test::Test ( const Test &other )$/;"	f	class:Test
+Test	test.cc	/^Test::Test ()$/;"	f	class:Test
+Test	test.h	/^class Test$/;"	c
+UNI_MAX_BMP	ConvertUTF.h	97;"	d
+UNI_MAX_LEGAL_UTF32	ConvertUTF.h	100;"	d
+UNI_MAX_UTF16	ConvertUTF.h	98;"	d
+UNI_MAX_UTF32	ConvertUTF.h	99;"	d
+UNI_REPLACEMENT_CHAR	ConvertUTF.h	96;"	d
+UNI_SUR_HIGH_END	ConvertUTF.c	53;"	d	file:
+UNI_SUR_HIGH_START	ConvertUTF.c	52;"	d	file:
+UNI_SUR_LOW_END	ConvertUTF.c	55;"	d	file:
+UNI_SUR_LOW_START	ConvertUTF.c	54;"	d	file:
+UTF16	ConvertUTF.h	/^typedef unsigned short	UTF16;	\/* at least 16 bits *\/$/;"	t
+UTF32	ConvertUTF.h	/^typedef unsigned int	UTF32;	\/* at least 32 bits *\/$/;"	t
+UTF8	ConvertUTF.h	/^typedef unsigned char	UTF8;	\/* typically 8 bits *\/$/;"	t
+UsingSpaces	SimpleIni.h	/^    bool UsingSpaces() const { return m_bSpaces; }$/;"	f	class:CSimpleIniTempl
+Write	SimpleIni.h	/^        void Write(const char * a_pBuf) {$/;"	f	class:CSimpleIniTempl::FileWriter
+Write	SimpleIni.h	/^        void Write(const char * a_pBuf) {$/;"	f	class:CSimpleIniTempl::StreamWriter
+Write	SimpleIni.h	/^        void Write(const char * a_pBuf) {$/;"	f	class:CSimpleIniTempl::StringWriter
+c_cFlagSqlDatabase	main.cc	/^const static char c_cFlagSqlDatabase[] = "database";$/;"	v	file:
+c_cFlagSqlDefault	main.cc	/^const static char c_cFlagSqlDefault[] = "default";$/;"	v	file:
+c_cFlagSqlHost	main.cc	/^const static char c_cFlagSqlHost[] = "host";$/;"	v	file:
+c_cFlagSqlLocal	main.cc	/^const static char c_cFlagSqlLocal[]	= "local";$/;"	v	file:
+c_cFlagSqlPassword	main.cc	/^const static char c_cFlagSqlPassword[] = "password";$/;"	v	file:
+c_cFlagSqlPort	main.cc	/^const static char c_cFlagSqlPort[] = "port";$/;"	v	file:
+c_cFlagSqlRemote	main.cc	/^const static char c_cFlagSqlRemote[] = "remote";$/;"	v	file:
+c_cFlagSqlSock	main.cc	/^const static char c_cFlagSqlSock[] = "sock";$/;"	v	file:
+c_cFlagSqlUser	main.cc	/^const static char c_cFlagSqlUser[] = "user";$/;"	v	file:
+conversionOK	ConvertUTF.h	/^	conversionOK, 		\/* conversion successful *\/$/;"	e	enum:__anon_ConvertUTF_h_102
+data_INCLUDE	data.h	16;"	d
+false	ConvertUTF.c	56;"	d	file:
+firstByteMark	ConvertUTF.c	/^static const UTF8 firstByteMark[7] = { 0x00, 0x00, 0xC0, 0xE0, 0xF0, 0xF8, 0xFC };$/;"	v	file:
+g_LogFacilityRemoteList	main.cc	/^list<string>g_LogFacilityRemoteList;$/;"	v
+halfBase	ConvertUTF.c	/^static const UTF32 halfBase = 0x0010000UL;$/;"	v	file:
+halfMask	ConvertUTF.c	/^static const UTF32 halfMask = 0x3FFUL;$/;"	v	file:
+halfShift	ConvertUTF.c	/^static const int halfShift  = 10; \/* used for shifting by 10 bits *\/$/;"	v	file:
+init_struct	data.cc	/^void init_struct(s_test_this *ithis)$/;"	f
+isLegalUTF8	ConvertUTF.c	/^static Boolean isLegalUTF8(const UTF8 *source, int length) {$/;"	f	file:
+isLegalUTF8Sequence	ConvertUTF.c	/^Boolean isLegalUTF8Sequence(const UTF8 *source, const UTF8 *sourceEnd) {$/;"	f
+lenientConversion	ConvertUTF.h	/^	lenientConversion$/;"	e	enum:__anon_ConvertUTF_h_109
+locase	SimpleIni.h	/^    inline SI_CHAR locase(SI_CHAR ch) const {$/;"	f	struct:SI_GenericNoCase
+m_bAllowMultiKey	SimpleIni.h	/^    bool m_bAllowMultiKey;$/;"	m	class:CSimpleIniTempl
+m_bAllowMultiLine	SimpleIni.h	/^    bool m_bAllowMultiLine;$/;"	m	class:CSimpleIniTempl
+m_bSpaces	SimpleIni.h	/^    bool m_bSpaces;$/;"	m	class:CSimpleIniTempl
+m_bStoreIsUtf8	SimpleIni.h	/^    bool m_bStoreIsUtf8;$/;"	m	class:CSimpleIniTempl
+m_bStoreIsUtf8	SimpleIni.h	/^    bool m_bStoreIsUtf8;$/;"	m	class:SI_ConvertA
+m_bStoreIsUtf8	SimpleIni.h	/^    bool m_bStoreIsUtf8;$/;"	m	class:SI_ConvertW
+m_data	SimpleIni.h	/^    TSection m_data;$/;"	m	class:CSimpleIniTempl
+m_file	SimpleIni.h	/^        FILE * m_file;$/;"	m	class:CSimpleIniTempl::FileWriter
+m_nOrder	SimpleIni.h	/^    int m_nOrder;$/;"	m	class:CSimpleIniTempl
+m_ostream	SimpleIni.h	/^        std::ostream & m_ostream;$/;"	m	class:CSimpleIniTempl::StreamWriter
+m_pConverter	SimpleIni.h	/^    UConverter * m_pConverter;$/;"	m	class:SI_ConvertW
+m_pData	SimpleIni.h	/^    SI_CHAR * m_pData;$/;"	m	class:CSimpleIniTempl
+m_pEncoding	SimpleIni.h	/^    const char * m_pEncoding;$/;"	m	class:SI_ConvertW
+m_pFileComment	SimpleIni.h	/^    const SI_CHAR * m_pFileComment;$/;"	m	class:CSimpleIniTempl
+m_scratch	SimpleIni.h	/^        std::string m_scratch;$/;"	m	class:CSimpleIniTempl::Converter
+m_string	SimpleIni.h	/^        std::string & m_string;$/;"	m	class:CSimpleIniTempl::StringWriter
+m_strings	SimpleIni.h	/^    TNamesDepend m_strings;$/;"	m	class:CSimpleIniTempl
+m_uCodePage	SimpleIni.h	/^    UINT m_uCodePage;$/;"	m	class:SI_ConvertW
+m_uDataLen	SimpleIni.h	/^    size_t m_uDataLen;$/;"	m	class:CSimpleIniTempl
+main	main.cc	/^main ( int argc, char *argv[] )$/;"	f
+member	data.h	/^	int member;$/;"	m	struct:s_test_this
+nOrder	SimpleIni.h	/^        int             nOrder;$/;"	m	struct:CSimpleIniTempl::Entry
+offsetsFromUTF8	ConvertUTF.c	/^static const UTF32 offsetsFromUTF8[6] = { 0x00000000UL, 0x00003080UL, 0x000E2080UL, $/;"	v	file:
+operator ()	SimpleIni.h	/^            bool operator()(const Entry & lhs, const Entry & rhs) const {$/;"	f	struct:CSimpleIniTempl::Entry::KeyOrder
+operator ()	SimpleIni.h	/^            bool operator()(const Entry & lhs, const Entry & rhs) const {$/;"	f	struct:CSimpleIniTempl::Entry::LoadOrder
+operator ()	SimpleIni.h	/^    bool operator()(const SI_CHAR * pLeft, const SI_CHAR * pRight) const {$/;"	f	struct:SI_GenericCase
+operator ()	SimpleIni.h	/^    bool operator()(const SI_CHAR * pLeft, const SI_CHAR * pRight) const {$/;"	f	struct:SI_GenericNoCase
+operator ()	SimpleIni.h	/^    bool operator()(const SI_CHAR * pLeft, const SI_CHAR * pRight) const {$/;"	f	struct:SI_NoCase
+operator <	SimpleIni.h	/^        bool operator<(const Entry & rhs) const { return LoadOrder()(*this, rhs); }$/;"	f	struct:CSimpleIniTempl::Entry
+operator =	SimpleIni.h	/^        Converter & operator=(const Converter & rhs) {$/;"	f	class:CSimpleIniTempl::Converter
+operator =	SimpleIni.h	/^        Entry & operator=(const Entry & rhs) {$/;"	f	struct:CSimpleIniTempl::Entry
+operator =	SimpleIni.h	/^    SI_ConvertA & operator=(const SI_ConvertA & rhs) {$/;"	f	class:SI_ConvertA
+operator =	SimpleIni.h	/^    SI_ConvertW & operator=(const SI_ConvertW & rhs) {$/;"	f	class:SI_ConvertW
+operator >	SimpleIni.h	/^        bool operator>(const Entry & rhs) const { return LoadOrder()(rhs, *this); }$/;"	f	struct:CSimpleIniTempl::Entry
+pComment	SimpleIni.h	/^        const SI_CHAR * pComment;$/;"	m	struct:CSimpleIniTempl::Entry
+pItem	SimpleIni.h	/^        const SI_CHAR * pItem;$/;"	m	struct:CSimpleIniTempl::Entry
+parse_line	main.cc	/^parse_line ( string line )$/;"	f
+s_test_this	data.h	/^struct s_test_this {$/;"	s
+show	test.cc	/^Test::show()$/;"	f	class:Test
+sourceExhausted	ConvertUTF.h	/^	sourceExhausted,	\/* partial character in source, but hit end *\/$/;"	e	enum:__anon_ConvertUTF_h_102
+sourceIllegal	ConvertUTF.h	/^	sourceIllegal		\/* source sequence is illegal\/malformed *\/$/;"	e	enum:__anon_ConvertUTF_h_102
+strictConversion	ConvertUTF.h	/^	strictConversion = 0,$/;"	e	enum:__anon_ConvertUTF_h_109
+targetExhausted	ConvertUTF.h	/^	targetExhausted,	\/* insuff. room in target for conversion *\/$/;"	e	enum:__anon_ConvertUTF_h_102
+times	main.cc	/^static int times;$/;"	v	file:
+trailingBytesForUTF8	ConvertUTF.c	/^static const char trailingBytesForUTF8[256] = {$/;"	v	file:
+true	ConvertUTF.c	57;"	d	file:
+~CSimpleIniTempl	SimpleIni.h	/^CSimpleIniTempl<SI_CHAR,SI_STRLESS,SI_CONVERTER>::~CSimpleIniTempl()$/;"	f	class:CSimpleIniTempl
+~OutputWriter	SimpleIni.h	/^        virtual ~OutputWriter() { }$/;"	f	class:CSimpleIniTempl::OutputWriter
+~SI_ConvertW	SimpleIni.h	/^    ~SI_ConvertW() { if (m_pConverter) ucnv_close(m_pConverter); }$/;"	f	class:SI_ConvertW
+~Test	test.cc	/^Test::~Test ()$/;"	f	class:Test

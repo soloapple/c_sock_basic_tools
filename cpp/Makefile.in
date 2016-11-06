@@ -1,0 +1,34 @@
+cppcolor="\033[35;1m"
+linkcolor="\033[34;1m"
+srccolor="\033[33m"
+bincolor="\033[37;1m]"
+makecolor="\033[32;1m"
+endcolor="\033[0m"
+
+define CC
+g++
+endef
+
+OPTIONS=-O3
+CFLAGS= -g -Wall
+QUIET_CC=@printf '	%b %b\n' $(cppcolor)cc$(endcolor) $(makecolor)$(curdir)$(endcolor) 1>&2
+QUIET_LINL=@printf '	%b %b\n' $(linkcolor)link$(endcolor) $(bincolor)$@$(endcolor) 1>&2
+
+complete_cc=$(QUIET_CC) $(CC) $(CFLAGS) #$(OPTIONS)
+complete_link=$(QUIET_LINK) $(CC)
+
+
+srcs := $(shell find . -maxdepth 1 -type f -name "*.cc")
+srcs += $(shell find . -maxdepth 1 -type f -name "*.c")
+target := $(basename $(patsubst ./%, %, $(srcs)))
+curdir := $(notdir $(shell pwd))
+
+all:
+	@echo $(curdir)
+	$(QUIET_CC) 
+	@$(CC) $(CFLAGS) $(OPTIONS) $(srcs) -o $(curdir)
+#$(complete_cc) $(srcs) 
+
+clean:
+	@echo "Cleaning" 
+	rm -rf *.o a.out $(curdir)
