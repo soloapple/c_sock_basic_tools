@@ -85,7 +85,7 @@ DIST_COMMON = $(srcdir)/tests/Makefile.am \
 	$(top_srcdir)/configure $(am__configure_deps) \
 	$(srcdir)/config.h.in depcomp test-driver compile config.guess \
 	config.sub install-sh missing ltmain.sh
-bin_PROGRAMS = oob$(EXEEXT)
+bin_PROGRAMS = oob_client$(EXEEXT) oob_server$(EXEEXT)
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
@@ -105,16 +105,22 @@ am__EXEEXT_1 = tests/unit/testfunc$(EXEEXT) \
 	tests/unit/fork_env_chaos$(EXEEXT) \
 	tests/unit/sock_send$(EXEEXT) tests/unit/sock_recv$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
-am_oob_OBJECTS = oob.$(OBJEXT)
-oob_OBJECTS = $(am_oob_OBJECTS)
-oob_DEPENDENCIES = ../lib/libsock.a
+am_oob_client_OBJECTS = oob_client.$(OBJEXT)
+oob_client_OBJECTS = $(am_oob_client_OBJECTS)
+oob_client_DEPENDENCIES = ../lib/libsock.a
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-oob_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+oob_client_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
-	$(oob_LDFLAGS) $(LDFLAGS) -o $@
+	$(oob_client_LDFLAGS) $(LDFLAGS) -o $@
+am_oob_server_OBJECTS = oob_server.$(OBJEXT)
+oob_server_OBJECTS = $(am_oob_server_OBJECTS)
+oob_server_DEPENDENCIES = ../lib/libsock.a
+oob_server_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(oob_server_LDFLAGS) $(LDFLAGS) -o $@
 tests_unit_fork_env_chaos_SOURCES = tests/unit/fork_env_chaos.c
 am__dirstamp = $(am__leading_dot)dirstamp
 tests_unit_fork_env_chaos_OBJECTS =  \
@@ -163,12 +169,12 @@ AM_V_CCLD = $(am__v_CCLD_@AM_V@)
 am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = $(oob_SOURCES) tests/unit/fork_env_chaos.c \
-	tests/unit/sock_recv.c tests/unit/sock_send.c \
-	tests/unit/testfunc.c
-DIST_SOURCES = $(oob_SOURCES) tests/unit/fork_env_chaos.c \
-	tests/unit/sock_recv.c tests/unit/sock_send.c \
-	tests/unit/testfunc.c
+SOURCES = $(oob_client_SOURCES) $(oob_server_SOURCES) \
+	tests/unit/fork_env_chaos.c tests/unit/sock_recv.c \
+	tests/unit/sock_send.c tests/unit/testfunc.c
+DIST_SOURCES = $(oob_client_SOURCES) $(oob_server_SOURCES) \
+	tests/unit/fork_env_chaos.c tests/unit/sock_recv.c \
+	tests/unit/sock_send.c tests/unit/testfunc.c
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
 	install-data-recursive install-dvi-recursive \
@@ -588,9 +594,12 @@ tests_unit_TESTS = \
 			tests/unit/sock_send \
 			tests/unit/sock_recv
 
-oob_SOURCES = oob.c
-oob_LDADD = ../lib/libsock.a 
-oob_LDFLAGS = -L../dynamic_lib/ 
+oob_client_SOURCES = oob_client.c
+oob_client_LDADD = ../lib/libsock.a 
+oob_client_LDFLAGS = -L../dynamic_lib/ 
+oob_server_SOURCES = oob_server.c
+oob_server_LDADD = ../lib/libsock.a 
+oob_server_LDFLAGS = -L../dynamic_lib/ 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
@@ -705,9 +714,13 @@ clean-checkPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
-oob$(EXEEXT): $(oob_OBJECTS) $(oob_DEPENDENCIES) $(EXTRA_oob_DEPENDENCIES) 
-	@rm -f oob$(EXEEXT)
-	$(AM_V_CCLD)$(oob_LINK) $(oob_OBJECTS) $(oob_LDADD) $(LIBS)
+oob_client$(EXEEXT): $(oob_client_OBJECTS) $(oob_client_DEPENDENCIES) $(EXTRA_oob_client_DEPENDENCIES) 
+	@rm -f oob_client$(EXEEXT)
+	$(AM_V_CCLD)$(oob_client_LINK) $(oob_client_OBJECTS) $(oob_client_LDADD) $(LIBS)
+
+oob_server$(EXEEXT): $(oob_server_OBJECTS) $(oob_server_DEPENDENCIES) $(EXTRA_oob_server_DEPENDENCIES) 
+	@rm -f oob_server$(EXEEXT)
+	$(AM_V_CCLD)$(oob_server_LINK) $(oob_server_OBJECTS) $(oob_server_LDADD) $(LIBS)
 tests/unit/$(am__dirstamp):
 	@$(MKDIR_P) tests/unit
 	@: > tests/unit/$(am__dirstamp)
@@ -746,7 +759,8 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/oob.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/oob_client.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/oob_server.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@tests/unit/$(DEPDIR)/fork_env_chaos.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@tests/unit/$(DEPDIR)/sock_recv.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@tests/unit/$(DEPDIR)/sock_send.Po@am__quote@
