@@ -20,12 +20,24 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <fcntl.h>
-
+#include <arpa/inet.h>
+#include "../include/color_print.h"
 
 #define MYPORT 4000
 #define BACKLOG 10
+
 int new_fd = -1;
 void sig_urg(int signo);
+
+void
+show_socket_listen_info(char **ip, int port)
+{
+	LOGN("+--------------------------------------+\n");
+	LOGN("+ FUNCTION:    %-24s+\n", "oob data recv");
+	LOGN("+ Listen IP:   %-24s+\n", *ip);
+	LOGN("+ Listen Port: %-24d+\n", port);
+	LOGN("+--------------------------------------+\n");
+}
 
 int main()
 {
@@ -34,62 +46,78 @@ int main()
 	struct sockaddr_in their_addr;
 	int sin_size;
 	int n ;
-	char buff[100] ;
+	char buff[100];
+	char *ip = NULL;
+	char *s_ip = (char*)malloc(16);
 
 	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
 	{
-		perror("socket");
+		LOGE("Create Socket failed");
 		exit(1);
 	}
+
 	my_addr.sin_family = AF_INET;
 	my_addr.sin_port = htons(MYPORT);
 	my_addr.sin_addr.s_addr = INADDR_ANY;
 	bzero(&(my_addr.sin_zero), 8);
+
+	inet_ntop(AF_INET, &(my_addr.sin_addr), s_ip, (socklen_t)sizeof(s_ip));
+
+	show_socket_listen_info(&s_ip, htons(my_addr.sin_port));
+
 	if (bind(sockfd, (struct sockaddr *)&my_addr,sizeof(struct sockaddr)) == -1)
 	{
-		perror("bind");
+		LOGE("Bind Socket Error");
 		exit(1);
 	}
 	if (listen(sockfd, BACKLOG) == -1)
 	{
-		perror("listen");
+		LOGE("Listen Socket Error");
 		exit(1);
 	}
 
 	signal(SIGURG, sig_urg);
 	if(fcntl(sockfd, F_SETOWN, getpid())==-1)
 	{
-		perror("fcntl");
+		LOGE("Fcntl Socket Error");
 		exit(1);
 	}
+	
+	sin_size = sizeof(struct sockaddr_in);
 
 	while(1)
 	{
-		sin_size = sizeof(struct sockaddr_in);
 		if ((new_fd = accept(sockfd, (struct sockaddr *)&their_addr, &sin_size)) == -1)
 		{
 			perror("accept");
 			continue;
 		}
+
 		fcntl(new_fd,F_SETOWN,getpid());
-		printf("server: got connection from %s\n", inet_ntoa(their_addr.sin_addr));
-		//if (!fork())
-		if (1)
+
+		char client_ip[16] = {0};
+		inet_ntop(AF_INET, &their_addr.sin_addr, client_ip, (socklen_t)sizeof(client_ip));
+		LOGW("client _ip:%s\n", client_ip );	
+
+		for (;;)
 		{
-			while(1)
+			if ( (n = recv(new_fd, buff, sizeof(buff)-1, 0)) == 0 )
 			{
-				if((n=recv(new_fd,buff,sizeof(buff)-1,0)) == 0)
-				{
-					printf("received EOF\n");
-					break;
-				}
-				buff[n] ='\0';
-				printf("Recv %d bytes: %s\n", n, buff);
+				LOGE("received EOF\n");
+				break;
 			}
+
+			buff[n] ='\0';
+			LOGDP("Recv %d bytes: %s\n", n, buff);
 		}
+
 		close(new_fd);
+
 	}
+
 	while(waitpid(-1,NULL,WNOHANG) > 0);
+
+	free(s_ip);
 
 	return 0;
 }
@@ -98,18 +126,16 @@ void sig_urg(int signo)
 {
 	int n;
 	char buff[100];
-	printf("SIGURG received\n");
-	//printf("in sig_urg(),new_fd = %d\n",new_fd);
-	//while((n = recv(new_fd,buff,sizeof(buff)-1,MSG_OOB)) == -1);
-	n = recv(new_fd,buff,sizeof(buff)-1,MSG_OOB);
+	LOGDP("SIGURG received\n");
+
+	n = recv(new_fd, buff, sizeof(buff)-1, MSG_OOB);
 	if(n>0)
 	{
 		buff[n]='\0';
-		printf("recv %d OOB byte: %s\n",n,buff);
+		LOGDP("Recv %d OOB byte: %s\n",n,buff);
 	}
 	else
 	{
-		perror("recv");
+		LOGE("Recv OOB");
 	}
-
 }
