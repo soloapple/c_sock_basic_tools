@@ -100,16 +100,22 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__EXEEXT_1 = tests/unit/testfunc$(EXEEXT) \
 	tests/unit/fork_env_chaos$(EXEEXT) \
-	tests/unit/sock_send$(EXEEXT) tests/unit/sock_recv$(EXEEXT)
-tests_unit_fork_env_chaos_SOURCES = tests/unit/fork_env_chaos.c
+	tests/unit/sock_send$(EXEEXT) tests/unit/sock_recv$(EXEEXT) \
+	tests/unit/check_conn_select_fd$(EXEEXT)
+tests_unit_check_conn_select_fd_SOURCES =  \
+	tests/unit/check_conn_select_fd.c
 am__dirstamp = $(am__leading_dot)dirstamp
-tests_unit_fork_env_chaos_OBJECTS =  \
-	tests/unit/fork_env_chaos.$(OBJEXT)
-tests_unit_fork_env_chaos_LDADD = $(LDADD)
+tests_unit_check_conn_select_fd_OBJECTS =  \
+	tests/unit/check_conn_select_fd.$(OBJEXT)
+tests_unit_check_conn_select_fd_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+tests_unit_fork_env_chaos_SOURCES = tests/unit/fork_env_chaos.c
+tests_unit_fork_env_chaos_OBJECTS =  \
+	tests/unit/fork_env_chaos.$(OBJEXT)
+tests_unit_fork_env_chaos_LDADD = $(LDADD)
 tests_unit_sock_recv_SOURCES = tests/unit/sock_recv.c
 tests_unit_sock_recv_OBJECTS = tests/unit/sock_recv.$(OBJEXT)
 tests_unit_sock_recv_LDADD = $(LDADD)
@@ -153,9 +159,11 @@ AM_V_CCLD = $(am__v_CCLD_$(V))
 am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
-SOURCES = tests/unit/fork_env_chaos.c tests/unit/sock_recv.c \
+SOURCES = tests/unit/check_conn_select_fd.c \
+	tests/unit/fork_env_chaos.c tests/unit/sock_recv.c \
 	tests/unit/sock_send.c tests/unit/testfunc.c
-DIST_SOURCES = tests/unit/fork_env_chaos.c tests/unit/sock_recv.c \
+DIST_SOURCES = tests/unit/check_conn_select_fd.c \
+	tests/unit/fork_env_chaos.c tests/unit/sock_recv.c \
 	tests/unit/sock_send.c tests/unit/testfunc.c
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
@@ -574,7 +582,8 @@ tests_unit_TESTS = \
 			tests/unit/testfunc \
 			tests/unit/fork_env_chaos \
 			tests/unit/sock_send \
-			tests/unit/sock_recv
+			tests/unit/sock_recv \
+			tests/unit/check_conn_select_fd 
 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
@@ -646,6 +655,12 @@ tests/unit/$(am__dirstamp):
 tests/unit/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) tests/unit/$(DEPDIR)
 	@: > tests/unit/$(DEPDIR)/$(am__dirstamp)
+tests/unit/check_conn_select_fd.$(OBJEXT): tests/unit/$(am__dirstamp) \
+	tests/unit/$(DEPDIR)/$(am__dirstamp)
+
+tests/unit/check_conn_select_fd$(EXEEXT): $(tests_unit_check_conn_select_fd_OBJECTS) $(tests_unit_check_conn_select_fd_DEPENDENCIES) $(EXTRA_tests_unit_check_conn_select_fd_DEPENDENCIES) tests/unit/$(am__dirstamp)
+	@rm -f tests/unit/check_conn_select_fd$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(tests_unit_check_conn_select_fd_OBJECTS) $(tests_unit_check_conn_select_fd_LDADD) $(LIBS)
 tests/unit/fork_env_chaos.$(OBJEXT): tests/unit/$(am__dirstamp) \
 	tests/unit/$(DEPDIR)/$(am__dirstamp)
 
@@ -678,6 +693,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include tests/unit/$(DEPDIR)/check_conn_select_fd.Po
 include tests/unit/$(DEPDIR)/fork_env_chaos.Po
 include tests/unit/$(DEPDIR)/sock_recv.Po
 include tests/unit/$(DEPDIR)/sock_send.Po
@@ -988,6 +1004,13 @@ tests/unit/sock_send.log: tests/unit/sock_send$(EXEEXT)
 tests/unit/sock_recv.log: tests/unit/sock_recv$(EXEEXT)
 	@p='tests/unit/sock_recv$(EXEEXT)'; \
 	b='tests/unit/sock_recv'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+tests/unit/check_conn_select_fd.log: tests/unit/check_conn_select_fd$(EXEEXT)
+	@p='tests/unit/check_conn_select_fd$(EXEEXT)'; \
+	b='tests/unit/check_conn_select_fd'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
