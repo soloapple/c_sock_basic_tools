@@ -95,7 +95,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_iproxy_OBJECTS = iproxy.$(OBJEXT)
+am_iproxy_OBJECTS = socket.$(OBJEXT) worker.$(OBJEXT) iproxy.$(OBJEXT)
 iproxy_OBJECTS = $(am_iproxy_OBJECTS)
 iproxy_DEPENDENCIES = ../lib/libsock.a
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -281,7 +281,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-iproxy_SOURCES = iproxy.c
+iproxy_SOURCES = socket.c worker.c iproxy.c
 iproxy_LDADD = ../lib/libsock.a 
 iproxy_LDFLAGS = -L../dynamic_lib/ 
 all: all-am
@@ -379,6 +379,8 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/iproxy.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/socket.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/worker.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

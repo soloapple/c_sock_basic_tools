@@ -1,4 +1,4 @@
-iproxy.o iproxy.o: iproxy.c worker.h system.h /usr/include/unistd.h \
+socket.o socket.o: socket.c socket.h system.h /usr/include/unistd.h \
   /usr/include/features.h /usr/include/sys/cdefs.h \
   /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
   /usr/include/gnu/stubs-64.h /usr/include/bits/posix_opt.h \
@@ -53,7 +53,7 @@ iproxy.o iproxy.o: iproxy.c worker.h system.h /usr/include/unistd.h \
   /usr/include/bits/waitflags.h /usr/include/bits/waitstatus.h \
   /usr/include/assert.h color_print.h
 
-worker.h:
+socket.h:
 
 system.h:
 

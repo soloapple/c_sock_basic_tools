@@ -95,7 +95,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_iproxy_OBJECTS = iproxy.$(OBJEXT)
+am_iproxy_OBJECTS = socket.$(OBJEXT) worker.$(OBJEXT) iproxy.$(OBJEXT)
 iproxy_OBJECTS = $(am_iproxy_OBJECTS)
 iproxy_DEPENDENCIES = ../lib/libsock.a
 AM_V_lt = $(am__v_lt_$(V))
@@ -166,13 +166,13 @@ am__define_uniq_tagged_files = \
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /revive/git/c_sock_basic_tools/select/auto_c_demo/missing aclocal-1.14
+ACLOCAL = ${SHELL} /revive/git/c_sock_basic_tools/select/missing aclocal-1.14
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AR = ar
-AUTOCONF = ${SHELL} /revive/git/c_sock_basic_tools/select/auto_c_demo/missing autoconf
-AUTOHEADER = ${SHELL} /revive/git/c_sock_basic_tools/select/auto_c_demo/missing autoheader
-AUTOMAKE = ${SHELL} /revive/git/c_sock_basic_tools/select/auto_c_demo/missing automake-1.14
+AUTOCONF = ${SHELL} /revive/git/c_sock_basic_tools/select/missing autoconf
+AUTOHEADER = ${SHELL} /revive/git/c_sock_basic_tools/select/missing autoheader
+AUTOMAKE = ${SHELL} /revive/git/c_sock_basic_tools/select/missing automake-1.14
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -206,7 +206,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAKEINFO = ${SHELL} /revive/git/c_sock_basic_tools/select/auto_c_demo/missing makeinfo
+MAKEINFO = ${SHELL} /revive/git/c_sock_basic_tools/select/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -229,10 +229,10 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = strip
 VERSION = 1.0.0
-abs_builddir = /revive/git/c_sock_basic_tools/select/auto_c_demo/src
-abs_srcdir = /revive/git/c_sock_basic_tools/select/auto_c_demo/src
-abs_top_builddir = /revive/git/c_sock_basic_tools/select/auto_c_demo
-abs_top_srcdir = /revive/git/c_sock_basic_tools/select/auto_c_demo
+abs_builddir = /revive/git/c_sock_basic_tools/select/src
+abs_srcdir = /revive/git/c_sock_basic_tools/select/src
+abs_top_builddir = /revive/git/c_sock_basic_tools/select
+abs_top_srcdir = /revive/git/c_sock_basic_tools/select
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -261,7 +261,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /revive/git/c_sock_basic_tools/select/auto_c_demo/install-sh
+install_sh = ${SHELL} /revive/git/c_sock_basic_tools/select/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -281,7 +281,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-iproxy_SOURCES = iproxy.c
+iproxy_SOURCES = socket.c worker.c iproxy.c
 iproxy_LDADD = ../lib/libsock.a 
 iproxy_LDFLAGS = -L../dynamic_lib/ 
 all: all-am
@@ -379,6 +379,8 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/iproxy.Po
+include ./$(DEPDIR)/socket.Po
+include ./$(DEPDIR)/worker.Po
 
 .c.o:
 	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
