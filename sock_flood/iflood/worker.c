@@ -214,7 +214,6 @@ s_child_server(int c_fd, struct sockaddr_in *paddr)
 		}
 	}
 
-EXIT_CHLD:
 	close(c_fd);
 	exit(0);
 }
