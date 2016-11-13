@@ -12,7 +12,7 @@ QING="\[\e[1;36m\]"
 
 #PS1="${RED2}x64 [ $NORMAL\w$RED2 ]# $NORMAL"
 if [[ $EUID == 0 ]] ; then
-	PS1="$NORMAL ${YELLOW}[--->$NORMAL \w ${GREEN}<---]# $NORMAL"
+	PS1="$NORMAL ${QING}[->$NORMAL x64 \w ${RED2}<-]# $NORMAL"
 else
 	PS1="$GREEN\u [ $NORMAL\w$GREEN ]\$ $NORMAL"
 fi
