@@ -1,0 +1,18 @@
+函数注释：：cfe cfn cfh cfdi ct
+宏: pg pl pd pu pif pie pid pind pinh
+编译: pp pe pw pli
+枚举结构联合: ie is iu
+结构逻辑：sdw sb sfo sif sief swh ss sc
+函数: if isf im  isc ima isi ipr ica ias ire ii io ifpr ifsc
+打印: see sww sdd snn shh sgg
+
+
+文件注释头：+ih +ich
+类（最简单）：+c +cn +tc +tcn +ec +ic +icn +im +ia +itc +itcn
+函数：+itm +ita +tf
+运算符重载：+ioo +ioi
+
+try catch：+tr +ca +caa
+extern "C":+ex
+文件:+oif +oof
+using name space:+uns +un +unb
