@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
 		if((mode != 0) && (mode != 1))
 			usage(argc, argv);
 
-		if((nums < 0) || (nums > 20000))
+		if((nums < 0) || (nums > 100000))
 			usage(argc, argv);
 
 		c_process(ip, port, file, nums, mode, interval, times);

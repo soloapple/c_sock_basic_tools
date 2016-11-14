@@ -47,7 +47,7 @@ cout << "<CURSOR>" << endl;
 § -------------------------------------------------------------
 == SEP: Comments.sep_file ==
 == Comments.file description impl == map:cfdi, shortcut:c, start, noindent ==
-/***************************************************************************************
+/******************************************************************************
  *   Copyright (C), |YEAR|, X Co., Ltd.
  *
  *    Filename: |FILENAME|
@@ -58,9 +58,9 @@ cout << "<CURSOR>" << endl;
  *
  *     History: <author>   <time>    <version >         <desc>
  *              |AUTHOR|   |DATE|                  build this moudle  
- ***************************************************************************************/
+ *****************************************************************************/
 == Comments.file description header == map:cfdh, shortcut:h, start, noindent ==
-/***************************************************************************************
+/******************************************************************************
  *   Copyright (C), |YEAR|, X Co., Ltd.
  *   
  *    Filename: |FILENAME|
@@ -71,7 +71,7 @@ cout << "<CURSOR>" << endl;
  *      
  *     History: <author>   <time>    <version >         <desc>
  *              |AUTHOR|   |DATE|                  build this moudle
- ***************************************************************************************/
+ *****************************************************************************/
 == ENDTEMPLATE ==
 == LIST: comments_c_sections == hash ==
   'HEADER FILE INCLUDES'        : 'HEADER FILE INCLUDES   ###############################', 

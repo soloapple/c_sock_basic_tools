@@ -14,4 +14,3 @@
 #include "../include/common.h"
 #include "../include/color_print.h"
 
-

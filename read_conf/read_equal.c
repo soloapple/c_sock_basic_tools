@@ -13,7 +13,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-
+#include "read_equal.h"
 
 
 	

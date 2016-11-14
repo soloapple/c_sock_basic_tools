@@ -1,9 +1,9 @@
-.PHONY: all
+.PHONY: all clean
 
 all:target
 
 target: 
-	gcc read_equal.c -o ${read_equal}
+	gcc read_equal.c -o $@
 
 clean:
-	rm -rf ${all}
+	rm -rf target
