@@ -1,8 +1,8 @@
 == Idioms.function == map:if, shortcut:f  ==
-/* ----------------------- FUNCTION ----------------------------
- *         Name:  |?FUNCTION_NAME|
- *  Description:  
- * -------------------------------------------------------------*/
+/* 
+ * Name:  |?FUNCTION_NAME|
+ * Description:  
+ */ 
 int<CURSOR>
 |FUNCTION_NAME| ( )
 {
@@ -10,10 +10,10 @@ int<CURSOR>
 }		
 == Idioms.function-static == map:isf, shortcut:t  ==
  
-/* ----------------------- FUNCTION ----------------------------
- *         Name:  |?FUNCTION_NAME|
- *  Description:  
- * -------------------------------------------------------------*/
+/* 
+ * Name:  |?FUNCTION_NAME|
+ * Description:  
+ */ 
 static int<CURSOR>
 |FUNCTION_NAME| ( )
 {
