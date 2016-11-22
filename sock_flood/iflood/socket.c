@@ -11,7 +11,7 @@
  *              soloapple   08/18/16                  build this moudle  
  ***************************************************************************************/
 
-#include "socket.h"
+#include "headers.h"
 
 /* ----- trans from socket addr to x.x.x.x  ----- */
 	char *
@@ -80,7 +80,10 @@ s_net_init(struct sockaddr_in *s_net_addr, char *s_ip, char *s_port)
 
 	int reuse = 1;
   	if (setsockopt(s_sock, SOL_SOCKET, SO_REUSEADDR, (char *)&reuse, sizeof(reuse)) == false) 
+	{
+		LOGE ( "Set sockopt failed!\n");
 		return false;
+	}
 
     memset(s_net_addr, 0x00, sizeof(struct sockaddr_in));
     s_net_addr->sin_family = AF_INET;
@@ -240,8 +243,6 @@ s_net_listen(int s_sock)
 	int ret = listen(s_sock, SOMAXCONN);
 	return ret;
 }
-
-
 
 int 
 noblock_accept(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out)

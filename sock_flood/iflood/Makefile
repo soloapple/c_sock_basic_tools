@@ -1,4 +1,3 @@
 include ../Makefile.in
-src:=epoll.c socket.c worker.c
-target:=iflood
-
+srcs := socket.c epoll.c worker.c fdarray.cc main.cc
+target := iflood

@@ -37,15 +37,16 @@
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/wait.h>
 #include <netinet/ip_icmp.h>
 #include <netinet/tcp.h>
 #include <netinet/in.h>
-
-#include <sys/wait.h>
 #include <assert.h>
 
+#include <list>
+using namespace std;
 
 #define	true 1				/*  */
 #define	false -1			/*  */
 
-#endif   /* ----- #ifndef system_INC  ----- */
+#endif

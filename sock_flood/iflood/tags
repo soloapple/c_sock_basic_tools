@@ -4,6 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8.1	//
+CLI_SOCK_FD_NUM	fdarray.h	21;"	d
 COL_BLUE	color_print.h	23;"	d
 COL_BULE	color_print.h	21;"	d
 COL_END	color_print.h	27;"	d
@@ -12,6 +13,8 @@ COL_PURPLE	color_print.h	22;"	d
 COL_RED	color_print.h	26;"	d
 COL_WHITE	color_print.h	20;"	d
 COL_YELLOW	color_print.h	24;"	d
+EPOLL_INCLUDE	epoll.h	16;"	d
+FDARRAY_INCLUDE	fdarray.h	15;"	d
 LOGD	color_print.h	66;"	d
 LOGD	color_print.h	78;"	d
 LOGDP	color_print.h	72;"	d
@@ -28,7 +31,8 @@ LOGW	color_print.h	83;"	d
 LOGW	color_print.h	95;"	d
 LOGWP	color_print.h	89;"	d
 LOGWP	color_print.h	96;"	d
-LONG_MODE	worker.h	/^	LONG_MODE,$/;"	e	enum:__anon_worker_h_20
+LONG_MODE	worker.h	/^	LONG_MODE = 1$/;"	e	enum:__anon_worker_h_24
+MAX_EVENT_NUMBER	epoll.h	21;"	d
 MLEVEL	color_print.h	29;"	d
 MLOG_DEBUG	color_print.h	33;"	d
 MLOG_DEBUG	color_print.h	37;"	d
@@ -40,37 +44,36 @@ MLOG_NOTICE	color_print.h	32;"	d
 MLOG_WARNING	color_print.h	34;"	d
 MLOG_WARNING	color_print.h	38;"	d
 MLOG_WARNING	color_print.h	41;"	d
-PTHREAD_THREADS_MAX	main.c	19;"	d	file:
-SHORT_MODE	worker.h	/^	SHORT_MODE = 0,$/;"	e	enum:__anon_worker_h_20
+SHORT_MODE	worker.h	/^	SHORT_MODE = 0,$/;"	e	enum:__anon_worker_h_24
+SOCKET_INCLUDE	socket.h	15;"	d
+WORKER_INCLUDE	worker.h	15;"	d
+addfd	epoll.c	/^addfd(int epollfd, int fd, bool enable_et)$/;"	f	signature:(int epollfd, int fd, bool enable_et)
 c_process	worker.c	/^c_process(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)$/;"	f	signature:(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)
 c_process	worker.h	/^void c_process(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times);$/;"	p	signature:(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)
+c_process_fdarray	fdarray.cc	/^c_process_fdarray(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)$/;"	f	signature:(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)
 c_wait_childs	worker.c	/^c_wait_childs(int *status)$/;"	f	signature:(int *status)
+cli_sock_fd_array	fdarray.cc	/^list <int> cli_sock_fd_array;$/;"	v
 cs_mode	main.c	/^int cs_mode;$/;"	v
-e_link_mode	worker.h	/^}e_link_mode;$/;"	t	typeref:enum:__anon_worker_h_20
+cstyle	main.c	/^const char *cstyle = CSTYLE;$/;"	v
+e_link_mode	worker.h	/^}e_link_mode;$/;"	t	typeref:enum:__anon_worker_h_24
 false	system.h	49;"	d
-foo	worker.c	/^foo(void*)$/;"	f	signature:(void*)
-foo	worker.h	/^void *foo(void*);$/;"	p	signature:(void*)
 inet_atoul	socket.c	/^inet_atoul(const char * s)$/;"	f	signature:(const char * s)
 inet_atoul	socket.h	/^int inet_atoul(const char * s);$/;"	p	signature:(const char * s)
 inet_ultoa	socket.c	/^inet_ultoa(unsigned int u, char * s)$/;"	f	signature:(unsigned int u, char * s)
 inet_ultoa	socket.h	/^char *inet_ultoa(unsigned int u, char * s);$/;"	p	signature:(unsigned int u, char * s)
+init_sock_array	fdarray.cc	/^init_sock_array(int link_num)$/;"	f	signature:(int link_num)
 interval	main.c	/^int interval = 100000;$/;"	v
 l_opt_arg	main.c	/^char *l_opt_arg;$/;"	v
 lenbuf	main.c	/^int lenbuf = BUFSIZ;$/;"	v
 long_options	main.c	/^struct option long_options[] =$/;"	v	typeref:struct:option
 main	main.c	/^int main(int argc, char *argv[])      $/;"	f	signature:(int argc, char *argv[])
-max_thread	worker.c	/^max_thread()$/;"	f
-max_thread	worker.h	/^void max_thread();$/;"	p	signature:()
 mode	main.c	/^int mode = 1;$/;"	v
-n_child	worker.c	/^static int n_child = 1;$/;"	v	file:
 noblock_accept	socket.c	/^noblock_accept(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out)$/;"	f	signature:(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out)
 noblock_accept	socket.h	/^int noblock_accept(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out);$/;"	p	signature:(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out)
 nums	main.c	/^int nums = 1;$/;"	v
 s_child_server	worker.c	/^s_child_server(int c_fd, struct sockaddr_in *paddr)$/;"	f	signature:(int c_fd, struct sockaddr_in *paddr)
 s_inet_aton	socket.c	/^s_inet_aton(char *buf, struct in_addr *a)$/;"	f	signature:(char *buf, struct in_addr *a)
 s_inet_aton	socket.h	/^int s_inet_aton(char *buf, struct in_addr *a);$/;"	p	signature:(char *buf, struct in_addr *a)
-s_net_accept	socket.c	/^s_net_accept(int l_sock, struct sockaddr_in *c_addr)$/;"	f	signature:(int l_sock, struct sockaddr_in *c_addr)
-s_net_accept	socket.c	/^s_net_accept(int s_sock, struct sockaddr* s)$/;"	f	signature:(int s_sock, struct sockaddr* s)
 s_net_accept	socket.h	/^int s_net_accept(int s_sock);$/;"	p	signature:(int s_sock)
 s_net_bind	socket.c	/^s_net_bind(int s_sock, struct sockaddr_in *s_net_addr) $/;"	f	signature:(int s_sock, struct sockaddr_in *s_net_addr)
 s_net_bind	socket.h	/^int s_net_bind(int s_sock, struct sockaddr_in *s_net_addr);$/;"	p	signature:(int s_sock, struct sockaddr_in *s_net_addr)
@@ -94,17 +97,20 @@ s_net_set_tout	socket.c	/^s_net_set_tout(int s_sock)$/;"	f	signature:(int s_sock
 s_net_set_tout	socket.h	/^void s_net_set_tout(int s_sock);$/;"	p	signature:(int s_sock)
 s_process	worker.c	/^s_process(char *ip, char *port)$/;"	f	signature:(char *ip, char *port)
 s_process	worker.h	/^void s_process(char *ip, char *port);$/;"	p	signature:(char *ip, char *port)
+s_process_epoll	epoll.c	/^s_process_epoll(char *ip, char *port)$/;"	f	signature:(char *ip, char *port)
+s_process_epoll	epoll.h	/^void s_process_epoll(char *ip, char *port);$/;"	p	signature:(char *ip, char *port)
 s_set_nonblock	socket.c	/^s_set_nonblock(int s_sock)$/;"	f	signature:(int s_sock)
+s_set_nonblock	socket.h	/^int s_set_nonblock(int s_sock);$/;"	p	signature:(int s_sock)
 short_options	main.c	/^char *const short_options = "p:i:f:c:s:hm:t:n:l:";$/;"	v
-socket_INCLUDE	socket.h	16;"	d
 src	Makefile	/^src:=epoll.c socket.c worker.c$/;"	m
+style	main.c	/^const char *style = STYLE;$/;"	v
 system_INCLUDE	system.h	15;"	d
 target	Makefile	/^target:=iflood$/;"	m
 times	main.c	/^int times = 1;$/;"	v
 true	system.h	48;"	d
 usage	main.c	/^void usage(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
 w_mission_start	worker.c	/^w_mission_start(char *ip, char *port, char *t_buf, int n_read)$/;"	f	signature:(char *ip, char *port, char *t_buf, int n_read)
-w_mission_start	worker.h	/^int w_mission_start(char *ip, char *port, char *file);$/;"	p	signature:(char *ip, char *port, char *file)
+w_mission_start	worker.h	/^void w_mission_start(char *ip, char *port, char *file);$/;"	p	signature:(char *ip, char *port, char *file)
 w_read_file_to_buf	worker.c	/^w_read_file_to_buf(char *file, char *t_buf)$/;"	f	signature:(char *file, char *t_buf)
 w_short_mission_start	worker.c	/^w_short_mission_start(char *ip, char *port, char *t_buf, int n_read)$/;"	f	signature:(char *ip, char *port, char *t_buf, int n_read)
-w_short_mission_start	worker.h	/^int w_short_mission_start(char *ip, char *port, char *t_buf, int n_read);$/;"	p	signature:(char *ip, char *port, char *t_buf, int n_read)
+w_short_mission_start	worker.h	/^void w_short_mission_start(char *ip, char *port, char *t_buf, int n_read);$/;"	p	signature:(char *ip, char *port, char *t_buf, int n_read)

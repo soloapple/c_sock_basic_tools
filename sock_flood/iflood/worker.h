@@ -10,11 +10,8 @@
  *     History: <author>   <time>    <version >         <desc>
  *              soloapple   08/26/16                  build this moudle
  ***************************************************************************************/
-
-#include "system.h"
-#include "color_print.h"
-
-#include <pthread.h>
+#ifndef  WORKER_INCLUDE
+#define  WORKER_INCLUDE
 
 typedef enum 
 {
@@ -26,3 +23,6 @@ void c_process(char *ip, char *port, char *file, int link_num, int link_mode, in
 void s_process(char *ip, char *port);
 void w_mission_start(char *ip, char *port, char *file);
 void w_short_mission_start(char *ip, char *port, char *t_buf, int n_read);
+int w_read_file_to_buf(char *file, char *t_buf);
+
+#endif   

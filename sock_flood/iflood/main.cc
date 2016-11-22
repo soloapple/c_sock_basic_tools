@@ -10,13 +10,10 @@
  *     History: <author>   <time>    <version >         <desc>
  *              soloapple   08/16/16                  build this moudle  
  ***************************************************************************************/
+#ifndef  MAIN_INCLUDE
+#define  MAIN_INCLUDE
 
-#include "worker.h"
-
-#include <stdio.h>
-#include <getopt.h>
-
-#define	PTHREAD_THREADS_MAX 20000			/*  */
+#include "headers.h"
 
 char *l_opt_arg;
 char *const short_options = "p:i:f:c:s:hm:t:n:l:";
@@ -53,7 +50,7 @@ void usage(int argc, char *argv[])
 			"Server: iflood -s ip -p port \n"
 			"\n\n"
 			"Client/Server:\n"
-			" p, --port	server port\n"
+			" p, --port	server port, default value is 8000\n"
 			"\n\n"
 			"Client specific:\n"
 			" c, --client	start as client\n"
@@ -73,6 +70,43 @@ void usage(int argc, char *argv[])
 
 	exit(0);
 }
+
+const char *style = STYLE;
+const char *cstyle = CSTYLE;
+
+
+/* 
+ * Name:  quit_sys
+ * Description:  
+ */ 
+void
+quit_sys( ) 
+{
+
+	quit_sock_array();	
+
+	return;
+}    
+
+
+/* 
+ * Name:  sig_quit
+ * Description:  
+ */ 
+void	
+sig_quit(int signal) 
+{
+	switch ( signal ) 
+	{
+		case SIGINT:	
+		case SIGSEGV:	
+		case SIGILL:	
+			quit_sys();	
+			break;
+	}
+
+	return;
+}    
 
 int main(int argc, char *argv[])      
 {      
@@ -124,10 +158,18 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	/* 
+	 * default client & server port is 8000 
+	 */
 	if((ip == NULL)||(port == NULL))
+	{
 		usage(argc, argv);
+	}
 
 	signal(SIGCHLD, SIG_IGN);
+	signal(SIGINT, sig_quit);
+	signal(SIGSEGV, sig_quit);
+	signal(SIGILL, sig_quit);
 
 	if (cs_mode)
 	{
@@ -137,15 +179,32 @@ int main(int argc, char *argv[])
 		if((nums < 0) || (nums > 100000))
 			usage(argc, argv);
 
-		c_process(ip, port, file, nums, mode, interval, times);
+		if ( !strcmp(cstyle, "fdarray") )
+		{
+			LOGD("CLIENT FD ARRAY STYLE")
+			c_process_fdarray(ip, port, file, nums, mode, interval, times);
+		}
+		else
+		{
+			LOGD("CLIENT PROCESS STYLE")
+			c_process(ip, port, file, nums, mode, interval, times);
+		}
 	}
 	else
 	{
-		LOGDP("SERVER START!\n");
-		s_process(ip, port);
+		if ( !strcmp(style, "epoll") )
+		{
+			LOGDP("SERVER EPOLL STYLE!\n");
+			s_process_epoll(ip, port);
+		}
+		else
+		{
+			LOGDP("SERVER PROGRESS STYLE\n")
+			s_process(ip, port);
+		}
 	}
 		
 	return 0;
 }
 
-
+#endif   

@@ -10,12 +10,8 @@
  *     History: <author>   <time>    <version >         <desc>
  *              soloapple   11/05/16                  build this moudle
  ***************************************************************************************/
-
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <errno.h>
+#ifndef  COLOR_PRINT_INCLUDE
+#define  COLOR_PRINT_INCLUDE
 
 #define COL_WHITE   "\033[40;37m"
 #define COL_BULE    "\033[40;36m"
@@ -47,7 +43,7 @@
 #ifdef MLOG_NOTICE
 #define LOGN(fmt, args...)                                           \
 	do {                                                             \
-		printf(COL_WHITE "[NOTIC][%-20s:%-4d] " COL_END"%s: " fmt,   \
+		printf(COL_WHITE "[NOTIC][%-20s:%-4d] " COL_END"(%s): " fmt,   \
 				__FILE__, __LINE__, __FUNCTION__, ##args);           \
 	} while (0);
 
@@ -65,7 +61,7 @@
 #ifdef MLOG_DEBUG
 #define LOGD(fmt, args...)                                           \
 	do {                                                             \
-		printf(COL_GREEN "[DEBUG][%-20s:%-4d] " COL_END"%s: " fmt,    \
+		printf(COL_GREEN "[DEBUG][%-20s:%-4d] " COL_END"(%s): " fmt,    \
 				__FILE__, __LINE__, __FUNCTION__, ##args);           \
 	} while (0);													
 
@@ -82,7 +78,7 @@
 #ifdef MLOG_WARNING
 #define LOGW(fmt, args...)                                           \
 	do {                                                             \
-		printf(COL_YELLOW "[WARNING][%-20s:%-4d] " COL_END"%s: " fmt,\
+		printf(COL_YELLOW "[WARNING][%-20s:%-4d] " COL_END"(%s): " fmt,\
 				__FILE__, __LINE__, __FUNCTION__, ##args);           \
 	} while (0);													
 
@@ -99,7 +95,7 @@
 #ifdef MLOG_ERROR 
 #define LOGE(fmt, args...)                                           \
 	do {                                                             \
-		printf(COL_RED "[ERROR][%-20s:%-4d][%s] "COL_END "%s: " fmt, \
+		printf(COL_RED "[ERROR][%-20s:%-4d][%s] "COL_END "(%s): " fmt, \
 				__FILE__, __LINE__, __FUNCTION__,                    \
 				strerror(errno), ##args);                            \
 	} while (0);
@@ -114,3 +110,4 @@
 #define LOGEP(fmt,...)
 #endif
 
+#endif   

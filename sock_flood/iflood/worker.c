@@ -11,8 +11,7 @@
  *              soloapple   08/26/16                  build this moudle  
  ***************************************************************************************/
 
-#include "worker.h"
-#include "socket.h"
+#include "headers.h"
 
 int 
 c_wait_childs(int *status)
@@ -31,14 +30,14 @@ w_read_file_to_buf(char *file, char *t_buf)
 	FILE *f = fopen(file, "r+");
 	if(f == NULL)
 	{
-		LOGE("%s IS NOT EXIST", file);
+		LOGE("file %s is not exist\n", file);
 		goto end;
 	}
 
 	n_read = fread(t_buf, 1, BUFSIZ, f);
 	if (n_read <= 0) 
 	{
-		LOGE("READ %s FAILED", file);
+		LOGE("read file %s failed!\n", file);
 		goto end;	
 	}
 
@@ -66,7 +65,6 @@ w_mission_start(char *ip, char *port, char *t_buf, int n_read)
 	res = s_net_connect(s_sock, &s_net_addr);
 	if ( res < 0 )
 		goto EXIT_LONG;
-
 
 	for (;;)
 	{
@@ -126,7 +124,6 @@ c_process(char *ip, char *port, char *file, int link_num, int link_mode, int int
 		return;
 
 resend:
-
  	int i = 0;
     for (i = 0; i < link_num; i++)
     {
@@ -135,7 +132,7 @@ resend:
         {
 			if( link_mode == LONG_MODE ) 
 			{
-				LOGD("Long Mode process[%d] start!\n", getpid());
+				LOGDP("Long Mode process[%d] start!\n", i);
 				w_mission_start(ip, port, t_buf, n_read);
 			}
 			else
@@ -218,7 +215,7 @@ s_child_server(int c_fd, struct sockaddr_in *paddr)
 	exit(0);
 }
 
-	void 
+void 
 s_process(char *ip, char *port)
 {
 	int s_sock = 0;
@@ -228,9 +225,7 @@ s_process(char *ip, char *port)
 	struct sockaddr_in c_net_addr;
 
 	int n = 0;
-
 	int s_len = sizeof(struct sockaddr_in);
-
 	s_sock = s_net_init(&s_net_addr, ip, port);
 	
 	if ( s_net_bind(s_sock, &s_net_addr) < 0 )

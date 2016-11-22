@@ -10,24 +10,29 @@ g++
 endef
 
 OPTIONS=-O2
-CFLAGS= -g -Wall -lpthread
+CFLAGS=-g -Wall -lpthread -DSTYLE=\"epoll\" -DCSTYLE=\"fdarray\"
 QUIET_CC=@printf '	%b %b\n' $(cppcolor)cc$(endcolor) $(makecolor)$(curdir)$(endcolor) 1>&2
 QUIET_LINL=@printf '	%b %b\n' $(linkcolor)link$(endcolor) $(bincolor)$@$(endcolor) 1>&2
 
 complete_cc=$(QUIET_CC) $(CC) $(CFLAGS) #$(OPTIONS)
 complete_link=$(QUIET_LINK) $(CC)
 
-
-srcs := $(shell find . -maxdepth 1 -type f -name "*.c")
+srcs =
+#srcs := $(shell find . -maxdepth 1 -type f -name "*.c")
+#srcs += $(shell find . -maxdepth 1 -type f -name "*.cc")
 target := $(basename $(patsubst ./%, %, $(srcs)))
 curdir := $(notdir $(shell pwd))
 
-all:
+pch_path = .
+pch_h = headers.h
+pch = $(pch_h).gch
+
+all:$(pch_path)/$(pch_h) 
+	@echo "$(CC) $(CFLAGS) $(OPTIONS) $(srcs) -o $(target)"
+	@$(CC) $(CFLAGS) $(OPTIONS) $(srcs) -o $(target)
 	@echo $(curdir)
 	$(QUIET_CC) 
-	@$(CC) $(CFLAGS) $(OPTIONS) $(srcs) -o $(target)
-#$(complete_cc) $(srcs) 
 
 clean:
 	@echo "Cleaning" 
-	rm -rf *.o a.out $(curdir)
+	rm -rf *.o a.out $(curdir) *.gch
