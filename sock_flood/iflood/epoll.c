@@ -17,13 +17,20 @@ addfd(int epollfd, int fd, bool enable_et)
 {
 	struct epoll_event event;
 	event.data.fd = fd;
-	event.events = EPOLLIN;
+	event.events = EPOLLIN|EPOLLERR;
 	if (enable_et)
 	{
 		event.events |= EPOLLET;
 	}
 	epoll_ctl(epollfd, EPOLL_CTL_ADD, fd, &event);
 	s_set_nonblock(fd);
+}
+
+void 
+del_sock(int epollfd, int fd)
+{
+	close(fd);
+	epoll_ctl(epollfd, EPOLL_CTL_DEL, fd, NULL);
 }
 
 void 
@@ -103,8 +110,8 @@ s_process_epoll(char *ip, char *port)
 							LOGD("%s\n", cmd);
 						}	
 					
-						close(sockfd);
-						break;
+						del_sock(epollfd, sockfd);
+						continue;
 					}
 				}
 
@@ -118,11 +125,11 @@ s_process_epoll(char *ip, char *port)
 						char cmd[1024];
 						snprintf(cmd, 1024, "client ip: %s, port :%d closed socket\n",
 								inet_ntoa(sa.sin_addr), ntohs(sa.sin_port));
-						LOGD("%s\n", cmd);
+						LOGD("%s", cmd);
 					}	
 
-					close(sockfd);
-					break;
+					del_sock(epollfd, sockfd);
+					continue;
 				}
 
 				if ( n_recv < 0 )
@@ -132,9 +139,14 @@ s_process_epoll(char *ip, char *port)
 							)
 						continue;
 
-					close(sockfd);
-					break;
+					del_sock(epollfd, sockfd);
+					continue;
 				}
+			}
+			else if ( events[i].events & EPOLLERR )
+			{
+				del_sock(epollfd, sockfd);
+				continue;
 			}
 		}
 	}

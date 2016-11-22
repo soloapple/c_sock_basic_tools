@@ -4,113 +4,102 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8.1	//
-CLI_SOCK_FD_NUM	fdarray.h	21;"	d
-COL_BLUE	color_print.h	23;"	d
-COL_BULE	color_print.h	21;"	d
-COL_END	color_print.h	27;"	d
-COL_GREEN	color_print.h	25;"	d
-COL_PURPLE	color_print.h	22;"	d
-COL_RED	color_print.h	26;"	d
-COL_WHITE	color_print.h	20;"	d
-COL_YELLOW	color_print.h	24;"	d
+CLI_SOCK_FD_NUM	fdarray.h	17;"	d
+COLOR_PRINT_INCLUDE	colorpt.h	14;"	d
+COL_BLUE	colorpt.h	19;"	d
+COL_BULE	colorpt.h	17;"	d
+COL_END	colorpt.h	23;"	d
+COL_GREEN	colorpt.h	21;"	d
+COL_PURPLE	colorpt.h	18;"	d
+COL_RED	colorpt.h	22;"	d
+COL_WHITE	colorpt.h	16;"	d
+COL_YELLOW	colorpt.h	20;"	d
 EPOLL_INCLUDE	epoll.h	16;"	d
+EP_TM_OUT	epoll.h	/^const int EP_TM_OUT = 10;$/;"	v
 FDARRAY_INCLUDE	fdarray.h	15;"	d
-LOGD	color_print.h	66;"	d
-LOGD	color_print.h	78;"	d
-LOGDP	color_print.h	72;"	d
-LOGDP	color_print.h	79;"	d
-LOGE	color_print.h	100;"	d
-LOGE	color_print.h	113;"	d
-LOGEP	color_print.h	107;"	d
-LOGEP	color_print.h	114;"	d
-LOGN	color_print.h	48;"	d
-LOGN	color_print.h	61;"	d
-LOGNP	color_print.h	54;"	d
-LOGNP	color_print.h	62;"	d
-LOGW	color_print.h	83;"	d
-LOGW	color_print.h	95;"	d
-LOGWP	color_print.h	89;"	d
-LOGWP	color_print.h	96;"	d
-LONG_MODE	worker.h	/^	LONG_MODE = 1$/;"	e	enum:__anon_worker_h_24
-MAX_EVENT_NUMBER	epoll.h	21;"	d
-MLEVEL	color_print.h	29;"	d
-MLOG_DEBUG	color_print.h	33;"	d
-MLOG_DEBUG	color_print.h	37;"	d
-MLOG_ERROR	color_print.h	35;"	d
-MLOG_ERROR	color_print.h	39;"	d
-MLOG_ERROR	color_print.h	42;"	d
-MLOG_ERROR	color_print.h	44;"	d
-MLOG_NOTICE	color_print.h	32;"	d
-MLOG_WARNING	color_print.h	34;"	d
-MLOG_WARNING	color_print.h	38;"	d
-MLOG_WARNING	color_print.h	41;"	d
-SHORT_MODE	worker.h	/^	SHORT_MODE = 0,$/;"	e	enum:__anon_worker_h_24
+LOGD	colorpt.h	62;"	d
+LOGD	colorpt.h	74;"	d
+LOGDP	colorpt.h	68;"	d
+LOGDP	colorpt.h	75;"	d
+LOGE	colorpt.h	109;"	d
+LOGE	colorpt.h	96;"	d
+LOGEP	colorpt.h	103;"	d
+LOGEP	colorpt.h	110;"	d
+LOGN	colorpt.h	44;"	d
+LOGN	colorpt.h	57;"	d
+LOGNP	colorpt.h	50;"	d
+LOGNP	colorpt.h	58;"	d
+LOGW	colorpt.h	79;"	d
+LOGW	colorpt.h	91;"	d
+LOGWP	colorpt.h	85;"	d
+LOGWP	colorpt.h	92;"	d
+LONG_MODE	worker.h	/^	LONG_MODE = 1$/;"	e	enum:__anon_worker_h_17
+MAIN_INCLUDE	main.cc	14;"	d	file:
+MAX_EVENT_NUMBER	epoll.h	18;"	d
+MLEVEL	colorpt.h	25;"	d
+MLOG_DEBUG	colorpt.h	29;"	d
+MLOG_DEBUG	colorpt.h	33;"	d
+MLOG_ERROR	colorpt.h	31;"	d
+MLOG_ERROR	colorpt.h	35;"	d
+MLOG_ERROR	colorpt.h	38;"	d
+MLOG_ERROR	colorpt.h	40;"	d
+MLOG_NOTICE	colorpt.h	28;"	d
+MLOG_WARNING	colorpt.h	30;"	d
+MLOG_WARNING	colorpt.h	34;"	d
+MLOG_WARNING	colorpt.h	37;"	d
+SHORT_MODE	worker.h	/^	SHORT_MODE = 0,$/;"	e	enum:__anon_worker_h_17
 SOCKET_INCLUDE	socket.h	15;"	d
-WORKER_INCLUDE	worker.h	15;"	d
-addfd	epoll.c	/^addfd(int epollfd, int fd, bool enable_et)$/;"	f	signature:(int epollfd, int fd, bool enable_et)
-c_process	worker.c	/^c_process(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)$/;"	f	signature:(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)
-c_process	worker.h	/^void c_process(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times);$/;"	p	signature:(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)
-c_process_fdarray	fdarray.cc	/^c_process_fdarray(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)$/;"	f	signature:(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)
-c_wait_childs	worker.c	/^c_wait_childs(int *status)$/;"	f	signature:(int *status)
+WORKER_INCLUDE	worker.h	14;"	d
+_HEADERS_H_	headers.h	14;"	d
+addfd	epoll.c	/^addfd(int epollfd, int fd, bool enable_et)$/;"	f
+c_process	worker.c	/^c_process(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)$/;"	f
+c_process_fdarray	fdarray.cc	/^c_process_fdarray(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)$/;"	f
+c_wait_childs	worker.c	/^c_wait_childs(int *status)$/;"	f
 cli_sock_fd_array	fdarray.cc	/^list <int> cli_sock_fd_array;$/;"	v
-cs_mode	main.c	/^int cs_mode;$/;"	v
-cstyle	main.c	/^const char *cstyle = CSTYLE;$/;"	v
-e_link_mode	worker.h	/^}e_link_mode;$/;"	t	typeref:enum:__anon_worker_h_24
-false	system.h	49;"	d
-inet_atoul	socket.c	/^inet_atoul(const char * s)$/;"	f	signature:(const char * s)
-inet_atoul	socket.h	/^int inet_atoul(const char * s);$/;"	p	signature:(const char * s)
-inet_ultoa	socket.c	/^inet_ultoa(unsigned int u, char * s)$/;"	f	signature:(unsigned int u, char * s)
-inet_ultoa	socket.h	/^char *inet_ultoa(unsigned int u, char * s);$/;"	p	signature:(unsigned int u, char * s)
-init_sock_array	fdarray.cc	/^init_sock_array(int link_num)$/;"	f	signature:(int link_num)
-interval	main.c	/^int interval = 100000;$/;"	v
-l_opt_arg	main.c	/^char *l_opt_arg;$/;"	v
-lenbuf	main.c	/^int lenbuf = BUFSIZ;$/;"	v
-long_options	main.c	/^struct option long_options[] =$/;"	v	typeref:struct:option
-main	main.c	/^int main(int argc, char *argv[])      $/;"	f	signature:(int argc, char *argv[])
-mode	main.c	/^int mode = 1;$/;"	v
-noblock_accept	socket.c	/^noblock_accept(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out)$/;"	f	signature:(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out)
-noblock_accept	socket.h	/^int noblock_accept(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out);$/;"	p	signature:(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out)
-nums	main.c	/^int nums = 1;$/;"	v
-s_child_server	worker.c	/^s_child_server(int c_fd, struct sockaddr_in *paddr)$/;"	f	signature:(int c_fd, struct sockaddr_in *paddr)
-s_inet_aton	socket.c	/^s_inet_aton(char *buf, struct in_addr *a)$/;"	f	signature:(char *buf, struct in_addr *a)
-s_inet_aton	socket.h	/^int s_inet_aton(char *buf, struct in_addr *a);$/;"	p	signature:(char *buf, struct in_addr *a)
-s_net_accept	socket.h	/^int s_net_accept(int s_sock);$/;"	p	signature:(int s_sock)
-s_net_bind	socket.c	/^s_net_bind(int s_sock, struct sockaddr_in *s_net_addr) $/;"	f	signature:(int s_sock, struct sockaddr_in *s_net_addr)
-s_net_bind	socket.h	/^int s_net_bind(int s_sock, struct sockaddr_in *s_net_addr);$/;"	p	signature:(int s_sock, struct sockaddr_in *s_net_addr)
-s_net_connect	socket.c	/^s_net_connect(int s_sock, struct sockaddr_in *s_net_addr)$/;"	f	signature:(int s_sock, struct sockaddr_in *s_net_addr)
-s_net_connect	socket.h	/^int s_net_connect(int s_sock, struct sockaddr_in *s_net_addr);$/;"	p	signature:(int s_sock, struct sockaddr_in *s_net_addr)
-s_net_init	socket.c	/^s_net_init(struct sockaddr_in *s_net_addr, char *s_ip, char *s_port)$/;"	f	signature:(struct sockaddr_in *s_net_addr, char *s_ip, char *s_port)
-s_net_init	socket.h	/^int s_net_init(struct sockaddr_in *s_net_addr, char *s_ip, char *s_port);$/;"	p	signature:(struct sockaddr_in *s_net_addr, char *s_ip, char *s_port)
-s_net_listen	socket.c	/^s_net_listen(int s_sock)$/;"	f	signature:(int s_sock)
-s_net_listen	socket.h	/^int s_net_listen(int s_sock);$/;"	p	signature:(int s_sock)
-s_net_ntoa	socket.c	/^s_net_ntoa(char *buf, size_t bufsize, struct in_addr a)$/;"	f	signature:(char *buf, size_t bufsize, struct in_addr a)
-s_net_ntoa	socket.h	/^char *s_net_ntoa(char *buf, size_t bufsize, struct in_addr a);$/;"	p	signature:(char *buf, size_t bufsize, struct in_addr a)
-s_net_recv	socket.c	/^s_net_recv(int s_sock, char *r_buf, int len)$/;"	f	signature:(int s_sock, char *r_buf, int len)
-s_net_recv	socket.h	/^int s_net_recv(int s_sock, char *r_buf, int len);$/;"	p	signature:(int s_sock, char *r_buf, int len)
-s_net_recv_by_len	socket.c	/^s_net_recv_by_len(int s_sock, char *r_buf)$/;"	f	signature:(int s_sock, char *r_buf)
-s_net_recv_by_len	socket.h	/^int s_net_recv_by_len(int s_sock, char *r_buf);$/;"	p	signature:(int s_sock, char *r_buf)
-s_net_send	socket.c	/^s_net_send(int s_sock, char *s_buf, int len)$/;"	f	signature:(int s_sock, char *s_buf, int len)
-s_net_send	socket.h	/^int s_net_send(int s_sock, char *s_buf, int len);$/;"	p	signature:(int s_sock, char *s_buf, int len)
-s_net_send_by_len	socket.c	/^s_net_send_by_len(int s_sock, char *t_buf, int len)$/;"	f	signature:(int s_sock, char *t_buf, int len)
-s_net_send_by_len	socket.h	/^int s_net_send_by_len(int s_sock, char *t_buf, int len);$/;"	p	signature:(int s_sock, char *t_buf, int len)
-s_net_set_tout	socket.c	/^s_net_set_tout(int s_sock)$/;"	f	signature:(int s_sock)
-s_net_set_tout	socket.h	/^void s_net_set_tout(int s_sock);$/;"	p	signature:(int s_sock)
-s_process	worker.c	/^s_process(char *ip, char *port)$/;"	f	signature:(char *ip, char *port)
-s_process	worker.h	/^void s_process(char *ip, char *port);$/;"	p	signature:(char *ip, char *port)
-s_process_epoll	epoll.c	/^s_process_epoll(char *ip, char *port)$/;"	f	signature:(char *ip, char *port)
-s_process_epoll	epoll.h	/^void s_process_epoll(char *ip, char *port);$/;"	p	signature:(char *ip, char *port)
-s_set_nonblock	socket.c	/^s_set_nonblock(int s_sock)$/;"	f	signature:(int s_sock)
-s_set_nonblock	socket.h	/^int s_set_nonblock(int s_sock);$/;"	p	signature:(int s_sock)
-short_options	main.c	/^char *const short_options = "p:i:f:c:s:hm:t:n:l:";$/;"	v
-src	Makefile	/^src:=epoll.c socket.c worker.c$/;"	m
-style	main.c	/^const char *style = STYLE;$/;"	v
+conn_sock_array	fdarray.cc	/^conn_sock_array(struct sockaddr_in *s_net_addr) $/;"	f
+cs_mode	main.cc	/^int cs_mode;$/;"	v
+cstyle	main.cc	/^const char *cstyle = CSTYLE;$/;"	v
+e_link_mode	worker.h	/^}e_link_mode;$/;"	t	typeref:enum:__anon_worker_h_17
+false	system.h	50;"	d
+inet_atoul	socket.c	/^inet_atoul(const char * s)$/;"	f
+inet_ultoa	socket.c	/^inet_ultoa(unsigned int u, char * s)$/;"	f
+init_sock_addr	fdarray.cc	/^init_sock_addr(struct sockaddr_in *s_net_addr, char *s_ip, char *s_port)$/;"	f
+init_sock_array	fdarray.cc	/^init_sock_array(int link_num)$/;"	f
+interval	main.cc	/^int interval = 100000;$/;"	v
+l_opt_arg	main.cc	/^char *l_opt_arg;$/;"	v
+lenbuf	main.cc	/^int lenbuf = BUFSIZ;$/;"	v
+long_options	main.cc	/^struct option long_options[] =$/;"	v	typeref:struct:option
+main	main.cc	/^int main(int argc, char *argv[])      $/;"	f
+mode	main.cc	/^int mode = 1;$/;"	v
+noblock_accept	socket.c	/^noblock_accept(int fd, struct sockaddr_in* paddr, int addrlen, const int time_out)$/;"	f
+nums	main.cc	/^int nums = 1;$/;"	v
+quit_sock_array	fdarray.cc	/^quit_sock_array()$/;"	f
+quit_sys	main.cc	/^quit_sys( ) $/;"	f
+s_child_server	worker.c	/^s_child_server(int c_fd, struct sockaddr_in *paddr)$/;"	f
+s_inet_aton	socket.c	/^s_inet_aton(char *buf, struct in_addr *a)$/;"	f
+s_net_bind	socket.c	/^s_net_bind(int s_sock, struct sockaddr_in *s_net_addr) $/;"	f
+s_net_connect	socket.c	/^s_net_connect(int s_sock, struct sockaddr_in *s_net_addr)$/;"	f
+s_net_init	socket.c	/^s_net_init(struct sockaddr_in *s_net_addr, char *s_ip, char *s_port)$/;"	f
+s_net_listen	socket.c	/^s_net_listen(int s_sock)$/;"	f
+s_net_ntoa	socket.c	/^s_net_ntoa(char *buf, size_t bufsize, struct in_addr a)$/;"	f
+s_net_recv	socket.c	/^s_net_recv(int s_sock, char *r_buf, int len)$/;"	f
+s_net_recv_by_len	socket.c	/^s_net_recv_by_len(int s_sock, char *r_buf)$/;"	f
+s_net_send	socket.c	/^s_net_send(int s_sock, char *s_buf, int len)$/;"	f
+s_net_send_by_len	socket.c	/^s_net_send_by_len(int s_sock, char *t_buf, int len)$/;"	f
+s_net_set_tout	socket.c	/^s_net_set_tout(int s_sock)$/;"	f
+s_process	worker.c	/^s_process(char *ip, char *port)$/;"	f
+s_process_epoll	epoll.c	/^s_process_epoll(char *ip, char *port)$/;"	f
+s_set_nonblock	socket.c	/^s_set_nonblock(int s_sock)$/;"	f
+send_sock_data	fdarray.cc	/^send_sock_data(char *t_buf, int n_read) $/;"	f
+short_options	main.cc	/^char *const short_options = "p:i:f:c:s:hm:t:n:l:";$/;"	v
+sig_quit	main.cc	/^sig_quit(int signal) $/;"	f
+srcs	Makefile	/^srcs := socket.c epoll.c worker.c fdarray.cc main.cc$/;"	m
+style	main.cc	/^const char *style = STYLE;$/;"	v
 system_INCLUDE	system.h	15;"	d
-target	Makefile	/^target:=iflood$/;"	m
-times	main.c	/^int times = 1;$/;"	v
-true	system.h	48;"	d
-usage	main.c	/^void usage(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
-w_mission_start	worker.c	/^w_mission_start(char *ip, char *port, char *t_buf, int n_read)$/;"	f	signature:(char *ip, char *port, char *t_buf, int n_read)
-w_mission_start	worker.h	/^void w_mission_start(char *ip, char *port, char *file);$/;"	p	signature:(char *ip, char *port, char *file)
-w_read_file_to_buf	worker.c	/^w_read_file_to_buf(char *file, char *t_buf)$/;"	f	signature:(char *file, char *t_buf)
-w_short_mission_start	worker.c	/^w_short_mission_start(char *ip, char *port, char *t_buf, int n_read)$/;"	f	signature:(char *ip, char *port, char *t_buf, int n_read)
-w_short_mission_start	worker.h	/^void w_short_mission_start(char *ip, char *port, char *t_buf, int n_read);$/;"	p	signature:(char *ip, char *port, char *t_buf, int n_read)
+target	Makefile	/^target := iflood$/;"	m
+times	main.cc	/^int times = 1;$/;"	v
+true	system.h	49;"	d
+usage	main.cc	/^void usage(int argc, char *argv[])$/;"	f
+w_mission_start	worker.c	/^w_mission_start(char *ip, char *port, char *t_buf, int n_read)$/;"	f
+w_read_file_to_buf	worker.c	/^w_read_file_to_buf(char *file, char *t_buf)$/;"	f
+w_short_mission_start	worker.c	/^w_short_mission_start(char *ip, char *port, char *t_buf, int n_read)$/;"	f

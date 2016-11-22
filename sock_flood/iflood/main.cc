@@ -82,7 +82,6 @@ const char *cstyle = CSTYLE;
 void
 quit_sys( ) 
 {
-
 	quit_sock_array();	
 
 	return;
@@ -181,12 +180,12 @@ int main(int argc, char *argv[])
 
 		if ( !strcmp(cstyle, "fdarray") )
 		{
-			LOGD("CLIENT FD ARRAY STYLE")
+			LOGD("CLIENT FD ARRAY STYLE\n")
 			c_process_fdarray(ip, port, file, nums, mode, interval, times);
 		}
 		else
 		{
-			LOGD("CLIENT PROCESS STYLE")
+			LOGD("CLIENT PROCESS STYLE\n")
 			c_process(ip, port, file, nums, mode, interval, times);
 		}
 	}

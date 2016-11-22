@@ -11,22 +11,28 @@
  *              soloapple   11/22/16                  build this moudle  
  *****************************************************************************/
 #include "headers.h"
-
 list <int> cli_sock_fd_array;
 
 void
 quit_sock_array()
 {
+	if ( cli_sock_fd_array.empty() )
+		exit(0);
+
 	LOGE("quit sock array\n");
 	list<int>::iterator it;
 	for ( it=cli_sock_fd_array.begin();
 			it!=cli_sock_fd_array.end();
-			it++)	
+			)	
 	{
+		LOGE("close socket id:%d\n", (*it));
 		close(*it);
+		it++;
 	}
 
 	cli_sock_fd_array.clear();
+
+	exit(0);
 }
 
 int
@@ -56,7 +62,6 @@ init_sock_array(int link_num)
 	return 0;
 }
 
-
 int
 init_sock_addr(struct sockaddr_in *s_net_addr, char *s_ip, char *s_port)
 {
@@ -80,19 +85,20 @@ conn_sock_array(struct sockaddr_in *s_net_addr)
 	list<int>::iterator it;
 	for ( it=cli_sock_fd_array.begin();
 			it!=cli_sock_fd_array.end();
-			it++)	
+			)	
 	{	
 		res = s_net_connect(*it, s_net_addr);
 		if ( res < 0 )
 		{		
-			cli_sock_fd_array.erase(it);
+			cli_sock_fd_array.erase(++it);
 			continue;
 		}
+		else
+			it++;
 	}
 
 	return;
 }    
-
 
 /* 
  * Name:  send_sock_data
@@ -109,22 +115,22 @@ send_sock_data(char *t_buf, int n_read)
 	list<int>::iterator it;
 	for ( it=cli_sock_fd_array.begin();
 			it!=cli_sock_fd_array.end();
-			it++)	
+			)	
 	{	
 		send_len = s_net_send_by_len(*it, s_buf, n_read);
 		if ( send_len <= 0 )
 		{
 			LOGE("client send data failed!\n");
-			cli_sock_fd_array.erase(it);	
 			close(*it);
+			cli_sock_fd_array.erase(++it);	
 		}
 
 		recv_len = s_net_recv_by_len(*it, r_buf);
 		if ( recv_len <= 0 )
 		{
 			LOGE("client recv data failed!\n");
-			cli_sock_fd_array.erase(it);	
 			close(*it);
+			it = cli_sock_fd_array.erase(++it);	
 		}
 
 		if ( cli_sock_fd_array.empty() )
@@ -132,6 +138,8 @@ send_sock_data(char *t_buf, int n_read)
 			LOGE("socket array is empty!\n");
 			return -1;
 		}
+
+		it++;
 	}
 
 	return 0;
@@ -176,9 +184,3 @@ end:
 	quit_sock_array();
 	return;
 }
-
-
-
-
-
-
