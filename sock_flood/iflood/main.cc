@@ -16,7 +16,9 @@
 #include "headers.h"
 
 char *l_opt_arg;
-char *const short_options = "p:i:f:c:s:hm:t:n:l:";
+char *const short_options = "p:i:f:c:shm:t:n:l:";
+char *DFT_PORT = "8000";
+char *DFT_IP = "0.0.0.0";
 
 /* ----- 1: client , 0: server ----- */
 int cs_mode;
@@ -30,7 +32,7 @@ int lenbuf = BUFSIZ;
 struct option long_options[] =
 {
 	{"client", 1, NULL, 'c'},      
-	{"server", 1, NULL, 's'},      
+	{"server", 0, NULL, 's'},      
 	{"port", 1, NULL, 'p'},      
 	{"file", 1, NULL, 'f'},      
 	{"nums", 1, NULL, 'n'},      
@@ -46,8 +48,8 @@ void usage(int argc, char *argv[])
 {
 	printf( 
 			"Usage: client or server\n"
-			"Client: iflood -c ip -p port -f file [ -n nums -m 1(long)|0(short)\n -t times -i interval ]\n"
-			"Server: iflood -s ip -p port \n"
+			"Client: iflood -c ip -f file [ -p port -n nums -m 1(long)|0(short)\n -t times -i interval ]\n"
+			"Server: iflood -s [ -p port ]\n"
 			"\n\n"
 			"Client/Server:\n"
 			" p, --port	server port, default value is 8000\n"
@@ -62,7 +64,7 @@ void usage(int argc, char *argv[])
 			" m, --mode	arg can be 1 or 0, represent long link or short link. default mode is long.\n"
 			"\n\n"
 			"Server specific:\n"
-			" s, --server	start as server\n"
+			" s, --server	start as server, listening on ip 0.0.0.0\n"
 			"\n\n"
 			"Miscellaneous:\n"
 			" h, --help	display the help and exit\n"
@@ -87,7 +89,6 @@ quit_sys( )
 	return;
 }    
 
-
 /* 
  * Name:  sig_quit
  * Description:  
@@ -109,8 +110,8 @@ sig_quit(int signal)
 
 int main(int argc, char *argv[])      
 {      
-	char *ip = NULL;
-	char *port = NULL;
+	char *ip = DFT_IP;
+	char *port = DFT_PORT;
 	char *file = NULL;
 
 	int c;      
@@ -133,7 +134,6 @@ int main(int argc, char *argv[])
 				break;
 			case 's':
 				cs_mode = 0;
-				ip = strdup(optarg);
 				break;
 			case 'n':
 				nums = atoi(optarg);
@@ -157,14 +157,6 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	/* 
-	 * default client & server port is 8000 
-	 */
-	if((ip == NULL)||(port == NULL))
-	{
-		usage(argc, argv);
-	}
-
 	signal(SIGCHLD, SIG_IGN);
 	signal(SIGINT, sig_quit);
 	signal(SIGSEGV, sig_quit);
@@ -180,12 +172,12 @@ int main(int argc, char *argv[])
 
 		if ( !strcmp(cstyle, "fdarray") )
 		{
-			LOGD("CLIENT FD ARRAY STYLE\n")
+			LOGD("CLIENT[ARRAY MODE] connect to server %s %s \n", ip, port)
 			c_process_fdarray(ip, port, file, nums, mode, interval, times);
 		}
 		else
 		{
-			LOGD("CLIENT PROCESS STYLE\n")
+			LOGD("CLIENT[PROCESS MODE] connect to server %s %s \n", ip, port)
 			c_process(ip, port, file, nums, mode, interval, times);
 		}
 	}
@@ -193,12 +185,12 @@ int main(int argc, char *argv[])
 	{
 		if ( !strcmp(style, "epoll") )
 		{
-			LOGDP("SERVER EPOLL STYLE!\n");
+			LOGDP("SERVER[EPOLL MODE] LISTENING ON %s!\n", port);
 			s_process_epoll(ip, port);
 		}
 		else
 		{
-			LOGDP("SERVER PROGRESS STYLE\n")
+			LOGDP("SERVER[PPOCESS MODE] LISTENING ON %s\n", port);
 			s_process(ip, port);
 		}
 	}

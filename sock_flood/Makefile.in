@@ -9,7 +9,7 @@ define CC
 g++
 endef
 
-OPTIONS=-O2
+OPTIONS=
 CFLAGS=-g -Wall -lpthread -DSTYLE=\"epoll\" -DCSTYLE=\"fdarray\"
 QUIET_CC=@printf '	%b %b\n' $(cppcolor)cc$(endcolor) $(makecolor)$(curdir)$(endcolor) 1>&2
 QUIET_LINL=@printf '	%b %b\n' $(linkcolor)link$(endcolor) $(bincolor)$@$(endcolor) 1>&2

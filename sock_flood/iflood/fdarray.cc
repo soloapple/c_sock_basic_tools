@@ -87,6 +87,7 @@ conn_sock_array(struct sockaddr_in *s_net_addr)
 			it!=cli_sock_fd_array.end();
 			)	
 	{	
+		LOGD("client fd [%d] connect to server\n", *it);
 		res = s_net_connect(*it, s_net_addr);
 		if ( res < 0 )
 		{		
@@ -151,7 +152,8 @@ send_sock_data(char *t_buf, int n_read)
  * then connect and send data to server one by one. 
  */
 void 
-c_process_fdarray(char *ip, char *port, char *file, int link_num, int link_mode, int interval, int times)
+c_process_fdarray(char *ip, char *port, char *file, 
+		int link_num, int link_mode, int interval, int times)
 {
 	int ret;
 	int n_read = 0;
@@ -159,7 +161,7 @@ c_process_fdarray(char *ip, char *port, char *file, int link_num, int link_mode,
 	char t_buf[BUFSIZ] = {0};
 
 	n_read = w_read_file_to_buf(file, t_buf);
-	if (n_read <= 0)
+	if ( n_read <= 0 )
 		return;
 	
 	init_sock_addr(&s_net_addr, ip, port);
@@ -175,8 +177,7 @@ c_process_fdarray(char *ip, char *port, char *file, int link_num, int link_mode,
 
 	for (;;)	
 	{
-		int ret = send_sock_data(t_buf, n_read);
-		if ( ret < 0 )
+		if ( (ret = send_sock_data(t_buf, n_read)) < 0 )
 			break;
 	}
 
