@@ -19,7 +19,7 @@ quit_sock_array()
 	if ( cli_sock_fd_array.empty() )
 		exit(0);
 
-	LOGE("quit sock array\n");
+	LOGD("array is not empty, cleaning!\n");
 	list<int>::iterator it;
 	for ( it=cli_sock_fd_array.begin();
 			it!=cli_sock_fd_array.end();
@@ -81,21 +81,26 @@ void
 conn_sock_array(struct sockaddr_in *s_net_addr) 
 {
 	int res;
+	int reconn_time;
 
 	list<int>::iterator it;
 	for ( it=cli_sock_fd_array.begin();
 			it!=cli_sock_fd_array.end();
 			)	
 	{	
-		LOGD("client fd [%d] connect to server\n", *it);
 		res = s_net_connect(*it, s_net_addr);
 		if ( res < 0 )
 		{		
-			cli_sock_fd_array.erase(++it);
+			LOGE("sock fd [%d] connect failed, erase!\n", *it);
+			close(*it);
+			cli_sock_fd_array.erase(it++);
 			continue;
 		}
 		else
+		{
+			LOGE("sock fd [%d] connect success!\n", *it);
 			it++;
+		}
 	}
 
 	return;
@@ -123,7 +128,7 @@ send_sock_data(char *t_buf, int n_read)
 		{
 			LOGE("client send data failed!\n");
 			close(*it);
-			cli_sock_fd_array.erase(++it);	
+			cli_sock_fd_array.erase(it++);	
 		}
 
 		recv_len = s_net_recv_by_len(*it, r_buf);
@@ -131,7 +136,7 @@ send_sock_data(char *t_buf, int n_read)
 		{
 			LOGE("client recv data failed!\n");
 			close(*it);
-			it = cli_sock_fd_array.erase(++it);	
+			it = cli_sock_fd_array.erase(it++);	
 		}
 
 		if ( cli_sock_fd_array.empty() )
@@ -171,9 +176,11 @@ c_process_fdarray(char *ip, char *port, char *file,
 		goto end;
 
 	conn_sock_array(&s_net_addr);
-
 	if ( cli_sock_fd_array.empty() )
+	{
+		LOGE("connect failed, fd array is empty!\n");
 		goto end;
+	}
 
 	for (;;)	
 	{
