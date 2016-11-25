@@ -1,1 +1,1 @@
-include ../../Makefile.rule
+include ../../Makefile.in
