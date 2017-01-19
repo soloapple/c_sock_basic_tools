@@ -81,7 +81,7 @@ void
 conn_sock_array(struct sockaddr_in *s_net_addr) 
 {
 	int res;
-	int reconn_time;
+//	int reconn_time;
 
 	list<int>::iterator it;
 	for ( it=cli_sock_fd_array.begin();

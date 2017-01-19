@@ -74,19 +74,17 @@ void analyseTCP(TCP_HEADER *tcp);
 void analyseUDP(UDP_HEADER *udp);
 void analyseICMP(ICMP_HEADER *icmp);
 
-
-
 int main(void)
 {
     int sockfd;
      IP_HEADER *ip;
-    char buf[10240];
+    char *buf = (char*)malloc(8192);
     ssize_t n;
 
     socklen_t len;
     struct sockaddr_in rcvaddr;
 
-//    if ((sockfd = socket(PF_PACKET,  SOCK_DGRAM, htons(ETH_P_IP)))== -1)
+//  if ((sockfd = socket(PF_PACKET,  SOCK_DGRAM, htons(ETH_P_IP)))== -1)
     if ((sockfd = socket(PF_PACKET,  SOCK_RAW, htons(ETH_P_IP)))== -1)
     {    
         LOGN("socket error!\n");
@@ -95,8 +93,8 @@ int main(void)
 
     for(;;)
     {
-        n = recv(sockfd, buf, sizeof(buf), 0);
-//        n = recvfrom(sockfd, buf, sizeof(buf), 0, (struct sockaddr*)&rcvaddr, &len);
+//      n = recv(sockfd, buf, sizeof(buf), 0);
+        n = recvfrom(sockfd, buf, 8192, 0, (struct sockaddr*)&rcvaddr, &len);
         if (n == -1)
         {
             LOGE("recv error!\n");
@@ -105,24 +103,28 @@ int main(void)
         else if (n==0)
             continue;
 
+//		output_str_to_hex((unsigned char*)buf, 256);
+		buf = buf + 14;
 
-        ip = ( IP_HEADER *)(buf+14);
-//        analyseIP(ip);
-        size_t iplen =  (ip->h_verlen&0x0f)*4;
-        TCP_HEADER *tcp = (TCP_HEADER *)(buf +iplen);
+        ip = ( IP_HEADER *)(buf);
+        size_t iplen =  (ip->h_verlen & 0x0f) * 4;
         if (ip->proto == IPPROTO_TCP)
         {
-            TCP_HEADER *tcp = (TCP_HEADER *)(buf +iplen);
-//            analyseTCP(tcp);
+			output_str_to_hex((unsigned char*)buf, 256);
+	        analyseIP(ip);
+            TCP_HEADER *tcp = (TCP_HEADER *)(buf + iplen);
+            analyseTCP(tcp);
         }
         else if (ip->proto == IPPROTO_UDP)
         {
+			analyseIP(ip);
             UDP_HEADER *udp = (UDP_HEADER *)(buf + iplen);
-//            analyseUDP(udp);
+            analyseUDP(udp);
         }
         else if (ip->proto == IPPROTO_ICMP)
         {
-		output_str_to_hex(buf, 256);
+//			output_str_to_hex((unsigned char*)buf, 128);
+			analyseIP(ip);
             ICMP_HEADER *icmp = (ICMP_HEADER *)(buf + iplen);
             analyseICMP(icmp);
         }
@@ -154,6 +156,9 @@ void analyseTCP(TCP_HEADER *tcp)
     LOGN("TCP -----\n");
     LOGN("Source port: %u\n", ntohs(tcp->th_sport));
     LOGN("Dest port: %u\n", ntohs(tcp->th_dport));
+    LOGN("Source port: %u\n", (tcp->th_sport));
+    LOGN("Dest port: %u\n", (tcp->th_dport));
+	puts("");
 }
 
 void analyseUDP(UDP_HEADER *udp)

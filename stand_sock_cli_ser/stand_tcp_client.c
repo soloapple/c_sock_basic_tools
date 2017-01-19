@@ -24,7 +24,7 @@ int main(int argc, char ** argv)
 	LOGN("TCP CLIENT\n");
 
 	int   sockfd=0;
-	char  sendMsg[30]="abc.org\r\n\r";
+	char  sendMsg[30]="1234567890\r\n";
 	char* res;
 	int   port = 4242;
 	char  ip[128] = {0};
@@ -43,7 +43,7 @@ int main(int argc, char ** argv)
 	}
 
 	sockfd = connect_socket(ip, port);
-	send_msg(sockfd,sendMsg);
+	send_msg(sockfd, sendMsg);
 	res = recv_msg(sockfd); 
 //	printf(res);
 
@@ -75,7 +75,7 @@ connect_socket(char *server, int serverPort)
 		phost = (struct hostent*)gethostbyname(server);
 		if (phost == NULL)
 		{
-			LOGE("Init socket s_addr error!");
+			LOGE("Init socket s_addr error!\n");
 			return -1;
 		}
 		addr.sin_addr.s_addr =((struct in_addr*)phost->h_addr)->s_addr;
@@ -83,7 +83,7 @@ connect_socket(char *server, int serverPort)
 
 	if (connect(sockfd,(struct sockaddr*)&addr, sizeof(addr))<0)
 	{
-		LOGE("Connect server fail!");
+		LOGE("Connect server fail!\n");
 		return -1;
 	}
 

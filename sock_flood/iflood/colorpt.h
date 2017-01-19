@@ -13,6 +13,12 @@
 #ifndef  COLOR_PRINT_INCLUDE
 #define  COLOR_PRINT_INCLUDE
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include <errno.h>
+
 #define COL_WHITE   "\033[40;37m"
 #define COL_BULE    "\033[40;36m"
 #define COL_PURPLE  "\033[40;35m"
@@ -24,13 +30,19 @@
 
 #define	 MLEVEL 10
 
-#if ( MLEVEL >= 4 )
-	#define MLOG_NOTICE
+#if ( MLEVEL >= 5 )
+	#define MLOG_INFO
 	#define MLOG_DEBUG
+	#define MLOG_NOTICE
+	#define MLOG_WARNING
+	#define MLOG_ERROR
+#elif ( MLEVEL >= 4 )
+	#define MLOG_DEBUG
+	#define MLOG_NOTICE
 	#define MLOG_WARNING
 	#define MLOG_ERROR
 #elif ( MLEVEL >= 3 )
-	#define MLOG_DEBUG
+	#define MLOG_NOTICE
 	#define MLOG_WARNING
 	#define MLOG_ERROR
 #elif ( MLEVEL >= 2 )
@@ -43,14 +55,15 @@
 #ifdef MLOG_NOTICE
 #define LOGN(fmt, args...)                                           \
 	do {                                                             \
-		printf(COL_WHITE "[NOTIC][%-20s:%-4d] " COL_END"(%s): " fmt,   \
-				__FILE__, __LINE__, __FUNCTION__, ##args);           \
+		printf(COL_YELLOW "[NOTIC][%-20s:%-4d] " COL_END fmt,         \
+				__FILE__, __LINE__, ##args);                         \
 	} while (0);
 
 #define LOGNP(fmt, args...)                                          \
 	do {                                                             \
-		printf(COL_WHITE "[NOTIC][%-20s:%-4d] [%d] " COL_END fmt,    \
+		printf(COL_YELLOW "[NOTIC][%-20s:%-4d] [%d] " COL_END fmt , \
 				__FILE__, __LINE__, getpid(), ##args);               \
+		printf("\n");\
 	} while (0);
 
 #else
@@ -61,9 +74,9 @@
 #ifdef MLOG_DEBUG
 #define LOGD(fmt, args...)                                           \
 	do {                                                             \
-		printf(COL_GREEN "[DEBUG][%-20s:%-4d] " COL_END"(%s): " fmt,    \
-				__FILE__, __LINE__, __FUNCTION__, ##args);           \
-	} while (0);													
+		printf(COL_GREEN "[DEBUG][%-20s:%-4d] " COL_END fmt,        \
+				__FILE__, __LINE__, ##args);                         \
+	} while (0);
 
 #define LOGDP(fmt, args...)                                          \
 	do {                                                             \
@@ -75,39 +88,57 @@
 #define LOGDP(fmt, ...)
 #endif
 
-#ifdef MLOG_WARNING
-#define LOGW(fmt, args...)                                           \
+#ifdef MLOG_INFO
+#define LOGI(fmt, args...)                                           \
 	do {                                                             \
-		printf(COL_YELLOW "[WARNING][%-20s:%-4d] " COL_END"(%s): " fmt,\
+		printf(COL_WHITE "[INFO][%-20s:%-4d] "COL_END"%s: " fmt,     \
 				__FILE__, __LINE__, __FUNCTION__, ##args);           \
-	} while (0);													
+	} while (0);
 
-#define LOGWP(fmt, args...)                                          \
+#define LOGIP(fmt, args...)                                          \
 	do {                                                             \
-		printf(COL_YELLOW "[WARNING][%-20s:%-4d] [%d] " COL_END fmt, \
+		printf(COL_WHITE "[INFO][%-20s:%-4d] [%d] " COL_END fmt,   \
 				__FILE__, __LINE__, getpid(), ##args);               \
 	} while (0);
 #else
-#define LOGW(fmt, ...)
-#define LOGWP(fmt, ...)
+#define LOGW(fmt,...)
+#define LOGWP(fmt,...)
+#endif
+
+
+
+#ifdef MLOG_WARNING
+#define LOGW(fmt, args...)                                           \
+	do {                                                             \
+		printf(COL_PURPLE "[WARNN][%-20s:%-4d] "COL_END"%s: " fmt,     \
+				__FILE__, __LINE__, __FUNCTION__, ##args);           \
+	} while (0);
+
+#define LOGWP(fmt, args...)                                          \
+	do {                                                             \
+		printf(COL_PURPLE "[WARNN][%-20s:%-4d] [%d] " COL_END fmt,   \
+				__FILE__, __LINE__, getpid(), ##args);               \
+	} while (0);
+#else
+#define LOGW(fmt,...)
+#define LOGWP(fmt,...)
 #endif
 
 #ifdef MLOG_ERROR 
 #define LOGE(fmt, args...)                                           \
 	do {                                                             \
-		printf(COL_RED "[ERROR][%-20s:%-4d][%s] "COL_END "(%s): " fmt, \
+		printf(COL_RED "[ERROR][%-20s:%-4d][%s] "COL_END "%s: " fmt, \
 				__FILE__, __LINE__, __FUNCTION__,                    \
 				strerror(errno), ##args);                            \
 	} while (0);
-
-	#define LOGEP(fmt, args...)                                      \
+	
+#define LOGEP(fmt, args...)                                          \
 	do {                                                             \
-		printf(COL_RED "[WARNING][%-20s:%-4d] [%d] " COL_END fmt,    \
+		printf(COL_RED "[ERROR][%-20s:%-4d] [%d] " COL_END fmt,   \
 				__FILE__, __LINE__, getpid(), ##args);               \
 	} while (0);
 #else
 #define LOGE(fmt,...)
-#define LOGEP(fmt,...)
 #endif
 
 #endif   

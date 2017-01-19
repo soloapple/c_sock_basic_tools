@@ -99,6 +99,8 @@ int rawSocket();
 int setPromisc(char *,int *);
 int count=0;
 
+int check_data_proto(char *buf);
+
 int 
 main(int argc,char **argv)
 {
@@ -109,27 +111,27 @@ main(int argc,char **argv)
     }
 
     int sock;
-    int msgsock;
-    socklen_t len;
-    struct sockaddr_in rcvaddr;
-    char buf[9216];
-    struct ifreq ifr;
+//    int msgsock;
+    char buf[8192];
+//    struct ifreq ifr;
     int rval;
 
-    sock=rawSocket();
-    setPromisc(argv[1],&sock);
-    len=sizeof(struct sockaddr);
-    memset(buf,0,sizeof(buf));
+    sock = rawSocket();
+//    setPromisc(argv[1], &sock);
+    memset(buf, 0, sizeof(buf));
+
+    socklen_t len = sizeof(struct sockaddr);
+    struct sockaddr_in rcvaddr;
 
     for (;;)
     {
-//        rval=recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr*)&rcvaddr, &len);
-        rval = recv(sock, buf, sizeof(buf), 0);
-        if(rval>0)
+        rval=recvfrom(sock, buf, sizeof(buf), 0, (struct sockaddr*)&rcvaddr, &len);
+//        rval = recv(sock, buf, sizeof(buf), 0);
+        if(rval > 0)
         {
 //            LOGN("Get %d bytes\n",rval);
 //            analyData(buf);
-			check_data_proto(buf);
+			check_data_proto(buf + 14);
         }
     }
 
@@ -148,35 +150,41 @@ analyseIP(IP_HEADER *ip)
 int
 check_data_proto(char *buf)
 {
-     IP_HEADER *ip;
+    IP_HEADER *ip;
 
-	ip = ( IP_HEADER *)(buf);
-//    analyseIP(ip);
+	ip = ( IP_HEADER *)(buf+14);
     size_t iplen =  (ip->h_verlen&0x0f)*4;
-	TCP_HEADER *tcp = (TCP_HEADER *)(buf + iplen);
 	if (ip->proto == IPPROTO_TCP)
 	{
+	    analyData(buf);
+		return 0;
+	    analyseIP(ip);
 		TCP_HEADER *tcp = (TCP_HEADER *)(buf +iplen);
 		analyseTCP(tcp);
 	}
 	else if (ip->proto == IPPROTO_UDP)
 	{
+		return 0;
+	    analyseIP(ip);
 		UDP_HEADER *udp = (UDP_HEADER *)(buf + iplen);
 		analyseUDP(udp);
 	}
 	else if (ip->proto == IPPROTO_ICMP)
 	{
+	    analyseIP(ip);
 		ICMP_HEADER *icmp = (ICMP_HEADER *)(buf + iplen);
 		analyseICMP(icmp);
 	}
 	else if (ip->proto == IPPROTO_IGMP)
 	{
-		LOGN("IGMP----\n");
+//		LOGN("IGMP----\n");
 	}
 	else
 	{
 //		LOGN("other protocol!\n");
 	}        
+
+	return 0;
 }
 
 int 
@@ -184,7 +192,7 @@ analyData(char *data)
 {
     struct iphdr *ip;
     struct tcphdr *tcp;
-    struct ether_header *ether;
+//    struct ether_header *ether;
 
 //    ether=(struct ether_header*)data;//若数据是从数据链路曾抓取的，那么就有这个以太网帧头
 //    LOGN("shu ju bao lei xing xie yi:%d\n",ether->ether_type);
@@ -192,12 +200,10 @@ analyData(char *data)
     ip=(struct iphdr*)data;
     count++;
 	
-	char sip[16];
-	strcpy(sip, inet_ntoa(*((struct in_addr*)&ip->saddr)));
-	if ( ! strcmp (sip, "172.24.128.42"))
-	{
-		return 0;
-	}
+//	char sip[16];
+//	strcpy(sip, inet_ntoa(*((struct in_addr*)&ip->saddr)));
+//	if ( strcmp(sip, "10.0.0.41") == 0)
+//		return 0;
 
     LOGN("Protocol::%d\n",ip->protocol);
     LOGN("Source IP::%s\n",inet_ntoa(*((struct in_addr*)&ip->saddr)));
@@ -235,7 +241,7 @@ int
 setPromisc(char *enterface,int *sock)//设置eth0的混乱模式
 {
     struct ifreq ifr;
-    strcpy(ifr.ifr_name, "eth0");
+    strcpy(ifr.ifr_name, "net1");
     ifr.ifr_flags=IFF_UP|IFF_PROMISC|IFF_BROADCAST|IFF_RUNNING;
     if (ioctl(*sock, SIOCSIFFLAGS, &ifr) == -1)//设置混乱模式
     {

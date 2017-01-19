@@ -6,8 +6,10 @@
 #include <netinet/ip.h>
 #include <netinet/tcp.h>
 #include <arpa/inet.h>
+
 #define DATA "hello"
 #define PACKET_SIZE sizeof(struct iphdr) + sizeof(struct tcphdr) + sizeof(DATA)
+
 /*---------------------------------------------------------
  Function Name : check_sum()
    Descrypthon : 校验和计算，摘自UNP源码
@@ -112,9 +114,11 @@ int main(int argc, const char *argv[])
     const char *dst_port = argv[2];
     const char *src_port = argv[3];
     target = calloc(sizeof(struct sockaddr_in),1);
+    sockfd = init_socket(sockfd, target, dst_addr, dst_port);
+
     buffer = calloc(PACKET_SIZE, 1);
     buffer_head = buffer;
-    sockfd = init_socket(sockfd, target, dst_addr, dst_port);
+
     buile_iphdr(target, buffer);
     buffer += sizeof(struct iphdr);
     buile_tcphdr(target, src_port, buffer);

@@ -1,0 +1,273 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert (Pathed by Dmitry Frank, dimon.frank@gmail.com)	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8.1	//
+CC	Makefile	/^CC=gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS=-pg -ggdb -Wall$/;"	m
+DATA	send_raw_data.c	10;"	d	file:
+ICMP_HEADER	grap_raw_link_pkg.c	/^}ICMP_HEADER;$/;"	t	typeref:struct:_icmphdr	file:
+ICMP_HEADER	icmp_raw_grap.c	/^}ICMP_HEADER;$/;"	t	typeref:struct:_icmphdr	file:
+ICMP_HEADER	net_raw_data_passer.c	/^}ICMP_HEADER;$/;"	t	typeref:struct:_icmphdr	file:
+IP_HEADER	grap_raw_link_pkg.c	/^}IP_HEADER; $/;"	t	typeref:struct:_iphdr	file:
+IP_HEADER	icmp_raw_grap.c	/^}IP_HEADER; $/;"	t	typeref:struct:_iphdr	file:
+IP_HEADER	net_raw_data_passer.c	/^}IP_HEADER; $/;"	t	typeref:struct:_iphdr	file:
+IP_TCP_HDR_SIZE	net_raw_data_passer.c	38;"	d	file:
+LIB_SRC	Makefile	/^LIB_SRC=xutils.c$/;"	m
+PACKET_SIZE	send_raw_data.c	11;"	d	file:
+TCP_HEADER	grap_raw_link_pkg.c	/^}TCP_HEADER; $/;"	t	typeref:struct:_tcphdr	file:
+TCP_HEADER	icmp_raw_grap.c	/^}TCP_HEADER; $/;"	t	typeref:struct:_tcphdr	file:
+TCP_HEADER	net_raw_data_passer.c	/^}TCP_HEADER; $/;"	t	typeref:struct:_tcphdr	file:
+UDP_HEADER	grap_raw_link_pkg.c	/^}UDP_HEADER;$/;"	t	typeref:struct:_udphdr	file:
+UDP_HEADER	icmp_raw_grap.c	/^}UDP_HEADER;$/;"	t	typeref:struct:_udphdr	file:
+UDP_HEADER	net_raw_data_passer.c	/^}UDP_HEADER;$/;"	t	typeref:struct:_udphdr	file:
+__UTILS_H	xutils.h	2;"	d
+__print_x	xutils.c	/^void __print_x(unsigned char *str, int s, int e)$/;"	f	signature:(unsigned char *str, int s, int e)
+_icmphdr	grap_raw_link_pkg.c	/^typedef struct _icmphdr {  $/;"	s	file:
+_icmphdr	icmp_raw_grap.c	/^typedef struct _icmphdr {  $/;"	s	file:
+_icmphdr	net_raw_data_passer.c	/^typedef struct _icmphdr {  $/;"	s	file:
+_icmphdr::icmp_cksum	grap_raw_link_pkg.c	/^    unsigned short icmp_cksum;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_cksum	icmp_raw_grap.c	/^    unsigned short icmp_cksum;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_cksum	net_raw_data_passer.c	/^    unsigned short icmp_cksum;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_code	grap_raw_link_pkg.c	/^    unsigned char icmp_code; \/* type sub code *\/  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_code	icmp_raw_grap.c	/^    unsigned char icmp_code; \/* type sub code *\/  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_code	net_raw_data_passer.c	/^    unsigned char icmp_code; \/* type sub code *\/  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_id	grap_raw_link_pkg.c	/^    unsigned short icmp_id;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_id	icmp_raw_grap.c	/^    unsigned short icmp_id;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_id	net_raw_data_passer.c	/^    unsigned short icmp_id;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_seq	grap_raw_link_pkg.c	/^    unsigned short icmp_seq;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_seq	icmp_raw_grap.c	/^    unsigned short icmp_seq;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_seq	net_raw_data_passer.c	/^    unsigned short icmp_seq;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_timestamp	grap_raw_link_pkg.c	/^    unsigned short icmp_timestamp;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_timestamp	icmp_raw_grap.c	/^    unsigned short icmp_timestamp;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_timestamp	net_raw_data_passer.c	/^    unsigned short icmp_timestamp;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_type	grap_raw_link_pkg.c	/^    unsigned char  icmp_type;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_type	icmp_raw_grap.c	/^    unsigned char  icmp_type;  $/;"	m	struct:_icmphdr	file:	access:public
+_icmphdr::icmp_type	net_raw_data_passer.c	/^    unsigned char  icmp_type;  $/;"	m	struct:_icmphdr	file:	access:public
+_iphdr	grap_raw_link_pkg.c	/^typedef struct _iphdr \/\/定义IP首部 $/;"	s	file:
+_iphdr	icmp_raw_grap.c	/^typedef struct _iphdr \/\/定义IP首部 $/;"	s	file:
+_iphdr	net_raw_data_passer.c	/^typedef struct _iphdr \/\/定义IP首部 $/;"	s	file:
+_iphdr::checksum	grap_raw_link_pkg.c	/^    unsigned short checksum; \/\/16位IP首部校验和 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::checksum	icmp_raw_grap.c	/^    unsigned short checksum; \/\/16位IP首部校验和 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::checksum	net_raw_data_passer.c	/^    unsigned short checksum; \/\/16位IP首部校验和 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::destIP	grap_raw_link_pkg.c	/^    unsigned int destIP; \/\/32位目的IP地址 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::destIP	icmp_raw_grap.c	/^    unsigned int destIP; \/\/32位目的IP地址 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::destIP	net_raw_data_passer.c	/^    unsigned int destIP; \/\/32位目的IP地址 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::frag_and_flags	grap_raw_link_pkg.c	/^    unsigned short frag_and_flags; \/\/3位标志位 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::frag_and_flags	icmp_raw_grap.c	/^    unsigned short frag_and_flags; \/\/3位标志位 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::frag_and_flags	net_raw_data_passer.c	/^    unsigned short frag_and_flags; \/\/3位标志位 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::h_verlen	grap_raw_link_pkg.c	/^    unsigned char h_verlen; \/\/4位首部长度+4位IP版本号 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::h_verlen	icmp_raw_grap.c	/^    unsigned char h_verlen; \/\/4位首部长度+4位IP版本号 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::h_verlen	net_raw_data_passer.c	/^    unsigned char h_verlen; \/\/4位首部长度+4位IP版本号 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::ident	grap_raw_link_pkg.c	/^    unsigned short ident; \/\/16位标识 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::ident	icmp_raw_grap.c	/^    unsigned short ident; \/\/16位标识 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::ident	net_raw_data_passer.c	/^    unsigned short ident; \/\/16位标识 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::proto	grap_raw_link_pkg.c	/^    unsigned char proto; \/\/8位协议 (TCP, UDP 或其他) $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::proto	icmp_raw_grap.c	/^    unsigned char proto; \/\/8位协议 (TCP, UDP 或其他) $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::proto	net_raw_data_passer.c	/^    unsigned char proto; \/\/8位协议 (TCP, UDP 或其他) $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::sourceIP	grap_raw_link_pkg.c	/^    unsigned int sourceIP; \/\/32位源IP地址 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::sourceIP	icmp_raw_grap.c	/^    unsigned int sourceIP; \/\/32位源IP地址 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::sourceIP	net_raw_data_passer.c	/^    unsigned int sourceIP; \/\/32位源IP地址 $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::tos	grap_raw_link_pkg.c	/^    unsigned char tos; \/\/8位服务类型TOS $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::tos	icmp_raw_grap.c	/^    unsigned char tos; \/\/8位服务类型TOS $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::tos	net_raw_data_passer.c	/^    unsigned char tos; \/\/8位服务类型TOS $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::total_len	grap_raw_link_pkg.c	/^    unsigned short total_len; \/\/16位总长度（字节） $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::total_len	icmp_raw_grap.c	/^    unsigned short total_len; \/\/16位总长度（字节） $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::total_len	net_raw_data_passer.c	/^    unsigned short total_len; \/\/16位总长度（字节） $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::ttl	grap_raw_link_pkg.c	/^    unsigned char ttl; \/\/8位生存时间 TTL $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::ttl	icmp_raw_grap.c	/^    unsigned char ttl; \/\/8位生存时间 TTL $/;"	m	struct:_iphdr	file:	access:public
+_iphdr::ttl	net_raw_data_passer.c	/^    unsigned char ttl; \/\/8位生存时间 TTL $/;"	m	struct:_iphdr	file:	access:public
+_tcphdr	grap_raw_link_pkg.c	/^typedef struct _tcphdr \/\/定义TCP首部 $/;"	s	file:
+_tcphdr	icmp_raw_grap.c	/^typedef struct _tcphdr \/\/定义TCP首部 $/;"	s	file:
+_tcphdr	net_raw_data_passer.c	/^typedef struct _tcphdr \/\/定义TCP首部 $/;"	s	file:
+_tcphdr::th_ack	grap_raw_link_pkg.c	/^    unsigned int th_ack; \/\/32位确认号 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_ack	icmp_raw_grap.c	/^    unsigned int th_ack; \/\/32位确认号 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_ack	net_raw_data_passer.c	/^    unsigned int th_ack; \/\/32位确认号 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_dport	grap_raw_link_pkg.c	/^    unsigned short th_dport; \/\/16位目的端口 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_dport	icmp_raw_grap.c	/^    unsigned short th_dport; \/\/16位目的端口 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_dport	net_raw_data_passer.c	/^    unsigned short th_dport; \/\/16位目的端口 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_flag	grap_raw_link_pkg.c	/^    unsigned char th_flag; \/\/6位标志位$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_flag	icmp_raw_grap.c	/^    unsigned char th_flag; \/\/6位标志位$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_flag	net_raw_data_passer.c	/^    unsigned char th_flag; \/\/6位标志位$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_lenres	grap_raw_link_pkg.c	/^    unsigned char th_lenres;\/\/4位首部长度\/6位保留字 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_lenres	icmp_raw_grap.c	/^    unsigned char th_lenres;\/\/4位首部长度\/6位保留字 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_lenres	net_raw_data_passer.c	/^    unsigned char th_lenres;\/\/4位首部长度\/6位保留字 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_seq	grap_raw_link_pkg.c	/^    unsigned int th_seq; \/\/32位序列号 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_seq	icmp_raw_grap.c	/^    unsigned int th_seq; \/\/32位序列号 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_seq	net_raw_data_passer.c	/^    unsigned int th_seq; \/\/32位序列号 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_sport	grap_raw_link_pkg.c	/^    unsigned short th_sport; \/\/16位源端口 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_sport	icmp_raw_grap.c	/^    unsigned short th_sport; \/\/16位源端口 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_sport	net_raw_data_passer.c	/^    unsigned short th_sport; \/\/16位源端口 $/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_sum	grap_raw_link_pkg.c	/^    unsigned short th_sum; \/\/16位校验和$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_sum	icmp_raw_grap.c	/^    unsigned short th_sum; \/\/16位校验和$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_sum	net_raw_data_passer.c	/^    unsigned short th_sum; \/\/16位校验和$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_urp	grap_raw_link_pkg.c	/^    unsigned short th_urp; \/\/16位紧急数据偏移量$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_urp	icmp_raw_grap.c	/^    unsigned short th_urp; \/\/16位紧急数据偏移量$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_urp	net_raw_data_passer.c	/^    unsigned short th_urp; \/\/16位紧急数据偏移量$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_win	grap_raw_link_pkg.c	/^    unsigned short th_win; \/\/16位窗口大小$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_win	icmp_raw_grap.c	/^    unsigned short th_win; \/\/16位窗口大小$/;"	m	struct:_tcphdr	file:	access:public
+_tcphdr::th_win	net_raw_data_passer.c	/^    unsigned short th_win; \/\/16位窗口大小$/;"	m	struct:_tcphdr	file:	access:public
+_udphdr	grap_raw_link_pkg.c	/^typedef struct _udphdr \/\/定义UDP首部$/;"	s	file:
+_udphdr	icmp_raw_grap.c	/^typedef struct _udphdr \/\/定义UDP首部$/;"	s	file:
+_udphdr	net_raw_data_passer.c	/^typedef struct _udphdr \/\/定义UDP首部$/;"	s	file:
+_udphdr::uh_dport	grap_raw_link_pkg.c	/^    unsigned short uh_dport;    \/\/16位目的端口$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_dport	icmp_raw_grap.c	/^    unsigned short uh_dport;    \/\/16位目的端口$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_dport	net_raw_data_passer.c	/^    unsigned short uh_dport;    \/\/16位目的端口$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_len	grap_raw_link_pkg.c	/^    unsigned int uh_len;\/\/16位UDP包长度$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_len	icmp_raw_grap.c	/^    unsigned int uh_len;\/\/16位UDP包长度$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_len	net_raw_data_passer.c	/^    unsigned int uh_len;\/\/16位UDP包长度$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_sport	grap_raw_link_pkg.c	/^    unsigned short uh_sport;    \/\/16位源端口$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_sport	icmp_raw_grap.c	/^    unsigned short uh_sport;    \/\/16位源端口$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_sport	net_raw_data_passer.c	/^    unsigned short uh_sport;    \/\/16位源端口$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_sum	grap_raw_link_pkg.c	/^    unsigned int uh_sum;\/\/16位校验和$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_sum	icmp_raw_grap.c	/^    unsigned int uh_sum;\/\/16位校验和$/;"	m	struct:_udphdr	file:	access:public
+_udphdr::uh_sum	net_raw_data_passer.c	/^    unsigned int uh_sum;\/\/16位校验和$/;"	m	struct:_udphdr	file:	access:public
+analyData	grap_raw_link_pkg.c	/^analyData(char *data)$/;"	f	signature:(char *data)
+analyData	grap_raw_link_pkg.c	/^int analyData(char *data);$/;"	p	file:	signature:(char *data)
+analyData	net_raw_data_passer.c	/^analyData(char *data)$/;"	f	signature:(char *data)
+analyData	net_raw_data_passer.c	/^int analyData(char *data);$/;"	p	file:	signature:(char *data)
+analyseICMP	grap_raw_link_pkg.c	/^analyseICMP(ICMP_HEADER *icmp)$/;"	f	signature:(ICMP_HEADER *icmp)
+analyseICMP	icmp_raw_grap.c	/^void analyseICMP(ICMP_HEADER *icmp)$/;"	f	signature:(ICMP_HEADER *icmp)
+analyseICMP	icmp_raw_grap.c	/^void analyseICMP(ICMP_HEADER *icmp);$/;"	p	file:	signature:(ICMP_HEADER *icmp)
+analyseICMP	net_raw_data_passer.c	/^analyseICMP(ICMP_HEADER *icmp)$/;"	f	signature:(ICMP_HEADER *icmp)
+analyseIP	grap_raw_link_pkg.c	/^analyseIP(IP_HEADER *ip)$/;"	f	signature:(IP_HEADER *ip)
+analyseIP	icmp_raw_grap.c	/^void analyseIP(IP_HEADER *ip)$/;"	f	signature:(IP_HEADER *ip)
+analyseIP	icmp_raw_grap.c	/^void analyseIP(IP_HEADER *ip);$/;"	p	file:	signature:(IP_HEADER *ip)
+analyseIP	net_raw_data_passer.c	/^analyseIP(IP_HEADER *ip)$/;"	f	signature:(IP_HEADER *ip)
+analyseTCP	grap_raw_link_pkg.c	/^analyseTCP(TCP_HEADER *tcp)$/;"	f	signature:(TCP_HEADER *tcp)
+analyseTCP	icmp_raw_grap.c	/^void analyseTCP(TCP_HEADER *tcp)$/;"	f	signature:(TCP_HEADER *tcp)
+analyseTCP	icmp_raw_grap.c	/^void analyseTCP(TCP_HEADER *tcp);$/;"	p	file:	signature:(TCP_HEADER *tcp)
+analyseTCP	net_raw_data_passer.c	/^analyseTCP(TCP_HEADER *tcp)$/;"	f	signature:(TCP_HEADER *tcp)
+analyseUDP	grap_raw_link_pkg.c	/^analyseUDP(UDP_HEADER *udp)$/;"	f	signature:(UDP_HEADER *udp)
+analyseUDP	icmp_raw_grap.c	/^void analyseUDP(UDP_HEADER *udp)$/;"	f	signature:(UDP_HEADER *udp)
+analyseUDP	icmp_raw_grap.c	/^void analyseUDP(UDP_HEADER *udp);$/;"	p	file:	signature:(UDP_HEADER *udp)
+analyseUDP	net_raw_data_passer.c	/^analyseUDP(UDP_HEADER *udp)$/;"	f	signature:(UDP_HEADER *udp)
+buf_size	net_raw_data_passer.c	39;"	d	file:
+build_iphdr	net_raw_data_passer.c	/^build_iphdr(struct sockaddr_in *target, char *buffer, int len_pkg, int len_data)$/;"	f	signature:(struct sockaddr_in *target, char *buffer, int len_pkg, int len_data)
+build_tcphdr	net_raw_data_passer.c	/^build_tcphdr(struct sockaddr_in *target, const char *src_port, $/;"	f	signature:(struct sockaddr_in *target, const char *src_port, char *buffer, char *data, int len_data)
+buile_iphdr	send_raw_data.c	/^void buile_iphdr(struct sockaddr_in *target, char *buffer)$/;"	f	signature:(struct sockaddr_in *target, char *buffer)
+buile_tcphdr	send_raw_data.c	/^void buile_tcphdr(struct sockaddr_in *target, const char *src_port, char *buffer)$/;"	f	signature:(struct sockaddr_in *target, const char *src_port, char *buffer)
+check_data_in_rule	net_raw_data_passer.c	/^check_data_in_rule(char *data)$/;"	f	signature:(char *data)
+check_data_proto	grap_raw_link_pkg.c	/^check_data_proto(char *buf)$/;"	f	signature:(char *buf)
+check_data_proto	grap_raw_link_pkg.c	/^int check_data_proto(char *buf);$/;"	p	file:	signature:(char *buf)
+check_data_proto	net_raw_data_passer.c	/^check_data_proto(char *buf)$/;"	f	signature:(char *buf)
+check_data_proto	net_raw_data_passer.c	/^int check_data_proto(char *buf);$/;"	p	file:	signature:(char *buf)
+check_sum	net_raw_data_passer.c	/^check_sum(unsigned short *addr, int len)$/;"	f	signature:(unsigned short *addr, int len)
+check_sum	send_raw_data.c	/^unsigned short check_sum(unsigned short *addr, int len)$/;"	f	signature:(unsigned short *addr, int len)
+checksum	grap_raw_link_pkg.c	/^    unsigned short checksum; \/\/16位IP首部校验和 $/;"	m	struct:_iphdr	file:	access:public
+checksum	icmp_raw_grap.c	/^    unsigned short checksum; \/\/16位IP首部校验和 $/;"	m	struct:_iphdr	file:	access:public
+checksum	net_raw_data_passer.c	/^    unsigned short checksum; \/\/16位IP首部校验和 $/;"	m	struct:_iphdr	file:	access:public
+count	grap_raw_link_pkg.c	/^int count=0;$/;"	v
+count	net_raw_data_passer.c	/^int count=0;$/;"	v
+destIP	grap_raw_link_pkg.c	/^    unsigned int destIP; \/\/32位目的IP地址 $/;"	m	struct:_iphdr	file:	access:public
+destIP	icmp_raw_grap.c	/^    unsigned int destIP; \/\/32位目的IP地址 $/;"	m	struct:_iphdr	file:	access:public
+destIP	net_raw_data_passer.c	/^    unsigned int destIP; \/\/32位目的IP地址 $/;"	m	struct:_iphdr	file:	access:public
+dst_addr	net_raw_data_passer.c	/^const char *dst_addr = "192.168.0.45";$/;"	v
+dst_port	net_raw_data_passer.c	/^const char *dst_port = "4242";$/;"	v
+frag_and_flags	grap_raw_link_pkg.c	/^    unsigned short frag_and_flags; \/\/3位标志位 $/;"	m	struct:_iphdr	file:	access:public
+frag_and_flags	icmp_raw_grap.c	/^    unsigned short frag_and_flags; \/\/3位标志位 $/;"	m	struct:_iphdr	file:	access:public
+frag_and_flags	net_raw_data_passer.c	/^    unsigned short frag_and_flags; \/\/3位标志位 $/;"	m	struct:_iphdr	file:	access:public
+h_verlen	grap_raw_link_pkg.c	/^    unsigned char h_verlen; \/\/4位首部长度+4位IP版本号 $/;"	m	struct:_iphdr	file:	access:public
+h_verlen	icmp_raw_grap.c	/^    unsigned char h_verlen; \/\/4位首部长度+4位IP版本号 $/;"	m	struct:_iphdr	file:	access:public
+h_verlen	net_raw_data_passer.c	/^    unsigned char h_verlen; \/\/4位首部长度+4位IP版本号 $/;"	m	struct:_iphdr	file:	access:public
+icmp_cksum	grap_raw_link_pkg.c	/^    unsigned short icmp_cksum;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_cksum	icmp_raw_grap.c	/^    unsigned short icmp_cksum;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_cksum	net_raw_data_passer.c	/^    unsigned short icmp_cksum;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_code	grap_raw_link_pkg.c	/^    unsigned char icmp_code; \/* type sub code *\/  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_code	icmp_raw_grap.c	/^    unsigned char icmp_code; \/* type sub code *\/  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_code	net_raw_data_passer.c	/^    unsigned char icmp_code; \/* type sub code *\/  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_id	grap_raw_link_pkg.c	/^    unsigned short icmp_id;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_id	icmp_raw_grap.c	/^    unsigned short icmp_id;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_id	net_raw_data_passer.c	/^    unsigned short icmp_id;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_seq	grap_raw_link_pkg.c	/^    unsigned short icmp_seq;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_seq	icmp_raw_grap.c	/^    unsigned short icmp_seq;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_seq	net_raw_data_passer.c	/^    unsigned short icmp_seq;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_timestamp	grap_raw_link_pkg.c	/^    unsigned short icmp_timestamp;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_timestamp	icmp_raw_grap.c	/^    unsigned short icmp_timestamp;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_timestamp	net_raw_data_passer.c	/^    unsigned short icmp_timestamp;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_type	grap_raw_link_pkg.c	/^    unsigned char  icmp_type;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_type	icmp_raw_grap.c	/^    unsigned char  icmp_type;  $/;"	m	struct:_icmphdr	file:	access:public
+icmp_type	net_raw_data_passer.c	/^    unsigned char  icmp_type;  $/;"	m	struct:_icmphdr	file:	access:public
+ident	grap_raw_link_pkg.c	/^    unsigned short ident; \/\/16位标识 $/;"	m	struct:_iphdr	file:	access:public
+ident	icmp_raw_grap.c	/^    unsigned short ident; \/\/16位标识 $/;"	m	struct:_iphdr	file:	access:public
+ident	net_raw_data_passer.c	/^    unsigned short ident; \/\/16位标识 $/;"	m	struct:_iphdr	file:	access:public
+init_client_sock	net_raw_data_passer.c	/^init_client_sock(char *interface)$/;"	f	signature:(char *interface)
+init_server_sock	net_raw_data_passer.c	/^init_server_sock(const char *dst_addr, const char *dst_port)$/;"	f	signature:(const char *dst_addr, const char *dst_port)
+init_socket	send_raw_data.c	/^int init_socket(int sockfd, struct sockaddr_in *target,\\$/;"	f	signature:(int sockfd, struct sockaddr_in *target,\ const char *dst_addr, const char *dst_port)
+local_sock	net_raw_data_passer.c	/^int local_sock;$/;"	v
+main	grap_raw_link_pkg.c	/^main(int argc,char **argv)$/;"	f	signature:(int argc,char **argv)
+main	icmp_raw_grap.c	/^int main(void)$/;"	f	signature:(void)
+main	net_raw_data_passer.c	/^main(int argc,char **argv)$/;"	f	signature:(int argc,char **argv)
+main	send_raw_data.c	/^int main(int argc, const char *argv[])$/;"	f	signature:(int argc, const char *argv[])
+output_str_to_hex	xutils.c	/^void output_str_to_hex(unsigned char *str, int len)$/;"	f	signature:(unsigned char *str, int len)
+output_str_to_hex	xutils.h	/^void output_str_to_hex(unsigned char *str, int len);$/;"	p	signature:(unsigned char *str, int len)
+peer_addr	net_raw_data_passer.c	/^const char *peer_addr = "192.168.145.2";$/;"	v
+proto	grap_raw_link_pkg.c	/^    unsigned char proto; \/\/8位协议 (TCP, UDP 或其他) $/;"	m	struct:_iphdr	file:	access:public
+proto	icmp_raw_grap.c	/^    unsigned char proto; \/\/8位协议 (TCP, UDP 或其他) $/;"	m	struct:_iphdr	file:	access:public
+proto	net_raw_data_passer.c	/^    unsigned char proto; \/\/8位协议 (TCP, UDP 或其他) $/;"	m	struct:_iphdr	file:	access:public
+rawSocket	grap_raw_link_pkg.c	/^int rawSocket();$/;"	p	file:
+rawSocket	grap_raw_link_pkg.c	/^rawSocket()\/\/创建原始套接字$/;"	f
+recv_data	net_raw_data_passer.c	/^recv_data(char **buf)$/;"	f	signature:(char **buf)
+send_buff	net_raw_data_passer.c	/^char *send_buff;$/;"	v
+send_buff_head	net_raw_data_passer.c	/^char *send_buff_head;$/;"	v
+send_data_to_next	net_raw_data_passer.c	/^send_data_to_next(char *data, int len_data)$/;"	f	signature:(char *data, int len_data)
+setPromisc	grap_raw_link_pkg.c	/^int setPromisc(char *,int *);$/;"	p	file:	signature:(char *,int *)
+setPromisc	grap_raw_link_pkg.c	/^setPromisc(char *enterface,int *sock)\/\/设置eth0的混乱模式$/;"	f	signature:(char *enterface,int *sock)
+setPromisc	net_raw_data_passer.c	/^int setPromisc(char *,int *);$/;"	p	file:	signature:(char *,int *)
+set_promisc	net_raw_data_passer.c	/^int set_promisc(char *interface, int *sock);$/;"	p	file:	signature:(char *interface, int *sock)
+set_promisc	net_raw_data_passer.c	/^set_promisc(char *interface, int *sock)$/;"	f	signature:(char *interface, int *sock)
+sourceIP	grap_raw_link_pkg.c	/^    unsigned int sourceIP; \/\/32位源IP地址 $/;"	m	struct:_iphdr	file:	access:public
+sourceIP	icmp_raw_grap.c	/^    unsigned int sourceIP; \/\/32位源IP地址 $/;"	m	struct:_iphdr	file:	access:public
+sourceIP	net_raw_data_passer.c	/^    unsigned int sourceIP; \/\/32位源IP地址 $/;"	m	struct:_iphdr	file:	access:public
+src_port	net_raw_data_passer.c	/^const char *src_port = "4242";$/;"	v
+target	net_raw_data_passer.c	/^struct sockaddr_in *target;	$/;"	v	typeref:struct:sockaddr_in
+target_sock	net_raw_data_passer.c	/^int target_sock;$/;"	v
+th_ack	grap_raw_link_pkg.c	/^    unsigned int th_ack; \/\/32位确认号 $/;"	m	struct:_tcphdr	file:	access:public
+th_ack	icmp_raw_grap.c	/^    unsigned int th_ack; \/\/32位确认号 $/;"	m	struct:_tcphdr	file:	access:public
+th_ack	net_raw_data_passer.c	/^    unsigned int th_ack; \/\/32位确认号 $/;"	m	struct:_tcphdr	file:	access:public
+th_dport	grap_raw_link_pkg.c	/^    unsigned short th_dport; \/\/16位目的端口 $/;"	m	struct:_tcphdr	file:	access:public
+th_dport	icmp_raw_grap.c	/^    unsigned short th_dport; \/\/16位目的端口 $/;"	m	struct:_tcphdr	file:	access:public
+th_dport	net_raw_data_passer.c	/^    unsigned short th_dport; \/\/16位目的端口 $/;"	m	struct:_tcphdr	file:	access:public
+th_flag	grap_raw_link_pkg.c	/^    unsigned char th_flag; \/\/6位标志位$/;"	m	struct:_tcphdr	file:	access:public
+th_flag	icmp_raw_grap.c	/^    unsigned char th_flag; \/\/6位标志位$/;"	m	struct:_tcphdr	file:	access:public
+th_flag	net_raw_data_passer.c	/^    unsigned char th_flag; \/\/6位标志位$/;"	m	struct:_tcphdr	file:	access:public
+th_lenres	grap_raw_link_pkg.c	/^    unsigned char th_lenres;\/\/4位首部长度\/6位保留字 $/;"	m	struct:_tcphdr	file:	access:public
+th_lenres	icmp_raw_grap.c	/^    unsigned char th_lenres;\/\/4位首部长度\/6位保留字 $/;"	m	struct:_tcphdr	file:	access:public
+th_lenres	net_raw_data_passer.c	/^    unsigned char th_lenres;\/\/4位首部长度\/6位保留字 $/;"	m	struct:_tcphdr	file:	access:public
+th_seq	grap_raw_link_pkg.c	/^    unsigned int th_seq; \/\/32位序列号 $/;"	m	struct:_tcphdr	file:	access:public
+th_seq	icmp_raw_grap.c	/^    unsigned int th_seq; \/\/32位序列号 $/;"	m	struct:_tcphdr	file:	access:public
+th_seq	net_raw_data_passer.c	/^    unsigned int th_seq; \/\/32位序列号 $/;"	m	struct:_tcphdr	file:	access:public
+th_sport	grap_raw_link_pkg.c	/^    unsigned short th_sport; \/\/16位源端口 $/;"	m	struct:_tcphdr	file:	access:public
+th_sport	icmp_raw_grap.c	/^    unsigned short th_sport; \/\/16位源端口 $/;"	m	struct:_tcphdr	file:	access:public
+th_sport	net_raw_data_passer.c	/^    unsigned short th_sport; \/\/16位源端口 $/;"	m	struct:_tcphdr	file:	access:public
+th_sum	grap_raw_link_pkg.c	/^    unsigned short th_sum; \/\/16位校验和$/;"	m	struct:_tcphdr	file:	access:public
+th_sum	icmp_raw_grap.c	/^    unsigned short th_sum; \/\/16位校验和$/;"	m	struct:_tcphdr	file:	access:public
+th_sum	net_raw_data_passer.c	/^    unsigned short th_sum; \/\/16位校验和$/;"	m	struct:_tcphdr	file:	access:public
+th_urp	grap_raw_link_pkg.c	/^    unsigned short th_urp; \/\/16位紧急数据偏移量$/;"	m	struct:_tcphdr	file:	access:public
+th_urp	icmp_raw_grap.c	/^    unsigned short th_urp; \/\/16位紧急数据偏移量$/;"	m	struct:_tcphdr	file:	access:public
+th_urp	net_raw_data_passer.c	/^    unsigned short th_urp; \/\/16位紧急数据偏移量$/;"	m	struct:_tcphdr	file:	access:public
+th_win	grap_raw_link_pkg.c	/^    unsigned short th_win; \/\/16位窗口大小$/;"	m	struct:_tcphdr	file:	access:public
+th_win	icmp_raw_grap.c	/^    unsigned short th_win; \/\/16位窗口大小$/;"	m	struct:_tcphdr	file:	access:public
+th_win	net_raw_data_passer.c	/^    unsigned short th_win; \/\/16位窗口大小$/;"	m	struct:_tcphdr	file:	access:public
+tos	grap_raw_link_pkg.c	/^    unsigned char tos; \/\/8位服务类型TOS $/;"	m	struct:_iphdr	file:	access:public
+tos	icmp_raw_grap.c	/^    unsigned char tos; \/\/8位服务类型TOS $/;"	m	struct:_iphdr	file:	access:public
+tos	net_raw_data_passer.c	/^    unsigned char tos; \/\/8位服务类型TOS $/;"	m	struct:_iphdr	file:	access:public
+total_len	grap_raw_link_pkg.c	/^    unsigned short total_len; \/\/16位总长度（字节） $/;"	m	struct:_iphdr	file:	access:public
+total_len	icmp_raw_grap.c	/^    unsigned short total_len; \/\/16位总长度（字节） $/;"	m	struct:_iphdr	file:	access:public
+total_len	net_raw_data_passer.c	/^    unsigned short total_len; \/\/16位总长度（字节） $/;"	m	struct:_iphdr	file:	access:public
+ttl	grap_raw_link_pkg.c	/^    unsigned char ttl; \/\/8位生存时间 TTL $/;"	m	struct:_iphdr	file:	access:public
+ttl	icmp_raw_grap.c	/^    unsigned char ttl; \/\/8位生存时间 TTL $/;"	m	struct:_iphdr	file:	access:public
+ttl	net_raw_data_passer.c	/^    unsigned char ttl; \/\/8位生存时间 TTL $/;"	m	struct:_iphdr	file:	access:public
+uh_dport	grap_raw_link_pkg.c	/^    unsigned short uh_dport;    \/\/16位目的端口$/;"	m	struct:_udphdr	file:	access:public
+uh_dport	icmp_raw_grap.c	/^    unsigned short uh_dport;    \/\/16位目的端口$/;"	m	struct:_udphdr	file:	access:public
+uh_dport	net_raw_data_passer.c	/^    unsigned short uh_dport;    \/\/16位目的端口$/;"	m	struct:_udphdr	file:	access:public
+uh_len	grap_raw_link_pkg.c	/^    unsigned int uh_len;\/\/16位UDP包长度$/;"	m	struct:_udphdr	file:	access:public
+uh_len	icmp_raw_grap.c	/^    unsigned int uh_len;\/\/16位UDP包长度$/;"	m	struct:_udphdr	file:	access:public
+uh_len	net_raw_data_passer.c	/^    unsigned int uh_len;\/\/16位UDP包长度$/;"	m	struct:_udphdr	file:	access:public
+uh_sport	grap_raw_link_pkg.c	/^    unsigned short uh_sport;    \/\/16位源端口$/;"	m	struct:_udphdr	file:	access:public
+uh_sport	icmp_raw_grap.c	/^    unsigned short uh_sport;    \/\/16位源端口$/;"	m	struct:_udphdr	file:	access:public
+uh_sport	net_raw_data_passer.c	/^    unsigned short uh_sport;    \/\/16位源端口$/;"	m	struct:_udphdr	file:	access:public
+uh_sum	grap_raw_link_pkg.c	/^    unsigned int uh_sum;\/\/16位校验和$/;"	m	struct:_udphdr	file:	access:public
+uh_sum	icmp_raw_grap.c	/^    unsigned int uh_sum;\/\/16位校验和$/;"	m	struct:_udphdr	file:	access:public
+uh_sum	net_raw_data_passer.c	/^    unsigned int uh_sum;\/\/16位校验和$/;"	m	struct:_udphdr	file:	access:public
