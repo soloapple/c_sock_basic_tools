@@ -81,7 +81,7 @@ main(int argc, char *argv[])
 	char *insert_word = (char*)calloc(256, 1);
 	strcpy(insert_word, "insert into tab_system set optime =\"2015-06-19 01:01:13\", severity=\"warning\", msg=\"ÍõÓÂ\";");
 	int len = sprintf(data, "%s", insert_word);
-	LOGD("data:%s\n", data);
+	LOGI("data:%s\n", data);
 
 	insert_mysql_data(&mysql_conn, data, &len);
 
@@ -92,14 +92,14 @@ main(int argc, char *argv[])
 	mysql_result=mysql_store_result(&mysql_conn);
 	num_row=mysql_num_rows(mysql_result);
 	num_col=mysql_num_fields(mysql_result);
-	printf("row: %d,col: %d\n",num_row,num_col);
+	LOGD("row: %d,col: %d\n",num_row,num_col);
 
 	for (f1 = 0; f1 < num_row; f1++)
 	{
 		mysql_row=mysql_fetch_row(mysql_result);
 		for (f2 = 0; f2 < num_col; f2++)
 		{
-			printf("[Row %d,Col %d]==>[%s]\n",f1,f2,mysql_row[f2]);
+			LOGI("[Row %d,Col %d]==>[%s]\n",f1,f2,mysql_row[f2]);
 		}
 	}
 
