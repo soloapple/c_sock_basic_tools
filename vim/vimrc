@@ -139,5 +139,5 @@ function! CleverTab()
 		endfunction
 inoremap <Tab> <C-R>=CleverTab()<CR>
 
-
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
