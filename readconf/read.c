@@ -16,23 +16,14 @@
 #include <memory.h>
 #include <time.h>
 
-#include "webadmin.h"
-#include "cgi.h"
-
-
 typedef enum {
 	sz_label = 128,
 	sz_file = 1024
 } sz_config;				
 
-char *path = "/storage/hawk/syslog-ng/sqlsyslogd/etc/sql_alarm_out.conf";
+char *path = "/root/test";
 
-void line_handle_switch(char *line);
-void line_handle_snmp(char *line);
-void line_handle_script(char *line);
-void line_handle_log(char *line);
-void line_handle_mail(char *line);
-void line_handle_mail_list(char *line);
+void line_handle_test_mail(char *line);
 
 char *cgiDebug;
 typedef void (*config_line_handle)(char *line);
@@ -46,29 +37,9 @@ typedef struct config_item
 config_item_t item[] = 
 {
 	{
-		line_label:"switch",
-		line_handle:line_handle_switch,		   
+		line_label:"test_mail",
+		line_handle:line_handle_test_mail,		   
 	},
-	{
-		line_label:"script",
-		line_handle:line_handle_script,
-	},
-	{
-		line_label:"mailbasic",
-		line_handle:line_handle_mail,
-	},
-	{
-		line_label:"log",
-		line_handle:line_handle_log,	
-	},
-	{
-		line_label:"snmp",
-		line_handle:line_handle_snmp,
-	},
-	{
-		line_label:"maillist",
-		line_handle:line_handle_mail_list	   
-	}
 };
 
 typedef struct line_pair 
@@ -104,11 +75,6 @@ mail_list_conf_t *c_list_head, *c_list_tail;
 void
 mail_display()
 {
-//	printf ( "%s\n", c_mail.mail_addr_local );
-//	printf ( "%s\n", c_mail.mail_addr_server );
-//	printf ( "%s\n", c_mail.mail_addr_ip );
-//	printf ( "%s\n", c_mail.mail_addr_port );
-	
 	printf ( "local:  %s", c_mail.mail_addr_local );
 	printf ( "server: %s", c_mail.mail_addr_server );
 	printf ( "ip:     %s", c_mail.mail_ip );
@@ -130,7 +96,6 @@ mail_list_display()
 int
 read_conf()
 {
-	int fi;
 	int i;
 
 	char line[sz_file];
@@ -181,31 +146,7 @@ read_conf()
 }
 
 void
-line_handle_switch(char *line)
-{
-	return;
-}
-
-void
-line_handle_snmp(char *line)
-{
-	return;
-}
-
-void
-line_handle_script(char *line)
-{
-	return;
-}
-
-void
-line_handle_log(char *line)
-{
-	return;
-}
-
-void
-line_handle_mail(char *line)
+line_handle_test_mail(char *line)
 {
 	char *p = NULL;
 
@@ -287,9 +228,6 @@ main(void)
 	list_init();
 	read_conf();
 
-//	cgiHeaderContent("text/html");
-//	printf("<html><head>main</head>"); 
-//	printf("<body>it works.</body></html>"); 
 	mail_display();
 	mail_list_display();
 
