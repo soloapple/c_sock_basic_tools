@@ -45,10 +45,7 @@ prt_char(char c)
 void
 prt_hex(char c)
 {
-	if (isprint(c))
-		printf(" %02x ", c);
-	else
-		printf(" ** ");
+	printf(" %02x ", c);
 }
 
 int
