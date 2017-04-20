@@ -116,7 +116,7 @@ print_hex(char *buf, int len)
 	/* print last line str. */
 	j = last_head;
 	printf("     ");
-	for( x=0; x<16; x++, j++ )
+	for( x=0; x<(len%16); x++, j++ )
 	{
 		prt_char(buf[j]);
 	}
