@@ -99,8 +99,10 @@ print_hex(char *buf, int len)
 
 	/* print last line hex. */
 	n_polish = len;
-	if ( n_polish < 8 )	
+	if ( (n_polish%16) < 8 )	
+	{
 		show_mid = true;
+	}
 
 	while ( (n_polish % 16) != 0 )
 	{
