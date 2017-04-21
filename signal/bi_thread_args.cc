@@ -86,7 +86,7 @@ change_sign_work(int signal)
  * Description:  
  */ 
 void *
-branch_sig(void *arg ) 
+branch_sig(void *arg) 
 {
 	int sig = getpid();
 

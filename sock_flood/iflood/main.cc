@@ -74,7 +74,8 @@ void usage(int argc, char *argv[])
 }
 
 const char *style = STYLE;
-const char *cstyle = CSTYLE;
+//const char *cstyle = CSTYLE;
+const char *cstyle = "NULL";
 
 
 /* 

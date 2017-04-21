@@ -62,6 +62,13 @@ w_mission_start(char *ip, char *port, char *t_buf, int n_read)
 	int recv_len = 0;
 	
 	s_sock = s_net_init(&s_net_addr, ip, port);
+
+	char addr_p[16];
+	inet_ntop(AF_INET, &(s_net_addr.sin_addr),
+			addr_p, (socklen_t)sizeof(addr_p));
+		LOGN("Connect to ip:%s Port:%d!\n", 
+				addr_p, htons(s_net_addr.sin_port) );
+
 	res = s_net_connect(s_sock, &s_net_addr);
 	if ( res < 0 )
 		goto EXIT_LONG;
