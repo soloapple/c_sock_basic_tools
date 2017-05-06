@@ -74,6 +74,8 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
+
+
 	pars_args(argc, argv);	
 
 	exit(1);

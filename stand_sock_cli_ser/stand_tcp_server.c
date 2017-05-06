@@ -11,8 +11,8 @@
  *              soloapple   2016Äê12ÔÂ27ÈÕ                  build this moudle  
  *****************************************************************************/
 #include "syshead.h"
+ #define _XOPEN_SOURCE 600
 
-#define die(msg) do { LOGE(msg); exit(EXIT_FAILURE); } while (0)
 #define PORT "4242"
 #define NUM_CHILDREN 3
 #define MAXLEN 1024
@@ -23,6 +23,7 @@ int recvdata(int fd, char *buf, int maxlen);
 int 
 main(int argc, char **argv)
 {
+	char err_buf[128];
 	int i, n, sockfd, clientfd;
 	int yes = 1;  
 
@@ -38,39 +39,43 @@ main(int argc, char **argv)
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd == -1) 
 	{
-		die("Couldn't create a socket\n");
+		LOGE("%s", strerror(errno));
+		goto E0;
 	}
 
 	if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, (const void *)&yes, sizeof(int)) == -1) 
 	{
-		die("Couldn't setsockopt\n");
+		LOGE("%s", strerror(errno));
+		goto E1;
 	}
 
 	if (getaddrinfo(NULL, PORT, NULL, &ai) != 0) 
 	{ 
-		die("Couldn't get address\n");
+		LOGE("%s", strerror(errno));
+		goto E1;
 	}
 
 	if (bind(sockfd, ai->ai_addr, ai->ai_addrlen) != 0) 
 	{
-		die("Couldn't bind socket to address\n");
+		LOGE("%s", strerror(errno));
+		goto E1;
 	}
 
 	freeaddrinfo(ai);
 
 	if (listen(sockfd, 10) == -1) 
 	{
-		die("Couldn't make socket listen\n");
+		LOGE("%s", strerror(errno));
+		goto E1;
 	}
-
-	LOGD("One new connection is coming!\n");
 
 	for (i = 0; i < NUM_CHILDREN; i++) 
 	{
 		cpid = fork();
 		if (cpid == -1) 
 		{
-			die("Couldn't fork\n");
+			LOGE("%s", strerror(errno));
+			goto E1;
 		}
 		if (cpid == 0) 
 		{
@@ -81,7 +86,8 @@ main(int argc, char **argv)
 				clientfd = accept(sockfd, (struct sockaddr *)&client, &client_t);
 				if (clientfd == -1) 
 				{
-					die("Couldn't accept a connection\n");
+					LOGE("%s", strerror(errno));
+					goto E1;
 				}
 
 				bzero(cpid_s, 32);
@@ -104,9 +110,12 @@ main(int argc, char **argv)
 			}
 		}
 	}
+
 	while (waitpid(-1, NULL, 0) > 0);
+E1:
 	close(sockfd);
 	LOGD("Close server socket.\n");
+E0:
 	return 0;
 }
   

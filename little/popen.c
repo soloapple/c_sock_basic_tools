@@ -43,6 +43,7 @@ main()
       printf("命令【%s】 输出【%s】\r\n", command, result_buf);
   }
 
+
   rc = pclose(fp);
   if ( -1 == rc )
   {
@@ -53,6 +54,8 @@ main()
   {
       printf("命令【%s】子进程结束状态【%d】命令返回值【%d】\r\n", command, rc, WEXITSTATUS(rc));
   }
+
+  sleep(100);
 
   return 0;
 }
