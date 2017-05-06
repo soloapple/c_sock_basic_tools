@@ -1,0 +1,48 @@
+autoscan: warning: missing AC_CHECK_FUNCS([bzero]) wanted by: 
+	lib/msg_key.c:46
+	lib/cut_false_sharing.c:53
+autoscan: warning: missing AC_CHECK_FUNCS([gettimeofday]) wanted by: 
+	lib/cut_false_sharing.c:30
+autoscan: warning: missing AC_CHECK_FUNCS([inet_ntoa]) wanted by: 
+	tests/unit/check_conn_select_fd.c:155
+autoscan: warning: missing AC_CHECK_FUNCS([memset]) wanted by: 
+	tests/unit/check_conn_select_fd.c:34
+	tests/unit/check_conn_select_fd.c:69
+	tests/unit/check_conn_select_fd.c:135
+	lib/multi_thread_test.c:124
+	lib/msg_key.c:72
+autoscan: warning: missing AC_CHECK_FUNCS([select]) wanted by: 
+	tests/unit/check_conn_select_fd.c:111
+autoscan: warning: missing AC_CHECK_FUNCS([socket]) wanted by: 
+	tests/unit/check_conn_select_fd.c:54
+autoscan: warning: missing AC_CHECK_HEADERS([arpa/inet.h]) wanted by: 
+	tests/unit/check_conn_select_fd.c:9
+autoscan: warning: missing AC_CHECK_HEADERS([netinet/in.h]) wanted by: 
+	tests/unit/check_conn_select_fd.c:8
+autoscan: warning: missing AC_CHECK_HEADERS([sys/socket.h]) wanted by: 
+	tests/unit/check_conn_select_fd.c:7
+autoscan: warning: missing AC_FUNC_FORK wanted by: 
+	src/main.c:37
+autoscan: warning: missing AC_FUNC_MALLOC wanted by: 
+	lib/multi_thread_test.c:123
+autoscan: warning: missing AC_PROG_CXX wanted by: 
+	ltmain.sh:249
+	ltmain.sh:260
+	ltmain.sh:260
+	ltmain.sh:260
+	ltmain.sh:260
+	ltmain.sh:269
+	ltmain.sh:279
+	ltmain.sh:279
+	ltmain.sh:279
+	ltmain.sh:279
+	ltmain.sh:453
+	ltmain.sh:1525
+autoscan: warning: missing AC_PROG_RANLIB wanted by: 
+	ltmain.sh:6876
+autoscan: warning: missing AC_TYPE_INT64_T wanted by: 
+	lib/cut_false_sharing.c:21
+	lib/cut_false_sharing.c:25
+	lib/cut_false_sharing.c:39
+autoscan: warning: missing AC_TYPE_SIZE_T wanted by: 
+	lib/msg_key.c:73
