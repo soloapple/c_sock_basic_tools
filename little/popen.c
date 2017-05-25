@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <unistd.h>
 #include <sys/wait.h>
 #define MAXLINE 1024
 
@@ -24,7 +25,7 @@ main()
   int rc = 0;
   FILE *fp = NULL;
 
-  snprintf(command, sizeof(command), "lm ./ ");
+  snprintf(command, sizeof(command), "killall -9 sqlalarm");
 
   fp = popen(command, "r");
   if ( NULL == fp )
@@ -54,8 +55,6 @@ main()
   {
       printf("命令【%s】子进程结束状态【%d】命令返回值【%d】\r\n", command, rc, WEXITSTATUS(rc));
   }
-
-  sleep(100);
 
   return 0;
 }
