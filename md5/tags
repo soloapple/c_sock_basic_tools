@@ -1,0 +1,88 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert (Pathed by Dmitry Frank, dimon.frank@gmail.com)	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8.1	//
+CC	Makefile	/^CC = g++$/;"	m
+EXE	Makefile	/^EXE = md5_test$/;"	m
+F	src/md5.h	51;"	d
+FF	src/md5.h	70;"	d
+G	src/md5.h	52;"	d
+GG	src/md5.h	75;"	d
+H	src/md5.h	53;"	d
+HEX_NUMBERS	src/md5.cpp	/^const char MD5::HEX_NUMBERS[16] = {$/;"	m	class:MD5	file:
+HEX_NUMBERS	src/md5.h	/^  static const char HEX_NUMBERS[16];$/;"	m	class:MD5	access:private
+HH	src/md5.h	80;"	d
+I	src/md5.h	54;"	d
+II	src/md5.h	85;"	d
+MD5	src/md5.cpp	/^MD5::MD5(const string& message) {$/;"	f	class:MD5	signature:(const string& message)
+MD5	src/md5.h	/^  MD5(const string& message);$/;"	p	class:MD5	access:public	signature:(const string& message)
+MD5	src/md5.h	/^class MD5 {$/;"	c
+MD5::HEX_NUMBERS	src/md5.cpp	/^const char MD5::HEX_NUMBERS[16] = {$/;"	m	class:MD5	file:
+MD5::HEX_NUMBERS	src/md5.h	/^  static const char HEX_NUMBERS[16];$/;"	m	class:MD5	access:private
+MD5::MD5	src/md5.cpp	/^MD5::MD5(const string& message) {$/;"	f	class:MD5	signature:(const string& message)
+MD5::MD5	src/md5.h	/^  MD5(const string& message);$/;"	p	class:MD5	access:public	signature:(const string& message)
+MD5::PADDING	src/md5.cpp	/^const byte MD5::PADDING[64] = { 0x80 };$/;"	m	class:MD5	file:
+MD5::PADDING	src/md5.h	/^  static const byte PADDING[64];$/;"	m	class:MD5	access:private
+MD5::buffer	src/md5.h	/^  byte buffer[64];$/;"	m	class:MD5	access:private
+MD5::count	src/md5.h	/^  bit32 count[2];$/;"	m	class:MD5	access:private
+MD5::decode	src/md5.cpp	/^void MD5::decode(const byte* input, bit32* output, size_t length) {$/;"	f	class:MD5	signature:(const byte* input, bit32* output, size_t length)
+MD5::decode	src/md5.h	/^  void decode(const byte* input, bit32* output, size_t length);$/;"	p	class:MD5	access:private	signature:(const byte* input, bit32* output, size_t length)
+MD5::digest	src/md5.h	/^  byte digest[16];$/;"	m	class:MD5	access:private
+MD5::encode	src/md5.cpp	/^void MD5::encode(const bit32* input, byte* output, size_t length) {$/;"	f	class:MD5	signature:(const bit32* input, byte* output, size_t length)
+MD5::encode	src/md5.h	/^  void encode(const bit32* input, byte* output, size_t length);$/;"	p	class:MD5	access:private	signature:(const bit32* input, byte* output, size_t length)
+MD5::finished	src/md5.h	/^  bool finished;$/;"	m	class:MD5	access:private
+MD5::getDigest	src/md5.cpp	/^const byte* MD5::getDigest() {$/;"	f	class:MD5	signature:()
+MD5::getDigest	src/md5.h	/^  const byte* getDigest();$/;"	p	class:MD5	access:public	signature:()
+MD5::init	src/md5.cpp	/^void MD5::init(const byte* input, size_t len) {$/;"	f	class:MD5	signature:(const byte* input, size_t len)
+MD5::init	src/md5.h	/^  void init(const byte* input, size_t len);$/;"	p	class:MD5	access:private	signature:(const byte* input, size_t len)
+MD5::state	src/md5.h	/^  bit32 state[4];$/;"	m	class:MD5	access:private
+MD5::toStr	src/md5.cpp	/^string MD5::toStr() {$/;"	f	class:MD5	signature:()
+MD5::toStr	src/md5.h	/^  string toStr();$/;"	p	class:MD5	access:public	signature:()
+MD5::transform	src/md5.cpp	/^void MD5::transform(const byte block[64]) {$/;"	f	class:MD5	signature:(const byte block[64])
+MD5::transform	src/md5.h	/^  void transform(const byte block[64]);$/;"	p	class:MD5	access:private	signature:(const byte block[64])
+MD5_H	src/md5.h	24;"	d
+OBJ	Makefile	/^OBJ = md5.o test.o$/;"	m
+PADDING	src/md5.cpp	/^const byte MD5::PADDING[64] = { 0x80 };$/;"	m	class:MD5	file:
+PADDING	src/md5.h	/^  static const byte PADDING[64];$/;"	m	class:MD5	access:private
+ROTATELEFT	src/md5.h	65;"	d
+SRC_DIR	Makefile	/^SRC_DIR = .\/src$/;"	m
+TEST_DIR	Makefile	/^TEST_DIR = .\/test$/;"	m
+bit32	src/md5.h	/^typedef unsigned int bit32;$/;"	t
+buffer	src/md5.h	/^  byte buffer[64];$/;"	m	class:MD5	access:private
+byte	src/md5.h	/^typedef unsigned char byte;$/;"	t
+count	src/md5.h	/^  bit32 count[2];$/;"	m	class:MD5	access:private
+decode	src/md5.cpp	/^void MD5::decode(const byte* input, bit32* output, size_t length) {$/;"	f	class:MD5	signature:(const byte* input, bit32* output, size_t length)
+decode	src/md5.h	/^  void decode(const byte* input, bit32* output, size_t length);$/;"	p	class:MD5	access:private	signature:(const byte* input, bit32* output, size_t length)
+digest	src/md5.h	/^  byte digest[16];$/;"	m	class:MD5	access:private
+encode	src/md5.cpp	/^void MD5::encode(const bit32* input, byte* output, size_t length) {$/;"	f	class:MD5	signature:(const bit32* input, byte* output, size_t length)
+encode	src/md5.h	/^  void encode(const bit32* input, byte* output, size_t length);$/;"	p	class:MD5	access:private	signature:(const bit32* input, byte* output, size_t length)
+finished	src/md5.h	/^  bool finished;$/;"	m	class:MD5	access:private
+getDigest	src/md5.cpp	/^const byte* MD5::getDigest() {$/;"	f	class:MD5	signature:()
+getDigest	src/md5.h	/^  const byte* getDigest();$/;"	p	class:MD5	access:public	signature:()
+init	src/md5.cpp	/^void MD5::init(const byte* input, size_t len) {$/;"	f	class:MD5	signature:(const byte* input, size_t len)
+init	src/md5.h	/^  void init(const byte* input, size_t len);$/;"	p	class:MD5	access:private	signature:(const byte* input, size_t len)
+main	test/test.cpp	/^int main() {$/;"	f	signature:()
+printMD5	test/test.cpp	/^void printMD5(const string& message) {$/;"	f	signature:(const string& message)
+s11	src/md5.h	27;"	d
+s12	src/md5.h	28;"	d
+s13	src/md5.h	29;"	d
+s14	src/md5.h	30;"	d
+s21	src/md5.h	31;"	d
+s22	src/md5.h	32;"	d
+s23	src/md5.h	33;"	d
+s24	src/md5.h	34;"	d
+s31	src/md5.h	35;"	d
+s32	src/md5.h	36;"	d
+s33	src/md5.h	37;"	d
+s34	src/md5.h	38;"	d
+s41	src/md5.h	39;"	d
+s42	src/md5.h	40;"	d
+s43	src/md5.h	41;"	d
+s44	src/md5.h	42;"	d
+state	src/md5.h	/^  bit32 state[4];$/;"	m	class:MD5	access:private
+toStr	src/md5.cpp	/^string MD5::toStr() {$/;"	f	class:MD5	signature:()
+toStr	src/md5.h	/^  string toStr();$/;"	p	class:MD5	access:public	signature:()
+transform	src/md5.cpp	/^void MD5::transform(const byte block[64]) {$/;"	f	class:MD5	signature:(const byte block[64])
+transform	src/md5.h	/^  void transform(const byte block[64]);$/;"	p	class:MD5	access:private	signature:(const byte block[64])
