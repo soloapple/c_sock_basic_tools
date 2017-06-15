@@ -18,7 +18,7 @@
 
 using namespace std;
 
-const int TIMES = 10000000;
+const int TIMES = 1;
 int len = 512;
 
 unsigned int BKDR_hash(char *str)  
@@ -59,13 +59,18 @@ main(int argc, char *argv[])
 	printf("start.tv_sec:%d\n",start.tv_sec);
 	printf("start.tv_usec:%d\n",start.tv_usec);
 
+#if 0
 	char *p = (char *)malloc(1024);
 	strcpy(p, message.c_str());
+#endif
+	char *p = "任务2被修改";
+
 
 	for ( i = 0 ; i < TIMES ; i++ ) 
 	{
 		c = BKDR_hash(p);	
 	}
+	printf ( "string: %s\n hash value:%d\n", p, c );
 
 	gettimeofday(&end,NULL);
 	time_use=(end.tv_sec-start.tv_sec)*1000000+(end.tv_usec-start.tv_usec);//微秒
@@ -77,11 +82,13 @@ main(int argc, char *argv[])
 
 	printf ( "%d\n", TIMES );
 
+#if 0
 	if ( p )
 	{
 		free(p);
 		p = NULL;
 	}
+#endif
 
 	return 0;
 }

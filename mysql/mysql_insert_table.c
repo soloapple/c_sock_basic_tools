@@ -14,7 +14,7 @@
 #include <mysql.h>
 #include <string.h>
 #include "/revive/git/c_sock_basic_tools/include/colorpt.h"
-#define	PORT 3308
+#define	PORT 3306
 
 void
 insert_mysql_data(MYSQL *db, char *query_info, int *pos_buff)
@@ -63,8 +63,8 @@ main(int argc, char *argv[])
 		return 0;
 
 	if ( !mysql_real_connect(
-				&mysql_conn, "172.24.141.28", 
-				"root", "secdataclient", "gap", 
+				&mysql_conn, "127.0.0.1", 
+				"root", "123456", "gap", 
 				PORT, "/tmp/mysql.sock", 0) )
 	{
 		LOGE("%s\n", mysql_error(&mysql_conn));
@@ -79,7 +79,8 @@ main(int argc, char *argv[])
 
 	char data[4096] = {0};
 	char *insert_word = (char*)calloc(256, 1);
-	strcpy(insert_word, "insert into tab_system set optime =\"2015-06-19 01:01:13\", severity=\"warning\", msg=\"ÍõÓÂ\";");
+//	strcpy(insert_word, "insert into tab_system set optime =\"2015-06-19 01:01:13\", severity=\"warning\", msg=\"ÍõÓÂ\";");
+	strcpy(insert_word, "update tab_alarm set reptime=33, severity=\"warning\" where hash_msg=1456434523 order by optime desc limit 1;");
 	int len = sprintf(data, "%s", insert_word);
 	LOGI("data:%s\n", data);
 

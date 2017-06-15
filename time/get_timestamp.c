@@ -17,7 +17,6 @@
 int 
 main()
 {
-
 	for (;;)
 	{
 //		char *wday[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
