@@ -64,13 +64,15 @@ int main(int argc, char *argv[])
     
     listen(listenfd, 5);
     
-    while (1) {
+    for (;;) 
+	{
         clilen = sizeof(cliaddr);
         clifd = accept(listenfd, (struct sockaddr*)&cliaddr, &clilen);
         if (clifd < 0) {
             printf("accept failed.\n");
             continue;
         }
+		printf ( "access fd is:%d\n", clifd );
         
         msg.msg_name = NULL;
         msg.msg_namelen = 0;
@@ -80,12 +82,18 @@ int main(int argc, char *argv[])
         msg.msg_iovlen = 1;
         msg.msg_control = control_un.control;
         msg.msg_controllen = sizeof(control_un.control);
-        
-        ret = recvmsg(clifd, &msg, 0);
-        if (ret <= 0) {
-            return ret;
-        }
-        
+
+   		for ( ;; )
+		{
+			ret = recvmsg(clifd, &msg, 0);
+			if (ret <= 0) {
+				printf ( "recvmsg failed!\n" );
+				break;
+			}
+
+			printf ( "buf:%s\n", buf );
+		}
+
         if ((pcmsg = CMSG_FIRSTHDR(&msg)) != NULL && (pcmsg->cmsg_len == CMSG_LEN(sizeof(int)))) {
             if (pcmsg->cmsg_level != SOL_SOCKET) {
                 printf("cmsg_leval is not SOL_SOCKET\n");
@@ -101,7 +109,10 @@ int main(int argc, char *argv[])
             printf("recv fd = %d\n", recvfd);
             
             write(recvfd, testmsg, strlen(testmsg) + 1);
+			printf ( "recv msg:%s\n", testmsg );
         }
+
+		close(clifd);
     }
     
     return 0;

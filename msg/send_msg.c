@@ -16,6 +16,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <string.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <sys/types.h>
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
     int ret;
     struct msghdr msg;
     struct iovec iov[1];
-    char buf[100];
+    char buf[100] = "AABB";
     union {
         struct cmsghdr cm;
         char control[CMSG_SPACE(sizeof(int))];
@@ -79,6 +80,26 @@ int main(int argc, char *argv[])
     
     ret = sendmsg(clifd, &msg, 0);
     printf("ret = %d.\n", ret);
+
+	for ( ;; )
+	{
+		printf ( "(((((((((((((((((((\n" );
+		strncpy(buf, "1234", strlen("1234"));
+		iov[0].iov_len = 30;
+		iov[0].iov_base = buf;
+		ret = sendmsg(clifd, &msg, 0);
+		printf("ret = %d.\n", ret);
+
+		printf ( "(((((((((((((((((((\n" );
+		strncpy(buf, "5678", strlen("1234"));
+		iov[0].iov_len = 40;
+		iov[0].iov_base = buf;
+		ret = sendmsg(clifd, &msg, 0);
+		printf("ret = %d.\n", ret);
+
+		sleep(1);
+	}
+
     return 0;
 }
 
