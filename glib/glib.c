@@ -10,7 +10,6 @@
  *     History: <author>   <time>    <version >         <desc>
  *              soloapple   09/02/16                  build this moudle  
  ***************************************************************************************/
-
 #include <glib-2.0/glib.h>
 #include <locale.h>
 
